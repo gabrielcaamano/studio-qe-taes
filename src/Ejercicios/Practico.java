@@ -7,10 +7,11 @@ public class Practico {
 	static int[] ejerciciosFinales = { 6, 7, 8, 9, 10 };
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		
 		boolean salir = false;
-		int opcion;
 		while (!salir) {
+			Scanner in = new Scanner(System.in);
+			System.out.println("------------- MENU -------------\n");
 			System.out.println("1. Ejercicio 1");
 			System.out.println("2. Ejercicio 2");
 			System.out.println("3. Ejercicio 3");
@@ -23,10 +24,8 @@ public class Practico {
 			System.out.println("10. Ejercicio 10");
 			System.out.println("11. Ejercicio 11");
 			System.out.println("12. Ejercicio 12");
-			System.out.println("13. Salir");
-		}
+			System.out.println("13. Salir\n\n\n");
 
-		try {
 			System.out.println("Elije una de las opcion:");
 			int choice = in.nextInt();
 			switch (choice) {
@@ -68,13 +67,13 @@ public class Practico {
 				ejercicio12();
 				break;
 			case 13:
+				System.out.println("Gracias por tu tiempo!!!");
 				salir = true;
 				break;
 
 			default:
 				System.out.println("Invalid choice");
 			}
-		} catch (Exception e) {
 		}
 	}
 
