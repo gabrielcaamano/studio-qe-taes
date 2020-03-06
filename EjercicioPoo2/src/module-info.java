@@ -1,0 +1,2 @@
+module EjercicioPoo2 {
+}
