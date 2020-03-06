@@ -36,9 +36,9 @@ public class Perro implements serVivo {
 
 	}
 
-	public boolean esAdulto() {
+	public boolean esAdulto(int edad) {
 
-		return age >= 2;
+		return edad >= 2;
 
 	}
 
@@ -52,6 +52,12 @@ public class Perro implements serVivo {
 
 		this.age = age;
 
+	}
+
+	@Override
+	public boolean esAdulto() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

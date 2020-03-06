@@ -1,6 +1,5 @@
 package classes;
 
-import practico2.Main.Cedula;
 
 public class Uruguayo extends Persona {
 

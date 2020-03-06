@@ -1,9 +1,9 @@
 package classes;
 
 import interfaces.serVivo;
-import practico2.Main.Argentino;
-import practico2.Main.Perro;
-import practico2.Main.Uruguayo;
+//import practico2.Main.Argentino;
+//import practico2.Main.Perro;
+//import practico2.Main.Uruguayo;
 	
 	public class Persona implements serVivo {
 		// Atributos de la clase
@@ -54,15 +54,21 @@ import practico2.Main.Uruguayo;
 
 		}
 
-		public boolean esAdulto() {
+		public boolean esAdulto(int edad) {
 
-			return this.age >= 18;
+			return edad >= 18;
 
 		}
 
 		public void setAge(int age) {
 
 			this.age = age;
+		}
+
+		@Override
+		public boolean esAdulto() {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
 	}
