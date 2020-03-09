@@ -7,6 +7,7 @@ public class Cedula {
 	
 	public int getNumero() {
 		return numero;
+	}
 	
 	public int getDigVerificador() {
 		return digVerificador;
