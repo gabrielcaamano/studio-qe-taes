@@ -1,12 +1,12 @@
 package classes;
 
-import interfaces.serVivo;
+import interfaces.SerVivo;
 
-public class Perro implements serVivo {
+public class Perro implements SerVivo {
 
 	private String nombre;
 	private String raza;
-	private int age;
+	public int age;
 	private String gender;
 
 	public Perro() {
@@ -45,12 +45,6 @@ public class Perro implements serVivo {
 	public void cumpleaños() {
 
 		this.age = age + 8;
-
-	}
-
-	public void setAge(int age) {
-
-		this.age = age;
 
 	}
 

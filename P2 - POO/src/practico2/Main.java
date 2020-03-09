@@ -18,7 +18,7 @@ public class Main {
 		Perro perro1 = new Perro();
 		Argentino argentino2 = new Argentino();
 		
-		perro1.setAge(12);
+		perro1.age = 12;
 		argentino2.setAge(12);
 		System.out.println("La edad de perro1 es " + perro1.getAge() + ", adulto: " + perro1.esAdulto(perro1.getAge()));
 		System.out.println("La edad de argentino2 es " + argentino2.getAge() + " , adulto: "+ argentino2.esAdulto(argentino2.getAge()));

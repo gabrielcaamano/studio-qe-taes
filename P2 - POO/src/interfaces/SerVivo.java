@@ -1,7 +1,6 @@
 package interfaces;
 
-public interface serVivo {
-
+public interface SerVivo {
 
 	public void cumpleaños();
 

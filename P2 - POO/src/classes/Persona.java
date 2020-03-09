@@ -1,11 +1,11 @@
 package classes;
 
-import interfaces.serVivo;
+import interfaces.SerVivo;
 //import practico2.Main.Argentino;
 //import practico2.Main.Perro;
 //import practico2.Main.Uruguayo;
 	
-	public class Persona implements serVivo {
+	public class Persona implements SerVivo {
 		// Atributos de la clase
 		private String name;
 		private String lastname;

@@ -27,5 +27,23 @@ public class Argentino extends Persona {
 		return barrio;
 
 	}
+	
+	public void setDNI(String DNI) {
+		
+		this.DNI = DNI;
+		
+	}
+	
+	public void setProvincia(String provincia) {
+		
+		this.provincia = provincia;
+		
+	}
+	
+	public void setBarrio(String barrio) {
+		
+		this.barrio = barrio;
+		
+	}
 
 }
