@@ -25,6 +25,25 @@ public class Uruguayo extends Persona {
 	public String getBarrio() {
 
 		return barrio;
+		
+	}
+	
+	public void setCi(Cedula cedula) {
+		
+		this.ci = cedula;
+		
+	}
+	
+	public void setDepto(String depto) {
+		
+		this.depto = depto;
+		
+	}
+	
+	public void setBarrio(String barrio) {
+		
+		this.barrio = barrio;
+		
 	}
 
 	public void imprimirInfo(String name, String lastname, int age, String gender, String ci, String depto,

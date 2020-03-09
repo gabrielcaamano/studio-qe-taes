@@ -23,6 +23,28 @@ import interfaces.SerVivo;
 			age++;
 
 		}
+		
+		public void setName(String nombre) {
+			
+			this.name = nombre;
+			
+		}
+		
+		public void setLastName(String lastname) {
+			
+			this.lastname = lastname;
+			
+		}
+
+		public void setAge(int age) {
+
+			this.age = age;
+		}
+
+		public void setGender(String gender) {
+			
+			this.gender = gender;
+		}
 
 		public String getName() {
 
@@ -59,11 +81,7 @@ import interfaces.SerVivo;
 			return edad >= 18;
 
 		}
-
-		public void setAge(int age) {
-
-			this.age = age;
-		}
+		
 
 		@Override
 		public boolean esAdulto() {
