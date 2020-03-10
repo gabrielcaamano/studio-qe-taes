@@ -71,7 +71,7 @@ public class Ejercicio {
 		inputBuscar.sendKeys(Keys.ENTER);
 		
 	}
-	
+	//cambio
 	public static void ejercicio3(String buscar) {
 		WebDriver driver = openDriver();
 		driver.manage().window().maximize();
@@ -97,7 +97,7 @@ public class Ejercicio {
 		}
 	}
 	
-	
+	////
 	
 	
 	
