@@ -60,7 +60,7 @@ public abstract class BaseTest {
 			throw new Exception("test.platform not set");
 		}
 		
-		driver.manage().timeouts().implicitlyWait(BasePage.DEFAULT_TIMEOUT.getSeconds(), TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(BaseScreen.DEFAULT_TIMEOUT.getSeconds(), TimeUnit.SECONDS);
 		driver.get(properties.getString("environment.url"));
 	}
 	
