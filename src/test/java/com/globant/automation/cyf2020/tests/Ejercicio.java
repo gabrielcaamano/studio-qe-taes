@@ -1,107 +1,108 @@
 package com.globant.automation.cyf2020.tests;
 
-import java.sql.Driver;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByClassName;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Ejercicio {
 	
-	public static WebDriver openDriver() {
+	
+	
+	private static void WebDriverWait(WebDriver driver, int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void main(String[] args) {
+		
+		
+	
+		
+//ejercicio que ejecuta el ejercicio 1 y 2 y compara si el primer resultado es igual en ambos
+		sonIguales( ejercicio1(), ejercicio1());
+	}
+	
+	public static String ejercicio1() {
 		DesiredCapabilities caps = new DesiredCapabilities();
 		ChromeOptions options = new ChromeOptions();
 		WebDriverManager.chromedriver().setup();
-		return new ChromeDriver(options);
+	 WebDriver driver = new ChromeDriver();
+	  
+	  	 
+		 String URL = "https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjZy6rx1Y3oAhVKH7kGHXUTCt4QPAgH";
+		    driver.navigate().to(URL);
+		    WebDriverWait(driver, 20);
+		    WebElement inputBrowser = driver.findElement(By.name("q"));
+		    WebElement buttonBrowser = driver.findElement(By.name("btnK"));
+		    inputBrowser.sendKeys("Hola Mundo");
+		   
+		    inputBrowser.sendKeys(Keys.ENTER);
+		    
+		   
+		    
+		    String elemento2 = "//div[@class = \"g\"][2]//a";
+		     WebElement TxtBoxContent = driver.findElement(By.xpath(elemento2));  
+		     String contenido = TxtBoxContent.getAttribute("href");
+		    
+		     return contenido;
+
+		   
+		    
+	} 
+
+	public static String ejercicio2() { 
+		
+		DesiredCapabilities caps = new DesiredCapabilities();
+		ChromeOptions options = new ChromeOptions();
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+	  
+	  	 
+		String URL = "https://www.bing.com/";
+		    driver.navigate().to(URL);
+		    WebDriverWait(driver, 20);
+		    WebElement inputBrowser = driver.findElement(By.name("q"));
+		    inputBrowser.sendKeys("Hola Mundo");
+		   
+		    
+		    WebElement buttonBrowser = driver.findElement(By.name("q"));
+		    
+		    buttonBrowser.sendKeys(Keys.ENTER);
+		  
+		     String elemento2 = "//li[@class = \"b_algo\"]//h2[1]//a[1]";
+		     WebElement TxtBoxContent = driver.findElement(By.xpath(elemento2));  
+		     String contenido = TxtBoxContent.getAttribute("href");
+		    
+		     return contenido;
+		     
+		     
+		    
+		    
+		  
+		
+		
 	}
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void sonIguales(String ejercicio1, String ejercicio2) { 
 		
-		//openDriver();
-	//	System.out.println(ejercicio1("movie"));
-		//ejercicio2("movie");
-		ejercicio3("movie");
-	}
-	public static boolean ejercicio1(String buscar) throws InterruptedException {
-		WebDriver driver = openDriver();
-		driver.manage().window().maximize();
-		driver.get("http://google.com");
-		WebDriverWait wait = new WebDriverWait(driver, 10);	
-		WebElement inputBuscar = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
-		//WebElement element = driver.findElement(By.name("q"));
-		inputBuscar.sendKeys(buscar);
+		System.out.println("el resultado de los dos navegadores es igual?: " + ejercicio1.equals(ejercicio2));
 		
-	    WebElement buttonBuscar = wait.until(ExpectedConditions.elementToBeClickable(By.className("gNO89b")));
-	    
-	    buttonBuscar.click();
-	    
-	    //Thread.sleep(4000);
-	    
-	    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.className("st")));
-	    
-	    String resultado = element.getText();
-	    
-	    System.out.println(resultado);
-	    
-	    driver.close();
-	    
-	    if(resultado.contains("MOVIE")) {
-	    	return true;
-	    } else {
-	    	return false;
-	    }
-	    
-	}
-	
-	public static void ejercicio2(String search) {
-		WebDriver driver = openDriver();
-		driver.manage().window().maximize();	
-		driver.get("http://bing.com");
-		WebDriverWait wait = new WebDriverWait(driver, 10);	
-		WebElement inputBuscar = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
-		inputBuscar.sendKeys(search);
-		inputBuscar.sendKeys(Keys.ENTER);
+		
+		
 		
 	}
 	
-	public static void ejercicio3(String buscar) {
-		WebDriver driver = openDriver();
-		driver.manage().window().maximize();
-		driver.get("http://google.com");
-		WebDriverWait wait = new WebDriverWait(driver, 10);	
-		WebElement inputBuscar = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
-		inputBuscar.sendKeys(buscar);
-		inputBuscar.sendKeys(Keys.ENTER);
-		
-		
-		WebDriver driver2 = openDriver();
-		driver2.manage().window().maximize();
-		driver2.get("http://bing.com");
-		WebDriverWait wait1 = new WebDriverWait(driver2, 10);	
-		WebElement inputBuscar1 = wait1.until(ExpectedConditions.elementToBeClickable(By.name("q")));
-		inputBuscar1.sendKeys(buscar);
-		inputBuscar1.sendKeys(Keys.ENTER); 
-		
-		if (inputBuscar.equals(inputBuscar1)) {
-			System.out.println("son iguales");
-		} else {
-			System.out.println("error");
-		}
-	}
-	
-	
-	
-	
-	
-	
+	 
 }
-	
+
 
