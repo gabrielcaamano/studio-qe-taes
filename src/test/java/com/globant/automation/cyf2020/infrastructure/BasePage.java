@@ -22,14 +22,14 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public abstract class BaseScreen {
+public abstract class BasePage {
 
 	public static final Duration ANIMATION_DURATION = Duration.ofSeconds(5);
 	public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(15);
 	public static final Duration EXTENDED_TIMEOUT = Duration.ofSeconds(30);
 	protected final WebDriver driver;
 
-	public BaseScreen(WebDriver driver) {
+	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 
@@ -39,7 +39,7 @@ public abstract class BaseScreen {
 		});
 	}
 	
-	protected <T extends BaseScreen> T getNextPage(Class<T> tClass) {
+	protected <T extends BasePage> T getNextPage(Class<T> tClass) {
 		try {
 			return tClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);			
 		} catch (Exception e) {
