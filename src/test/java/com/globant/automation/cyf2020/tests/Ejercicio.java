@@ -19,6 +19,7 @@ public class Ejercicio {
 	public static void main(String[] args) {
 		
 		openDriver();
+		System.out.println("hola");
 		
 	}
 
