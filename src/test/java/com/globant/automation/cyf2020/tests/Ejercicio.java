@@ -21,11 +21,13 @@ public class Ejercicio {
 		return new ChromeDriver(options);
 	}
 	
+	   
 	public static void main(String[] args) {
 		
 		//openDriver();
 		google("bands");
 		bing("globant");
+		googleAndBing("corona");
 		
 		
 		
@@ -78,4 +80,42 @@ WebElement isThisRight = wait.until(ExpectedConditions.elementToBeClickable(By.c
 	
 	}
 	
-}
+	public static void googleAndBing(String insertTerm){
+		WebDriver driver = openDriver();
+		 	driver.get("https://www.bing.com/");
+		
+			WebDriverWait wait=new WebDriverWait(driver, 10);
+			 
+			  WebElement theSearchBox = wait.until(ExpectedConditions.elementToBeClickable(By.name("q")));
+			 //what i want to search + searching it
+			theSearchBox.sendKeys(insertTerm + Keys.ENTER);
+			
+	WebElement searchBing = wait.until(ExpectedConditions.elementToBeClickable(By.className("b_attribution")));
+	
+	
+	WebDriver driverG = openDriver();
+	driverG.get("http://www.google.com/");
+	
+	WebDriverWait waitG=new WebDriverWait(driverG, 10);
+	 
+	  WebElement theSearchBoxG = waitG.until(ExpectedConditions.elementToBeClickable(By.name("q")));
+	 //what i want to search + searching it
+	theSearchBoxG.sendKeys(insertTerm + Keys.ENTER);
+	WebElement searchGoogle = waitG.until(ExpectedConditions.elementToBeClickable(By.className("st")));
+	
+	  if (searchBing.equals(searchGoogle)) {
+		  System.out.println("Similar results were found!");
+		  }
+	  else System.out.println("The results found were not similar!");
+	  	  
+	  }
+	
+	}
+	  
+	
+		
+	
+	
+	
+	
+
