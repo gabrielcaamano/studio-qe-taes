@@ -9,8 +9,7 @@ public class BarraMenu extends BasePage {
 	@FindBy(xpath="//div[@class = \"nav-menu\"]//ul[@class = \"nav-menu-list\"]//li[05]//a")
 	private WebElement oferSemanalBtn;
 	
-	@FindBy(/*valor*/)
-	private WebElement searchBtn;
+	
 	
 	public BarraMenu(WebDriver driver) {
 		super(driver);
