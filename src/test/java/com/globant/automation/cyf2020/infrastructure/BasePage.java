@@ -39,8 +39,6 @@ public abstract class BasePage {
 		});
 	}
 	
-	// Example: return getNextPage(MLSearch.class);
-	// return new MLSearch();
 	protected <T extends BasePage> T getNextPage(Class<T> tClass) {
 		try {
 			return tClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);			
