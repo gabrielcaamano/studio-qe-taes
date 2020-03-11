@@ -2,12 +2,13 @@ package com.globant.automation.cyf2020.tests;
 
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-public class PrincipalPagina{
+public class PrincipalPagina extends BasePage{
 
 	@FindBy(xpath = "//div[@class = \"nav-menu\"]//ul[@class = \"nav-menu-list\"]//li[05]//a")
 	private WebElement ofertaSemanalButn;
@@ -15,11 +16,6 @@ public class PrincipalPagina{
 	@FindBy(xpath = "//a[@class = \"nav-logo\"]")
 	private WebElement logoMercado;
 
-	public PrincipalPagina(WebElement ofertaSemanalButn, WebElement logoMercado) {
-		this.ofertaSemanalButn = ofertaSemanalButn;
-		this.logoMercado = logoMercado;
-		
-	}
 	
 	public WebElement getOfertaSemanalButn() {
 		return ofertaSemanalButn;
@@ -37,7 +33,13 @@ public class PrincipalPagina{
 		return this.logoMercado = logoMercado;
 	}
 	
-	public  void DarClickOffer() {
+	public PrincipalPagina(WebDriver driver) {
+		super(driver);
+		driver.navigate().to("https://www.mercadolibre.com.uy/");
+		
+	}
+	
+	/*public  void DarClickOffer() {
 		click(this.ofertaSemanalButn, 10);
 	}
 	public  void DarClicLogo() {
@@ -49,7 +51,7 @@ public class PrincipalPagina{
 		// TODO Auto-generated method stub
 		
 	}
-	
+	*/
 	
 } 
 

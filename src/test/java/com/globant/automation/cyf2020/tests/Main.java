@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.globant.automation.cyf2020.infrastructure.BarraMenu;
+
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -17,10 +17,10 @@ public class Main {
 		WebDriver driver = openDriver();
 		driver.manage().window().maximize();
 		
-		BarraMenu barraMenu = new BarraMenu(driver);
+		PrincipalPagina PrincipalPagina = new PrincipalPagina(driver);
 		
-		driver.close();
-
+		//driver.close();
+        
 	}
 	
 	public static WebDriver openDriver() {
