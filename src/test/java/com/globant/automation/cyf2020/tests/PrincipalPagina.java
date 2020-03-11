@@ -36,6 +36,7 @@ public class PrincipalPagina extends BasePage{
 	public PrincipalPagina(WebDriver driver) {
 		super(driver);
 		driver.navigate().to("https://www.mercadolibre.com.uy/");
+		click(getOfertaSemanalButn());
 		
 	}
 	
