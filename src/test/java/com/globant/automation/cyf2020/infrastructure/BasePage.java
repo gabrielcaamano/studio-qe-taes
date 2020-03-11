@@ -204,7 +204,7 @@ public abstract class BasePage {
 		element.sendKeys(text);
 	}
 	
-	protected void wait(Duration duration) {
+	public void wait(Duration duration) {
 		try {
 			getWait(duration).ignoring(NoSuchElementException.class).until(ExpectedConditions.alertIsPresent());
 		} catch (TimeoutException e) { }

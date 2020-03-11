@@ -1,11 +1,14 @@
 package com.globant.automation.cyf2020.tests;
 
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class OfertasSemanales {
     
-	@FindBy(xpath="//li[@class = \"results-item highlighted article grid item-info-height-195\"][1]//div[@class = \"rowItem item highlighted item--grid new to-item\"]//div[@class = \"item__info \"]")
+	@FindBy(xpath="//li[@class = \"results-item highlighted article grid item-info-height-195\"][1]//div[@class = \"rowItem item highlighted item--grid new to-item\"]")
 	private WebElement primerItem;
 	
 	@FindBy(xpath = "//li[@class = \"results-item highlighted article grid item-info-height-195\"][1]//div[@class = \"rowItem item highlighted item--grid new to-item\"]//div[@class = \"item__info \"]//span[@class = \"price__fraction\"]")
@@ -19,27 +22,22 @@ public class OfertasSemanales {
 	
 	
 	
-	public OfertasSemanales() {
-		this.precioPP = precioPP;
-		this.nameOfProductPP = nameOfProductPP;
-		this.porcetagePP = porcetagePP;
-		this.primerItem = primerItem;
-	}
+	
 	
 	public WebElement getPrecioPP() {
 		return precioPP;
 	}
 
+	public WebElement setPrecioPP(WebElement precioPP) {
+		return this.precioPP = precioPP;
+	}
+	
 	public WebElement setPrimerItem(WebElement primerItem) {
 		return this.primerItem = primerItem;
 	}
 	
 	public WebElement getPrimerItem() {
 		return primerItem;
-	}
-
-	public WebElement setPrecioPP(WebElement precioPP) {
-		return this.precioPP = precioPP;
 	}
 
 	public WebElement getNameOfProductPP() {
@@ -58,15 +56,29 @@ public class OfertasSemanales {
 		return this.porcetagePP = porcetagePP;
 	}
 	
-	public void clickPrimerProduct() {
+	public void obtenerOfertas() {
+		click(getPrimerItem());
 		
-		click(primerItem, 10);
+		}
+
+	private void click(WebElement primerItem2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void Wait(int i) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	private void click(WebElement primerItem2, int i) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void clickFirstProduct(WebDriver driver) {
+	
+		click( getPrimerItem());
 	}
 	
 	
