@@ -18,14 +18,19 @@ public class Main {
 		WebDriver driver = openDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to("https://www.mercadolibre.com.uy/");
-		PrincipalPagina PrincipalPagina = new PrincipalPagina(driver);
-		OfertasSemanales OfertasSemanales = new OfertasSemanales(); 
-		
 
-		OfertasSemanales.obtenerOfertas();
+		PrincipalPagina PrincipalPagina = new PrincipalPagina(driver);
+		OfertasSemanales offers = PrincipalPagina.navigateToWeeklyOffers();
 		
 		
+		
+		OfertasSemanales OfertasSemanales = new OfertasSemanales(driver);
+		
+		Producto  Producto = new Producto(driver);
+		Producto products = OfertasSemanales.navigateProducto();
+		//products.navigateProducto();
         
+		
 	}
 	
 	

@@ -16,6 +16,10 @@ public class PrincipalPagina extends BasePage{
 	@FindBy(xpath = "//a[@class = \"nav-logo\"]")
 	private WebElement logoMercado;
 
+	public OfertasSemanales navigateToWeeklyOffers() {
+		click(ofertaSemanalButn);
+		return getNextPage(OfertasSemanales.class);
+	}
 	
 	public WebElement getOfertaSemanalButn() {
 		return ofertaSemanalButn;
@@ -37,26 +41,14 @@ public class PrincipalPagina extends BasePage{
 	public PrincipalPagina(WebDriver driver) {
 		super(driver);
 		
-		click(getOfertaSemanalButn());
+		//click(getOfertaSemanalButn());
 		
 		
 		
 		
 	}
 	
-	/*public  void DarClickOffer() {
-		click(this.ofertaSemanalButn, 10);
-	}
-	public  void DarClicLogo() {
-		click(this.logoMercado, 10);
-	}
 
-
-	private void click(WebElement ofertaSemanalButn2, int i) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
 	
 } 
 
