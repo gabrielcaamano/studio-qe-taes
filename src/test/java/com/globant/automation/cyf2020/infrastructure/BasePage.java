@@ -49,7 +49,7 @@ public abstract class BasePage {
 		
 	}
 	
-	private FluentWait<WebDriver> getWait(Duration duration) {
+	protected FluentWait<WebDriver> getWait(Duration duration) {
 		return new WebDriverWait(driver, duration.getSeconds()).ignoring(NoSuchElementException.class)
 				.ignoring(StaleElementReferenceException.class);
 	}
