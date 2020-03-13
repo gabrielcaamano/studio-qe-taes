@@ -23,10 +23,10 @@ public class GoogleHomePage extends BasePage {
 	private WebElement searchBtn;
 	
 	public void googleSearch (String aWord) {
-		searchName.sendKeys(aWord);
-		getWait(ANIMATION_DURATION).until(ExpectedConditions.elementToBeClickable(searchBtn));
-		searchBtn.click();
+	 type(searchName,aWord);
+		click(searchBtn);
 	}
+	
 	
 
 }
