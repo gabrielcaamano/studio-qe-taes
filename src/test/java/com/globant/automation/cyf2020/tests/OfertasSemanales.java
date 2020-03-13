@@ -24,6 +24,7 @@ public class OfertasSemanales extends BasePage {
 	
 
 	 public Producto navigateProducto() {
+		 obtenerDatos();
    		click(primerItem);
    		return getNextPage(Producto.class);
    	}
@@ -66,10 +67,10 @@ public class OfertasSemanales extends BasePage {
 	}
 	public void obtenerDatos() {
 		
-		
-		WebElement datos = getNameOfProductPP(); 
-		System.out.println(datos);
-		
+		String precio1 = getText(precioPP); 
+		String nombre1 = getText(nameOfProductPP); 
+		String porcentage1 = getText(porcetagePP); 
+		System.out.println();
 	}
 	
 	

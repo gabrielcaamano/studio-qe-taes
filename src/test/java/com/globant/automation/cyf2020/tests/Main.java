@@ -28,7 +28,7 @@ public class Main {
 		
 		Producto  Producto = new Producto(driver);
 		Producto products = OfertasSemanales.navigateProducto();
-		//products.navigateProducto();
+		
         
 		
 	}
