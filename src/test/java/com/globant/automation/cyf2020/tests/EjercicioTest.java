@@ -12,6 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class EjercicioTest {
 	
+	Barra barra;
 	private WebDriver driver;
 	
 	@BeforeClass
@@ -29,6 +30,8 @@ public class EjercicioTest {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://www.mercadolibre.com.uy");
+		
+		barra = new Barra(driver);
 	}
 	
 	@AfterMethod
