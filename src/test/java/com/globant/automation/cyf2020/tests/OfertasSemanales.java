@@ -70,12 +70,14 @@ public class OfertasSemanales extends BasePage {
 	public WebElement setPorcetagePP(WebElement porcetagePP) {
 		return this.porcetagePP = porcetagePP;
 	}
-	public void obtenerDatos() {
+	public String obtenerDatos() {
 		
 		String precio1 = getText(precioPP); 
 		String nombre1 = getText(nameOfProductPP); 
 		String porcentage1 = getText(porcetagePP); 
-		System.out.println(precio1);
+		String CadenaDeDatos1 = nombre1 + " " + precio1 +" "+ porcentage1;
+		
+		return CadenaDeDatos1;
 	}
 	
 	

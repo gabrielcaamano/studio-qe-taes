@@ -3,6 +3,7 @@ package com.globant.automation.cyf2020.tests;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -23,12 +24,13 @@ public class Main {
 		OfertasSemanales offers = PrincipalPagina.navigateToWeeklyOffers(); // navega a ofertas semanales
 		
 		OfertasSemanales OfertasSemanales = new OfertasSemanales(driver); //creo un objeto de ofertas semanales
-		
+		String getDatoOferta = OfertasSemanales.obtenerDatos();
 		Producto products = OfertasSemanales.navigateProducto();
 		
-		//Producto  Producto = new Producto(driver);
 		
-		
+		Producto  producto = new Producto(driver);
+		String getDatoProducto = producto.obtenerDatos2();
+		sonElMismPorducto(getDatoOferta, getDatoProducto);
         
 		
 	}
@@ -42,5 +44,18 @@ public class Main {
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}
+
+	
+	  public static void sonElMismPorducto(String liOferta, String producto) {
+      	
+   	   
+   	   System.out.println("los dos productos son iguales?: " + liOferta.equals(producto));
+   	   
+   	
+  		
+  	}
+
+
+
 
 }

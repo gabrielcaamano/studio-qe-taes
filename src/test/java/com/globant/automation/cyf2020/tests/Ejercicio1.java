@@ -29,7 +29,7 @@ public class Ejercicio1 {
 	
 		
 //ejercicio que ejecuta el ejercicio 1 y 2 y compara si el primer resultado es igual en ambos
-		sonIguales( ejercicio1(), ejercicio1());
+		sonIguales( ejercicio1(), ejercicio2());
 	}
 	
 	public static String ejercicio1() {
@@ -53,7 +53,7 @@ public class Ejercicio1 {
 		    String elemento2 = "//div[@class = \"g\"][2]//a";
 		     WebElement TxtBoxContent = driver.findElement(By.xpath(elemento2));  
 		     String contenido = TxtBoxContent.getAttribute("href");
-		    
+		     driver.close();
 		     return contenido;
 
 		   
@@ -83,6 +83,7 @@ public class Ejercicio1 {
 		     WebElement TxtBoxContent = driver.findElement(By.xpath(elemento2));  
 		     String contenido = TxtBoxContent.getAttribute("href");
 		    
+		     driver.close();
 		     return contenido;
 		     
 		     

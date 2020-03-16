@@ -8,7 +8,7 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 
 
 public class Producto extends BasePage{
-           @FindBy(xpath = "//header[@class = \"item-title\"]//h1[@class = \"item-title__primary __web-inspector-hide-shortcut__\"]")
+           @FindBy(xpath = "//header[@class = \"item-title\"]//h1[@class = \"item-title__primary \"]")
            private WebElement nombre;
            
            @FindBy(xpath = "//fieldset[@class = \"item-price \"]//span[@class = \"price-tag\"]//span[@class = \"price-tag-fraction\"]")
@@ -23,26 +23,30 @@ public class Producto extends BasePage{
 
 
            public Producto(WebDriver driver) {
+        	   
        		super(driver);
        	}
            
-       	public void obtenerDatos() {
+       	public String obtenerDatos2() {
     		
     		String precio2 = getText(precio); 
     		String nombre2 = getText(nombre); 
-    		String porcentage2 = getText(porcentage); 
-    		System.out.println(precio2);
+    		String porcentage2 = getText(porcentage);
+    		String CadenaDeDatos2 = nombre2 + " " + precio2 +" "+ porcentage2;
+    		
+    		return CadenaDeDatos2;
     	}
 
            
            public Producto navigateProducto() {
-      		obtenerDatos(); 
-         	click(btnTiendasOficiales);
+      		obtenerDatos2(); 
+         	//click(btnTiendasOficiales);
          	return getNextPage(Producto.class);
          	}
            
            
-	
+         
+		
 
 
           
