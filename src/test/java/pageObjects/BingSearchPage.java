@@ -18,10 +18,10 @@ public class BingSearchPage extends BasePage {
 	private WebElement wordBSearched;
 	
 	//here it prints what i searched for and the results i got, they should be the same
-	public void whatIlookedFor() {
-		String bingSearchResult = getText(wordBSearched);
-		System.out.println(bingSearchResult);
+	public String bingSearchResult() {
+		return wordBSearched.getText();
+	
 	}
 	
 }
-}
+
