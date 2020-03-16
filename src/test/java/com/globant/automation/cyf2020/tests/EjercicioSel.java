@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Ejercicio {
+public class EjercicioSel {
 	
 	public static WebDriver openDriver() {
 		DesiredCapabilities caps = new DesiredCapabilities();
