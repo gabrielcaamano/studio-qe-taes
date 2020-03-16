@@ -25,14 +25,6 @@ public class Ejercicio {
 		return GoIndexSearchTerm(searchTerm);
 
 	}
-<<<<<<< Updated upstream
-	
-	public static void main(String[] args) {
-		
-		openDriver();
-		System.out.println("hola");
-		
-=======
 
 	public String GoIndexSearchTerm(String term) {
 
@@ -44,7 +36,7 @@ public class Ejercicio {
 		searchBtn.click();
 		String resultGoogle = SaveFirstResult(wait, term);
 		return resultGoogle;
->>>>>>> Stashed changes
+		
 	}
 
 	public String SaveFirstResult(WebDriverWait wait, String term) {
