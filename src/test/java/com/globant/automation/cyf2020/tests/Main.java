@@ -1,6 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
-import java.time.Duration;
+
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,14 +26,22 @@ public class Main {
 		
 		OfertasSemanales OfertasSemanales = new OfertasSemanales(driver); //creo un objeto de ofertas semanales
 		String getDatoOferta = OfertasSemanales.obtenerDatos();
-		Producto products = OfertasSemanales.navigateProducto();
+		Producto products = OfertasSemanales.navigateProducto(); //navega a productos
 		
 		
 		Producto  producto = new Producto(driver);
 		String getDatoProducto = producto.obtenerDatos2();
-		sonElMismPorducto(getDatoOferta, getDatoProducto);
-        
+		sonElMismPorducto(getDatoOferta, getDatoProducto); //comparo si son iguales los datos obtenidos
+		TiendasOficiales tiendasOficial = producto.navigateTiendasOff(); //navego a tiendas oficiales
 		
+        TiendasOficiales tiendasOficiales = new TiendasOficiales(driver);
+		ArticuloTiendasMtvdeo articuloTiendasMtvdeo  = tiendasOficiales.navigateArticulo();//navego hacia el articulo
+		
+		
+		ArticuloTiendasMtvdeo atriculotienda = new ArticuloTiendasMtvdeo(driver);
+		String linktiendOFF = atriculotienda.getHrefTiendOfi();
+		verificacionDeLink (linktiendOFF);
+		driver.close();
 	}
 	
 	
@@ -46,16 +55,19 @@ public class Main {
 	}
 
 	
+	
+	
 	  public static void sonElMismPorducto(String liOferta, String producto) {
       	
    	   
    	   System.out.println("los dos productos son iguales?: " + liOferta.equals(producto));
-   	   
-   	
-  		
-  	}
+   	   }
 
-
+	  public static void verificacionDeLink (String liOferta) {
+			String hrefDeTiendasOff = "https://mercadolibre.com.uy/tiendas-oficiales";
+			 System.out.println("Estamos en la página de productos oficiales?: " + hrefDeTiendasOff.equals(liOferta));
+			 
+		 }
 
 
 }

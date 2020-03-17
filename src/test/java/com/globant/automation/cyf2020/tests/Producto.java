@@ -38,11 +38,12 @@ public class Producto extends BasePage{
     	}
 
            
-           public Producto navigateProducto() {
+           public TiendasOficiales navigateTiendasOff() {
       		obtenerDatos2(); 
-         	//click(btnTiendasOficiales);
-         	return getNextPage(Producto.class);
-         	}
+         	click(btnTiendasOficiales);
+         	return getNextPage(TiendasOficiales.class);
+         	
+           }
            
            
          

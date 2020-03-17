@@ -1,6 +1,6 @@
 package com.globant.automation.cyf2020.tests;
 
-import java.time.Duration;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +41,7 @@ public class PrincipalPagina extends BasePage{
 	public PrincipalPagina(WebDriver driver) {
 		super(driver);
 		
-		//click(getOfertaSemanalButn());
+	
 		
 		
 		
