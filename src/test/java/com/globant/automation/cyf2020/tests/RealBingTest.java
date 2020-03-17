@@ -32,7 +32,7 @@ public class RealBingTest {
             String actualText= resultPage.bingSearchResult();
             driver.quit();
             Assert.assertEquals(actualText,"Globant","search result text failed");
-
+//en este resulta failed bc los reultados no coinciden con "Globant", lo toma como failed bc no son identicos
         }
 
     }
