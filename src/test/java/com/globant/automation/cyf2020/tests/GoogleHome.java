@@ -8,9 +8,9 @@ import org.openqa.selenium.support.How;
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 import com.sun.jdi.Type;
 
-public class pageObjectsPattern extends BasePage {
+public class GoogleHome extends BasePage {
 
-	public pageObjectsPattern(WebDriver driver) {
+	public GoogleHome(WebDriver driver) {
 		super(driver);
 		driver.get("http://google.com");
 	}
