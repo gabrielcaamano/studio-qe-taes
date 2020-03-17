@@ -20,12 +20,10 @@ public class GoogleHomePage extends BasePage {
 	@FindBy (name="btnK")
 	private WebElement searchBtn;
 	
-	public void googleSearch (String gWord) {
+	public GoogleSearchPage googleSearch (String gWord) {
 	 type(searchName,gWord);
 		click(searchBtn);
-		return getNextPage(GoogleSearchPage.class)
+		return getNextPage(GoogleSearchPage.class);
 	}
-	
 
-hhhh//
 }

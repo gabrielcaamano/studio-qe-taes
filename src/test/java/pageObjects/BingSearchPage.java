@@ -14,7 +14,7 @@ public class BingSearchPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy ( how= How.CLASS_NAME, using ="b_attribution")
+	@FindBy ( xpath = "//*[@id=\"b_results\"]/li[1]/h2/a")
 	private WebElement wordBSearched;
 	
 	//here it prints what i searched for and the results i got, they should be the same

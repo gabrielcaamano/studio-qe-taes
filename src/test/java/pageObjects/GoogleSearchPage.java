@@ -15,9 +15,15 @@ public class GoogleSearchPage extends BasePage {
 	}
 	@FindBy ( how= How.CLASS_NAME, using ="st")
 	private WebElement wordGSearched;
-	
+
+
 	//here it prints what i searched for and the results i got, they should be the same
 	//here it prints what i searched for and the results i got, they should be the same
 	public String googleSearchResult() {
 		return wordGSearched.getText();}
+
+
+
+
+
 }

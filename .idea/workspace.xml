@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7bbe6024-b6de-4c37-84a1-6daf5a961679" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideInfoMessages" value="true" />
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+    <option name="HIDE_INFO_MESSAGES" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZFyocjFn1pRvzyLWt0xl9cOIRJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager" selected="TestNG.GoogleTest.testGoogleSearch">
+    <configuration name="BingBaseTest (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.BingBaseTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BingBaseTest.testBingSearch" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.BingBaseTest" />
+      <option name="METHOD_NAME" value="testBingSearch" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EjercicioTest.ejercicio1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.EjercicioTest" />
+      <option name="METHOD_NAME" value="ejercicio1" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GoogleTest.testGoogleSearch" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.GoogleTest" />
+      <option name="METHOD_NAME" value="testGoogleSearch" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RealBingTest.testBingSearch" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.RealBingTest" />
+      <option name="METHOD_NAME" value="testBingSearch" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.GoogleTest.testGoogleSearch" />
+        <item itemvalue="TestNG.RealBingTest.testBingSearch" />
+        <item itemvalue="TestNG.BingBaseTest.testBingSearch" />
+        <item itemvalue="TestNG.EjercicioTest.ejercicio1" />
+        <item itemvalue="TestNG.BingBaseTest (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7bbe6024-b6de-4c37-84a1-6daf5a961679" name="Default Changelist" comment="" />
+      <created>1584449313289</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584449313289</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="0" width="596" height="728" key="#BingTest.testBingSearch" timestamp="1584460751038">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="392" y="0" width="596" height="728" key="#BingTest.testBingSearch/0.0.1366.728@0.0.1366.728" timestamp="1584460751038" />
+    <state x="275" y="22" key="#Notifications" timestamp="1584460775943">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1584460775943" />
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1584475201428">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1584475201428" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584462455239">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1584462455239" />
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom" timestamp="1584475222584">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584475222584" />
+    <state width="1323" height="570" key="GridCell.Tab.0.center" timestamp="1584475222584">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="570" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584475222584" />
+    <state width="1323" height="570" key="GridCell.Tab.0.left" timestamp="1584475222584">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="570" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584475222584" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right" timestamp="1584475222584">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="570" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584475222584" />
+    <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1584459495944">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1584459495944" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1584460802442">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584460802442" />
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1584449323063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584449323063" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1584464354964">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584464354964" />
+  </component>
+</project>
