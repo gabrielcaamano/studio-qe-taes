@@ -1,4 +1,4 @@
-package com.globant.automation.cyf2020.tests;
+package com.globant.automation.cyf2020.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
