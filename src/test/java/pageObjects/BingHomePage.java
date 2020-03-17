@@ -10,6 +10,7 @@ public class BingHomePage extends BasePage {
 
 	public BingHomePage(WebDriver driver) {
 		super(driver);
+		driver.get("http://www.bing.com/");
 		// TODO Auto-generated constructor stub
 	}
 	@FindBy(name = "q")

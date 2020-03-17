@@ -23,6 +23,7 @@ public class GoogleHomePage extends BasePage {
 	public void googleSearch (String gWord) {
 	 type(searchName,gWord);
 		click(searchBtn);
+		return getNextPage(GoogleSearchPage.class)
 	}
 	
 
