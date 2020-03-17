@@ -5,9 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.globant.automation.cyf2020.tests.DeliveryOnline;
-
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Main {

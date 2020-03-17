@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
-import com.globant.automation.cyf2020.tests.DeliveryOnline;
 
 
 public class PedidosYaPais extends BasePage{ 
