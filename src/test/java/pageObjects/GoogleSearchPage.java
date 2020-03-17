@@ -17,8 +17,7 @@ public class GoogleSearchPage extends BasePage {
 	private WebElement wordGSearched;
 	
 	//here it prints what i searched for and the results i got, they should be the same
-	public void whatIlookedFor() {
-		String googleSearchResult = getText(wordGSearched);
-		System.out.println(googleSearchResult);
-	}
+	//here it prints what i searched for and the results i got, they should be the same
+	public String googleSearchResult() {
+		return wordGSearched.getText();}
 }
