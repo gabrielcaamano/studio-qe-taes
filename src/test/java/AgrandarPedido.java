@@ -13,6 +13,11 @@ public class AgrandarPedido extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void clickSugerencia() {
+		
+		click(sugerenciaClick);
+		
+	}
+	}
 	
-	
-}
+
