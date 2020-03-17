@@ -38,10 +38,7 @@ public class PedidosYaTest {
 		HomePagePedidosYa HomePedidosYa = new HomePagePedidosYa(driver);
 		HomePedidosYa.menuPais.click();
 		UruguayPedidosYa HomeUruguay = new UruguayPedidosYa();
-		HomeUruguay.inputDireccion.sendKeys("Paraguay 2141");
-		HomeUruguay.inputComida.sendKeys("Milanesa");
-		HomeUruguay.botonBuscar.click();
-		
+		entrega(HomeUruguay.inputDireccion, HomeUruguay.inputComida, HomeUruguay.botonBuscar);
 	}
 	
 	public void entrega(WebElement inputDireccion, WebElement inputComida, WebElement botonBuscar) {
