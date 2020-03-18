@@ -13,11 +13,20 @@ public class AceptarSugerencia extends BasePage{
 	@FindBy(xpath = "//div[@class = \"price \"]")
 	private WebElement precioSugerencia;
 	
-	@FindBy(xpath = "//section[@class = \"optionItem radios inputs third \"][1]//ul//li[1]//input")
+	@FindBy(xpath = "//section[1]//li[1]//input[@type = \"radio\"]")
 	private WebElement primerCampoYOpcionClick;
 	
-	@FindBy(xpath = "//section[@class = \"optionItem radios inputs third \"][2]//ul//li[1]//input")
+	@FindBy(xpath = "//section[2]//li[1]//input[@type = \"radio\"]" )
 	private WebElement segundoCampoYOpcionClick;
+	
+	
+	@FindBy(xpath = "//section[@data-order=\"0\"]//h5//small")
+	private WebElement estadoDeSabor1;
+	
+	@FindBy(xpath = "//section[@data-order=\"1\"]//h5//small")
+	private WebElement estadoDeSabor2;
+	
+	
 	
 	public AceptarSugerencia(WebDriver driver) {
 		super(driver);
@@ -30,23 +39,42 @@ public class AceptarSugerencia extends BasePage{
 				return precio;
 	}
 	
-     public void clickSugerenciaYAceptar() {
+     public void clickCondimento1() {
     	
     	 click(primerCampoYOpcionClick);
- 		click(segundoCampoYOpcionClick);
- 		click(acceptSugerClick);
+    	
+    	 click(segundoCampoYOpcionClick);
+ 		
 	}
 
-	
+     public void clickSabores2() {
+     	
+    	
+    	
+    	 click(segundoCampoYOpcionClick);
+ 		
+	}
 
-	
+public void condicion() {
+	String estado = "Completaste la selección";
+	String sabor1 = getText(estadoDeSabor1);;
+	String sabor2 = getText(estadoDeSabor2);;
+	if (sabor1.equals(estado) && sabor2.equals(estado)) {
+		click(acceptSugerClick);
+	} else { System.out.println("Esta porqueria no funciona");}
+	 
+	 
+}
+
 
 	public MiPedido elPedido() {
 		
-		clickSugerenciaYAceptar();
-	 	
-	 		
-			
+		clickCondimento1() ;
+		 
+		clickSabores2();
+		
+		 //click(acceptSugerClick);
+		condicion();
 		return getNextPage(MiPedido.class);
 	}
 	
