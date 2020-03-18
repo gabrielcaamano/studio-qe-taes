@@ -20,23 +20,7 @@ public class PrincipalPagina extends BasePage{
 		click(ofertaSemanalButn);
 		return getNextPage(OfertasSemanales.class);
 	}
-	
-	public WebElement getOfertaSemanalButn() {
-		return ofertaSemanalButn;
-	}
 
-	public WebElement setOfertaSemanalButn(WebElement ofertaSemanalButn) {
-		return this.ofertaSemanalButn = ofertaSemanalButn;
-	}
-
-	public WebElement getLogoMercado() {
-		return logoMercado;
-	}
-
-	public WebElement setLogoMercado(WebElement logoMercado) {
-		return this.logoMercado = logoMercado;
-	}
-	
 	
 	public PrincipalPagina(WebDriver driver) {
 		super(driver);

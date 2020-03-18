@@ -16,7 +16,7 @@ public class PedidosYaPais extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy(xpath = "//a[@id = \"link-uy\"]")
+	@FindBy(id = "link-uy")
 	private WebElement urgayButn;
 
 	

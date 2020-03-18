@@ -1,10 +1,10 @@
 package com.globant.automation.cyf2020.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
@@ -26,51 +26,13 @@ public class OfertasSemanales extends BasePage {
 	@FindBy(xpath="//h1[\"breadcrumb__title\"]")
 	private WebElement TiendasOficialTITLE;
 	
-
-	 public Producto navigateProducto() {
-		 obtenerDatos();
-		 
-		 click(primerItem);
-   		return getNextPage(Producto.class);
-   	}
-	 
 	public OfertasSemanales(WebDriver driver) {
 		super(driver);
 	}
 	
 	
-	public WebElement getPrecioPP() {
-		return precioPP;
-	}
-
-	public WebElement setPrecioPP(WebElement precioPP) {
-		return this.precioPP = precioPP;
-	}
 	
-	public WebElement setPrimerItem(WebElement primerItem) {
-		return this.primerItem = primerItem;
-	}
-	
-	public WebElement getPrimerItem() {
-		return primerItem;
-	}
-
-	public WebElement getNameOfProductPP() {
-		return nameOfProductPP;
-	}
-
-	public WebElement setNameOfProductPP(WebElement nameOfProductPP) {
-		return this.nameOfProductPP = nameOfProductPP;
-	}
-	
-	public WebElement getPorcetagePP() {
-		return porcetagePP;
-	}
-
-	public WebElement setPorcetagePP(WebElement porcetagePP) {
-		return this.porcetagePP = porcetagePP;
-	}
-	public String obtenerDatos() {
+    public String obtenerDatos() {
 		
 		String precio1 = getText(precioPP); 
 		String nombre1 = getText(nameOfProductPP); 
@@ -79,6 +41,20 @@ public class OfertasSemanales extends BasePage {
 		
 		return CadenaDeDatos1;
 	}
+
+	 public Producto navigateProducto() {
+		 obtenerDatos();
+		 
+		 click(primerItem);
+   		return getNextPage(Producto.class);
+   	}
+	 
+	
+	
+
+
+	
+	
 	
 	
 	

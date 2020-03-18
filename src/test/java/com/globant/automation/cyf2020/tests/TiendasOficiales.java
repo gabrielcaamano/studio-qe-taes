@@ -22,15 +22,15 @@ public class TiendasOficiales extends BasePage {
 	
 	
 	
- 	public void ingresarDatos() {
- 		String InputTiendasMon = "tiendas montevideo";
+ 	private void ingresarDatos(String tiendaABuscar) {
+ 		String InputTiendasMon = tiendaABuscar;
  		
  		inputTiendasOficial.sendKeys(InputTiendasMon);
 		
 	}
 	
-	   public ArticuloTiendasMtvdeo navigateArticulo() {
-		 ingresarDatos();
+	   public ArticuloTiendasMtvdeo navigateToTienda(String tiendaABuscar) {
+		   ingresarDatos(tiendaABuscar);
 		 
    		click(tiendaMonClick);
    		return getNextPage(ArticuloTiendasMtvdeo.class);
