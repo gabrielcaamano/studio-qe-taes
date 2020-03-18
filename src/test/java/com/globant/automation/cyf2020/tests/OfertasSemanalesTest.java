@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
+import org.testng.annotations.Test;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
@@ -28,7 +29,7 @@ public class OfertasSemanalesTest extends BasePage {
 	}
 	
 	
-	
+	@Test
     public String obtenerDatos() {
 		
 		String precio1 = getText(precioPP); 
@@ -38,7 +39,7 @@ public class OfertasSemanalesTest extends BasePage {
 		
 		return CadenaDeDatos1;
 	}
-
+	@Test
 	 public ProductoTest navigateProducto() {
 		 obtenerDatos();
 		 

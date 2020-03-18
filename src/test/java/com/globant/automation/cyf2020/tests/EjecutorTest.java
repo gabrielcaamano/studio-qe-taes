@@ -1,15 +1,12 @@
     package com.globant.automation.cyf2020.tests;
-    import static org.testng.Assert.assertSame;
+    import static org.testng.Assert.assertEquals;
 
-import org.apache.http.util.Asserts;
 import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.WebElement;
+
 	import org.openqa.selenium.chrome.ChromeDriver;
 	import org.openqa.selenium.chrome.ChromeOptions;
 	import org.openqa.selenium.remote.DesiredCapabilities;
-	import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeClass;
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -19,7 +16,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 	public class EjecutorTest {
 			
 		
-		@BeforeClass
+		private WebDriver driver;
+		
+		@Test
 		public void navegarAPaginaPrincipal() { 
 			WebDriver driver = openDriver();
 			driver.manage().window().maximize();
@@ -44,11 +43,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			
 			String linktiendOFF = articuloTiendasMtvdeo.getHrefTiendOfi();
 			verificacionDeLink (linktiendOFF);
-			driver.close();     }
+			driver.close();     
+			
+		}
 		
+		  public void cerrarNavegador() {
+		      	
+			  driver.close();
+;	   	   
+	   	   }
+		 
 		
-		
-	  
 		public static WebDriver openDriver() {
 			DesiredCapabilities caps = new DesiredCapabilities();
 			ChromeOptions options = new ChromeOptions();
@@ -59,16 +64,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 		
 		
-		
+		  
 		  public static void sonElMismPorducto(String liOferta, String producto) {
 	      	
-			  assertSame(liOferta, producto, " :son el mismo producto?");
+			  assertEquals(liOferta ,producto);
 ;	   	   
 	   	   }
-
+          
 		  public static void verificacionDeLink (String link) {
 				String hrefDeTiendasOff = "https://mercadolibre.com.uy/tiendas-oficiales";
-				assertSame(link, hrefDeTiendasOff, " :el link es igual?"); 
+				assertEquals(link, hrefDeTiendasOff);
 				 
 			 }
 
