@@ -34,7 +34,7 @@ public class Main {
 		TiendasOficiales tiendasOficial = products.navigateTiendasOff(); //navego a tiendas oficiales
 		
        
-		ArticuloTiendasMtvdeo articuloTiendasMtvdeo  = tiendasOficial.navigateToTienda("tiendas montevideo");//navego hacia el articulo
+		ArticuloTiendasMtvdeo articuloTiendasMtvdeo  = tiendasOficial.navigateToTienda("Tiendas Montevideo");//navego hacia el articulo
 		
 		
 		

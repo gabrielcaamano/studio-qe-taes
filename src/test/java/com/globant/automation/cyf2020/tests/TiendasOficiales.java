@@ -31,8 +31,7 @@ public class TiendasOficiales extends BasePage {
 	
 	   public ArticuloTiendasMtvdeo navigateToTienda(String tiendaABuscar) {
 		   ingresarDatos(tiendaABuscar);
-		 
-   		click(tiendaMonClick);
+		   click(tiendaMonClick);
    		return getNextPage(ArticuloTiendasMtvdeo.class);
    	}
 
