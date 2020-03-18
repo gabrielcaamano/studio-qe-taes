@@ -19,9 +19,7 @@ public class PedidosYaPais extends BasePage{
 	@FindBy(xpath = "//a[@id = \"link-uy\"]")
 	private WebElement urgayButn;
 
-	public WebElement getUrgayButn() {
-		return urgayButn;
-	}
+	
 	
 	public DeliveryOnline navigateToSearchBurger() {
 		click(urgayButn);

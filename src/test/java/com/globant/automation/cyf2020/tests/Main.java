@@ -24,22 +24,21 @@ public class Main {
 		PrincipalPagina PrincipalPagina = new PrincipalPagina(driver);
 		OfertasSemanales offers = PrincipalPagina.navigateToWeeklyOffers(); // navega a ofertas semanales
 		
-		OfertasSemanales OfertasSemanales = new OfertasSemanales(driver); //creo un objeto de ofertas semanales
-		String getDatoOferta = OfertasSemanales.obtenerDatos();
-		Producto products = OfertasSemanales.navigateProducto(); //navega a productos
+		
+		String getDatoOferta = offers.obtenerDatos();
+		Producto products = offers.navigateProducto(); //navega a productos
 		
 		
-		Producto  producto = new Producto(driver);
-		String getDatoProducto = producto.obtenerDatos2();
+		String getDatoProducto = products.obtenerDatos2();
 		sonElMismPorducto(getDatoOferta, getDatoProducto); //comparo si son iguales los datos obtenidos
-		TiendasOficiales tiendasOficial = producto.navigateTiendasOff(); //navego a tiendas oficiales
+		TiendasOficiales tiendasOficial = products.navigateTiendasOff(); //navego a tiendas oficiales
 		
-        TiendasOficiales tiendasOficiales = new TiendasOficiales(driver);
-		ArticuloTiendasMtvdeo articuloTiendasMtvdeo  = tiendasOficiales.navigateArticulo();//navego hacia el articulo
+       
+		ArticuloTiendasMtvdeo articuloTiendasMtvdeo  = tiendasOficial.navigateArticulo();//navego hacia el articulo
 		
 		
-		ArticuloTiendasMtvdeo atriculotienda = new ArticuloTiendasMtvdeo(driver);
-		String linktiendOFF = atriculotienda.getHrefTiendOfi();
+		
+		String linktiendOFF = articuloTiendasMtvdeo.getHrefTiendOfi();
 		verificacionDeLink (linktiendOFF);
 		driver.close();
 	}

@@ -28,17 +28,24 @@ public class DeliveryOnline extends BasePage {
 	}
 	
 	
-	public void ingresarValores() {
-		direccionInput.sendKeys("Av. 18 de Julio 885");
-		RestaurantInput.sendKeys("Pizza centro");
+    private void ingresarValores(String lugar, String restaurant) { 
+		type(direccionInput, lugar); //uso de type de base page
+		type(RestaurantInput, restaurant);
 		click(searchButn);
 		
 		
 	}
+    
+   public String getTheDireccionText() {
+	   
+	   String direccionInputText = direccionInput.getAttribute("value");
+	   
+	   return direccionInputText;
+   }
 	
-	public AgrandarPedido navigateToSearchpedido() {
-		ingresarValores();
-		
+	public AgrandarPedido navigateToSearchpedido(String lugar, String restaurant) {
+		ingresarValores(lugar, restaurant);
+		getTheDireccionText();
 		click(btnconfirmUbication);
 			
 		return getNextPage(AgrandarPedido.class);

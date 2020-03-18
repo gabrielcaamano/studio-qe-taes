@@ -8,19 +8,41 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 
 public class MiPedido extends BasePage{
 	
-	@FindBy(xpath = "//div[@id = \"footerOpen\"]//a[@class =\"button\"]")
+	@FindBy(xpath = "//ul[@class=\"cart_items\"]//div[@class=\"price\"]")
 	private WebElement precio2;
-	@FindBy(xpath = "//div[@class = \"price \"]")
-	private WebElement precioSugerencia;
 	
-	@FindBy(xpath = "//section[@class = \"optionItem radios inputs third \"][1]//ul//li[1]//input")
-	private WebElement primerCampoYOpcionClick;
+    @FindBy(xpath = "//span[@title=\"Avenida 18 de Julio 885\"]")
+	private WebElement direccion2;
 	
-	public MiPedido(WebDriver driver) {
+    @FindBy(id="order")
+	private WebElement continuarBtn;
+    
+    @FindBy(xpath = "//div[@class=\"tbox\"]")
+	private WebElement modal;
+	
+    public MiPedido(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
+    public String capturaPrecio2() { //Captura el precio de de la sugerencia
+		String precioTwo = getText(precio2);
+		
+				return precioTwo;
+	}
+    
+    public String capturaDireccion() { //Captura el precio de de la sugerencia
+		String direccionTwo = getText(direccion2);
+		
+				return direccionTwo;
+	}
+    
+   public boolean darClickYVerificarModal() {
+		click(continuarBtn);
+		return isElementDisplayed(modal);
+		
+   }
 	
+    
 	
 }
