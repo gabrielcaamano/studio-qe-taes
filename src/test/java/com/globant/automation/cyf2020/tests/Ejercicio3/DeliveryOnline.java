@@ -8,17 +8,17 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 
 public class DeliveryOnline extends BasePage {
 	
-	@FindBy(xpath = "//input[@id = \"optional\"]")
+	@FindBy(id = "optional")
 	private WebElement RestaurantInput;
-	@FindBy(xpath = "//input[@id = \"address\"]")
+	@FindBy(id = "address")
 	private WebElement direccionInput;
-	@FindBy(xpath = "//button[@id = \"search\"]")
+	@FindBy(id = "search")
 	private WebElement searchButn;
 	
-	@FindBy(xpath = "//div[@id = \"mapContainer\"]")
+	@FindBy(id = "mapContainer")
 	private WebElement ventanaMdl;
 	
-	@FindBy(xpath = "//a[@id = \"confirm\"]")
+	@FindBy(id = "confirm")
 	private WebElement btnconfirmUbication;
 	
 	
