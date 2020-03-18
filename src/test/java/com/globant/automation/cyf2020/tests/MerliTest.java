@@ -22,20 +22,27 @@ public class MerliTest {
     public void openMerli() {
         WebDriverManager.chromedriver().setup();
         driverMerli = new ChromeDriver();
-        driverMerli.get("http://www.mercadolibre.com.uy/");
         driverMerli.manage().window().maximize();
+        driverMerli.get("http://www.mercadolibre.com.uy/");
+
     }
 
     @Test
-    public void MerlisTest(){
-        MerLiHome home= new MerLiHome(driverMerli);
-        MerLiOfertas ofertasPage=  home.merliSales();
-        String[] prodsInfo = ofertasPage.getProdpInfo;
-        MerLiProd prodPage= ofertasPage.goToProduct();
-        String[] getProdInfo = prodPage.getProdInfo;
+    public void MerlisTest() {
+        MerLiHome home = new MerLiHome(driverMerli);
+        MerLiOfertas ofertasPage = home.merliSales();
+        String pDiscount = ofertasPage.getDiscount();
+        String pName = ofertasPage.getName();
+        String pPrice = ofertasPage.getPrice();
+        MerLiProd prodPage = ofertasPage.goToProduct();
+        String precioP = prodPage.getPriceP();
+        String nameP= prodPage.getNameP();
+        String descuentoP=prodPage.getSaleP();
         driverMerli.quit();
 
-        Assert.assertTrue(prodsInfo.toString().contains(getProdInfo.toString()));
+        Assert.assertEquals(pName,nameP, "Not the same product name");
+        Assert.assertEquals(pPrice,precioP, "Not the same product price");
+        Assert.assertEquals(pDiscount,descuentoP, "Discount is not the same");
 
     }
 

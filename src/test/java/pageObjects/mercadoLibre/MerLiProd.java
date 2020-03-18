@@ -13,46 +13,29 @@ public class MerLiProd extends BasePage{
     }
 
 
-
-    @FindBy (xpath = "//*[@id=\"short-desc\"]/div/header/h1")
+//(//div[@class=\"layout-description-wrapper\"]//span[@class=\"price-tag-fraction\"])[2]
+    @FindBy (xpath = "(//div[@class=\"layout-col layout-col--right\"]//h1)")
     private WebElement nameP;
-    @FindBy (xpath = "//*[@id=\"productInfo\"]/fieldset[1]/span[2]/span[2]")
+    @FindBy (xpath = "(//div[@class =\"layout-col layout-col--right\"]//span[@class=\"price-tag-fraction\"])[2]")
     private WebElement priceP;
-    @FindBy (xpath="//*[@id=\"productInfo\"]/fieldset[1]/div")
+    @FindBy (xpath="//div[@class=\"price-tag discount-arrow arrow-left\"]//p")
     private WebElement saleP;
 
 
     // i think if i only use getter itll be alright  <--- she really thought huh
-    public void setNameP(WebElement nameP){
-        this.nameP = nameP;
-    }
-    public WebElement getNameP(){
-        return this.nameP;
-    }
-public String getsName= getText(getNameP());
 
-    public void setPriceP(WebElement priceP){
-           this.priceP= priceP;}
-
-    public WebElement getPriceP(){
-        return this.priceP;
-}
-
- public String getsPrice= getText(getPriceP());
-
-public WebElement getSaleP(){
-        return this.saleP;
-}
-
- public  String getsSale= getText(getSaleP());
-
-    public void setSaleP(WebElement saleP) {
-        this.saleP = saleP;
+    public String getNameP(){
+        return getText(nameP);
     }
 
-    public String[] getProdInfo={getsName, getsPrice, getsSale};
+    public String getPriceP(){
+        return getText(priceP);
+    }
+    public String getSaleP(){
+        return getText(saleP);
+    }
 
-
+    public  String[] infoProd ={ getSaleP(),getNameP(),getPriceP()};
     }
 
 

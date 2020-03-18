@@ -21,13 +21,14 @@ public class RealBingTest {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.get("http://www.bing.com/");
+            driver.manage().window().maximize();
         }
 
 
 
         @Test
         public void testBingSearch() {
-            BingHomePage homePage= PageFactory.initElements(driver, BingHomePage.class);
+            BingHomePage homePage= new BingHomePage(driver);
             BingSearchPage resultPage=  homePage.bingSearch("globant");
             String actualText= resultPage.bingSearchResult();
             driver.quit();

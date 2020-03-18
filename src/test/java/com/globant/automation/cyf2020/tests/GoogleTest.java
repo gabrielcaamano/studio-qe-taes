@@ -22,18 +22,18 @@ public class GoogleTest {
         WebDriverManager.chromedriver().setup();
         driverG = new ChromeDriver();
         driverG.get("http://www.Google.com/");
+        driverG.manage().window().maximize();
     }
 
 
 
     @Test
     public void testGoogleSearch() {
-        GoogleHomePage homePage= PageFactory.initElements(driverG, GoogleHomePage.class);
-     GoogleSearchPage resultPage=  homePage.googleSearch("Corona");
+        GoogleHomePage homePage= new GoogleHomePage(driverG);
+     GoogleSearchPage resultPage=  homePage.googleSearch("corona");
         String actualText= resultPage.googleSearchResult();
         driverG.quit();
-        Assert.assertEquals(actualText,"Cookie Notice. Utilizamos cookies para personalizar contenido y" +
-                " anuncios, proporcionar funciones de redes sociales y analizar nuestro tráfico. También ...","search result text failed");
+        Assert.assertTrue(actualText.toLowerCase().contains("corona"),"search result text failed");
 
     }
 }
