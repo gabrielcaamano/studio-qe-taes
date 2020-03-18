@@ -1,3 +1,5 @@
+package com.globant.automation.cyf2020.tests.Ejercicio3;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +19,13 @@ public class AgrandarPedido extends BasePage {
 		
 		click(sugerenciaClick);
 		
+	}
+	
+
+	public AceptarSugerencia aceptarSgerencia() {
+		clickSugerencia();
+			
+		return getNextPage(AceptarSugerencia.class);
 	}
 	}
 	

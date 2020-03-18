@@ -33,11 +33,15 @@ public class DeliveryOnline extends BasePage {
 		RestaurantInput.sendKeys("Pizza centro");
 		click(searchButn);
 		
-		if (ventanaMdl.isDisplayed()) {
+		
+	}
+	
+	public AgrandarPedido navigateToSearchpedido() {
+		ingresarValores();
+		
+		click(btnconfirmUbication);
 			
-			click(btnconfirmUbication);
-			
-		}
+		return getNextPage(AgrandarPedido.class);
 	}
 	
 }

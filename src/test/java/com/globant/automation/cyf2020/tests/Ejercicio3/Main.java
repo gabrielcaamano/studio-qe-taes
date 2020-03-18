@@ -18,6 +18,15 @@ public class Main {
 		PedidosYaPais pedidosYapag = new PedidosYaPais(driver);
 		DeliveryOnline pedidos = pedidosYapag.navigateToSearchBurger(); // navega a ofertas semanales
 		
+		DeliveryOnline devileryPag = new DeliveryOnline(driver);
+		AgrandarPedido agendarPag = devileryPag.navigateToSearchpedido();
+		
+		AgrandarPedido agrandarPedido = new AgrandarPedido(driver);
+		AceptarSugerencia sugerenciaAccep = agrandarPedido.aceptarSgerencia();
+		
+		AceptarSugerencia establecerPedido = new AceptarSugerencia(driver);
+		MiPedido obtenerValoresYaceptar = establecerPedido.elPedido();
+		
 	}
 	
 	
