@@ -37,14 +37,22 @@ public String getsName= getText(getNameP());
     public WebElement getPriceP(){
         return this.priceP;
 }
+
  public String getsPrice= getText(getPriceP());
 
 public WebElement getSaleP(){
         return this.saleP;
 }
+
  public  String getsSale= getText(getSaleP());
+
     public void setSaleP(WebElement saleP) {
         this.saleP = saleP;
     }
 
-}
+    public String[] getProdInfo={getsName, getsPrice, getsSale};
+
+
+    }
+
+

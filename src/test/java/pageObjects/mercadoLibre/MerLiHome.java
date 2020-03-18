@@ -10,7 +10,7 @@ public class MerLiHome extends BasePage {
     public MerLiHome(WebDriver driver) {
         super(driver);
     }
-
+//change xpath
     @FindBy (xpath = "/html/body/header/div/div[2]/ul/li[5]/a")
     private WebElement ofertasSem;
     @FindBy(xpath = "/html/body/header/div/div[2]/ul/li[4]/a")

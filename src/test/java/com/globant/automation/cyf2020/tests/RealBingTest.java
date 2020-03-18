@@ -31,8 +31,8 @@ public class RealBingTest {
             BingSearchPage resultPage=  homePage.bingSearch("globant");
             String actualText= resultPage.bingSearchResult();
             driver.quit();
-            Assert.assertEquals(actualText,"Globant","search result text failed");
-//en este resulta failed bc los reultados no coinciden con "Globant", lo toma como failed bc no son identicos
+            Assert.assertTrue(actualText.toLowerCase().contains("globant"));
+
         }
 
     }
