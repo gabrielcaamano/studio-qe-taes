@@ -1,5 +1,6 @@
 package com.globant.automation.cyf2020.tests;
 
+import org.apache.http.util.Asserts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -50,6 +51,8 @@ public class EjercicioTest {
 	@Test
 	public void ejercicio2() {
 		System.out.println("estoy en test2");
+		
+		
 	}
 	
 }
