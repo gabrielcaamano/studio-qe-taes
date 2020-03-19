@@ -22,9 +22,10 @@ public class GoogleHome extends BasePage {
 	@FindBy (name= "btnK")
 	private WebElement inputBuscar1;
 	
-	public void Buscar (String Buscar) {
-		type (inputBuscar, Buscar);
+	public GoogleSearchPage googleSearch (String gWord) {
+		type (inputBuscar, gWord);
 		click (inputBuscar1);
+		return getNextPage(GoogleSearchPage.class);
 	}
 	
 	

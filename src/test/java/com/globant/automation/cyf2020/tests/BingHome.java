@@ -12,19 +12,20 @@ public class BingHome extends BasePage {
 
 	public BingHome(WebDriver driver) {
 		super(driver);
-		driver.get("http://google.com");
+		driver.get("http://bing.com");
 	}
 	
 	@FindBy (name= "q")
 	private WebElement inputBuscar;
 	
 	
-	@FindBy (name= "btnK")
+	@FindBy (xpath= "//*[@id=\"sb_form\"]/label")
 	private WebElement inputBuscar1;
 	
-	public void Buscar (String Buscar) {
-		type (inputBuscar, Buscar);
+	public BingSearchPage googleSearch (String bWord) {
+		type (inputBuscar, bWord);
 		click (inputBuscar1);
+		return getNextPage(BingSearchPage.class);
 	}
 	
 }	
