@@ -37,7 +37,7 @@ public class EjercicioTest {
 	
 	@AfterMethod
 	public void closeDriver() {
-//		driver.close();
+		driver.close();
 	}
 	
 	@Test
