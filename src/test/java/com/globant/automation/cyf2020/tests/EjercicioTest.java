@@ -8,7 +8,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import org.json.JSONObject;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 public class EjercicioTest {
 	
@@ -33,7 +37,7 @@ public class EjercicioTest {
 	
 	@AfterMethod
 	public void closeDriver() {
-		driver.close();
+//		driver.close();
 	}
 	
 	@Test
@@ -45,6 +49,34 @@ public class EjercicioTest {
 		Assert.assertTrue(variableFalse, "la variable no fue true");
 		
 		System.out.println("CODIGO EXTRA");
+	}
+	
+	@Test
+	public void ejercicioRestAssured() {
+		
+		//Guardamos en una variable la url del método get
+		String endpointTrago = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
+		
+		//Obtenemos la respuesta de la petición
+		Response response = RestAssured.given().get(endpointTrago);
+		
+		//Pasamos a tipo String el body de la respuesta
+		String tragoaAsString = response.getBody().asString();
+		
+		//Convertimos la respuesta a JSON
+		JSONObject responseToJson = new JSONObject(tragoaAsString);
+		
+		// Manipulamos el Json a nuestra manera para obtener lo que queremos
+		String contenidoTrago = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+		JSONObject contenidoTragoJson = new JSONObject(contenidoTrago);
+		String nombreTrago = contenidoTragoJson.get("strDrink").toString();
+		
+		//Imprimo en pantalla el nombre de trago
+		System.out.println("El nombre del trago es: " + nombreTrago);
+		
+		Assert.assertEquals(nombreTrago, "Margarita");
+		
+		//               ¡¡FIN!!!
 	}
 	
 	@Test
