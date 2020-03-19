@@ -13,7 +13,7 @@ public class MerLiHome extends BasePage {
 //change xpath
    @FindBy(xpath = "(//li[@class=\"nav-menu-item\"]//a[@class=\"nav-menu-item-link\"])[3]")
     private WebElement ofertasSem;
-    @FindBy(xpath = "/html/body/header/div/div[2]/ul/li[4]/a")
+    @FindBy(xpath = "(//li[@class=\"nav-menu-item\"]//a[@class=\"nav-menu-item-link\"])[2]")
     private WebElement tiendasOf;
 
 

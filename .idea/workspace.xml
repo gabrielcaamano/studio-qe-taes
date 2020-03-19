@@ -39,43 +39,7 @@
       <recent name="pageObjects.mercadoLibre" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.MerliTest.MerlisTest">
-    <configuration name="BingBaseTest.testBingSearch" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="cyf2020" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.BingBaseTest" />
-      <option name="METHOD_NAME" value="testBingSearch" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EjercicioTest.ejercicio1" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="cyf2020" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.EjercicioTest" />
-      <option name="METHOD_NAME" value="ejercicio1" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="TestNG.MerliTest.merliTest2">
     <configuration name="GoogleTest.testGoogleSearch" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -94,6 +58,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MerliTest.MerliTest2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
+      <option name="METHOD_NAME" value="MerliTest2" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MerliTest.MerlisTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -105,6 +87,24 @@
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
       <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
       <option name="METHOD_NAME" value="MerlisTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MerliTest.merliTest2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
+      <option name="METHOD_NAME" value="merliTest2" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -132,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.MerliTest.merliTest2" />
+        <item itemvalue="TestNG.MerliTest.MerliTest2" />
         <item itemvalue="TestNG.MerliTest.MerlisTest" />
         <item itemvalue="TestNG.GoogleTest.testGoogleSearch" />
         <item itemvalue="TestNG.RealBingTest.testBingSearch" />
-        <item itemvalue="TestNG.BingBaseTest.testBingSearch" />
-        <item itemvalue="TestNG.EjercicioTest.ejercicio1" />
       </list>
     </recent_temporary>
   </component>
@@ -178,22 +178,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1584560261422" />
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom" timestamp="1584560962920">
+    <state width="1323" height="228" key="GridCell.Tab.0.bottom" timestamp="1584576689997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584560962920" />
-    <state width="1323" height="228" key="GridCell.Tab.0.center" timestamp="1584560962920">
+    <state width="1323" height="228" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
+    <state width="1323" height="228" key="GridCell.Tab.0.center" timestamp="1584576689997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584560962920" />
-    <state width="1323" height="228" key="GridCell.Tab.0.left" timestamp="1584560962920">
+    <state width="1323" height="228" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
+    <state width="1323" height="228" key="GridCell.Tab.0.left" timestamp="1584576689997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584560962920" />
-    <state width="1323" height="228" key="GridCell.Tab.0.right" timestamp="1584560962920">
+    <state width="1323" height="228" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
+    <state width="1323" height="228" key="GridCell.Tab.0.right" timestamp="1584576689997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584560962920" />
+    <state width="1323" height="228" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1584459495944">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -202,10 +202,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584460802442" />
-    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1584536693751">
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1584572266017">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584536693751" />
+    <state x="384" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584572266017" />
     <state x="379" y="0" width="607" height="728" key="find.popup" timestamp="1584536066215">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

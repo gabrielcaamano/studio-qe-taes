@@ -20,7 +20,8 @@ public class MerLiProd extends BasePage{
     private WebElement priceP;
     @FindBy (xpath="//div[@class=\"price-tag discount-arrow arrow-left\"]//p")
     private WebElement saleP;
-
+   @FindBy (xpath = "//div[@class=\"nav-bounds   nav-bounds-with-cp\"]//a[@class=\"nav-logo\"]")
+   private  WebElement homePage;
 
     // i think if i only use getter itll be alright  <--- she really thought huh
 
@@ -34,8 +35,12 @@ public class MerLiProd extends BasePage{
     public String getSaleP(){
         return getText(saleP);
     }
+    public MerLiHome goHome(){
+       click(homePage);
+       return getNextPage(MerLiHome.class);
+    }
 
-    public  String[] infoProd ={ getSaleP(),getNameP(),getPriceP()};
+
     }
 
 
