@@ -3,6 +3,7 @@ package com.globant.automation.cyf2020.tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -28,10 +29,10 @@ public class EjercicioPedidosYA {
 		paginaInicio = new HomePage(driver);
 	}
 	
-	/*@AfterMethod
+	@AfterMethod
 	public void closeDriver() {
 		driver.close();
-	}*/
+	}
 	
 	@Test
 	public void ejercicio() {
@@ -43,15 +44,12 @@ public class EjercicioPedidosYA {
 		Sugerencias priSugerencia = confUbicacion.clickConfirmoUbicacion();
 		PrimeraSugerencia agragarAlPedido = priSugerencia.clickPrimeraSugerencia();
 		String precio = agragarAlPedido.precioSugerencia();
-		 agragarAlPedido.clickAgregarAPedido();
 		Pedido elPedido = agragarAlPedido.clickAgregarAPedido();
 		
-		System.out.println(elPedido.direccionPedido());
 		Assert.assertEquals(direccionAEscribir, elPedido.direccionPedido(), "Las direcciones no coinciden");
 		Assert.assertEquals(precio, elPedido.precioPedido(), "Los precios no coinciden");
 		
 		elPedido.clickContinuar();
-		
 	}
 	
 }
