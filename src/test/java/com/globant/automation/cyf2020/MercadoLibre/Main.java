@@ -12,10 +12,6 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Main {
-	
-	@FindBy(xpath = "//ul[@class=\"nav-menu-list\"]//li[@class=\"nav-menu-item\"][6]//a[@class=\"nav-menu-item-link \"]")
-	static
-	WebElement vender;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,8 +19,20 @@ public class Main {
 		WebDriver driver = openDriver();
 		driver.manage().window().maximize();
 		MLHome Mlhome = new MLHome(driver);
-		Mlhome.GoHome("https://www.mercadolibre.com.uy/");
-		vender.click();
+		MLOfertaSemanal1 ofertaSemanalPage = Mlhome.GoOfertasSemanales();
+		String resultadoOfertaSemanal = ofertaSemanalPage.datosGetTextOfertaSemanal();
+		MLProducto productoPage = ofertaSemanalPage.GoProducto();
+		String resultadoProductoPage = productoPage.getDatosTextProductoPage();
+		
+		System.out.println("");
+		
+		if (resultadoOfertaSemanal == resultadoProductoPage ) {
+			
+			System.out.println("Los resultados de la página del primer producto de Oferta Semanal y de la pagina del Producto coinciden en nombre, moneda, precio y descuento");
+			
+		} else {
+			
+			System.out.println("Los resuñtados de la página del primer producto de Oferta Semanal y de la página del Producto no coinciden en nombre, moneda, precio o descuento");		}
 		
 	}
 	

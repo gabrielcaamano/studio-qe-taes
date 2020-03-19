@@ -1,18 +1,39 @@
 package com.globant.automation.cyf2020.PedidosYa;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class UruguayPedidosYa {
+import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-	@FindBy(xpath = "//input[@id=\"address\"]")
-	public WebElement inputDireccion;
+public class UruguayPedidosYa extends BasePage {
+
+	public UruguayPedidosYa(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@FindBy(id = "address")
+	private WebElement inputDireccion;
 
 	
-	@FindBy(xpath = "//input[@id=\"optional\"]")
-	public WebElement inputComida;
+	@FindBy(id = "optional")
+	private WebElement inputComida;
 	
-	@FindBy(xpath = "//button[@id=\"search\"]")
-	public WebElement botonBuscar;
+	@FindBy(id = "search")
+	private WebElement botonBuscar;
+	
+	@FindBy(id = "confirm")
+	private	WebElement botonConfirmarDir;
 
+	public ElegirSugerencia entrega(String direccion, String comida) {
+		type(inputDireccion, direccion);
+		type(inputComida, comida);
+		click(botonBuscar);
+		click(botonConfirmarDir, EXTENDED_TIMEOUT);;
+		return new ElegirSugerencia(driver);
+	}
+	
 }

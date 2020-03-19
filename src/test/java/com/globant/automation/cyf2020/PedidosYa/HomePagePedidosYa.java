@@ -16,6 +16,10 @@ public class HomePagePedidosYa extends BasePage {
 	}
 
 	@FindBy(xpath = "//a[@title=\"PedidosYa Uruguay\"]")
-	public WebElement menuPais;
+	private WebElement menuPais;
 	
+	public UruguayPedidosYa goUruguay() {
+		click(menuPais);
+		return getNextPage(UruguayPedidosYa.class);
+	}
 }

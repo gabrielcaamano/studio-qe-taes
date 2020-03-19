@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
@@ -16,22 +17,13 @@ public class MLHome extends BasePage {
 	}
 
 	@FindBy(xpath = "//ul[@class=\"nav-menu-list\"]//li[@class=\"nav-menu-item\"][5]//a[@class=\"nav-menu-item-link\"]")
-	WebElement ofertaSemanal;
+	WebElement ofertaSemanalLink;
 
-	public void GoOfertaSemanal(WebElement element, Duration timeout) {
-
-		if (isElementDisplayed(element, timeout)) {
-			ofertaSemanal.click();
-		} else return;
-		
-	}
-
-
-	public MLOfertaSemanal1 GoHome(String linkML) {
+	public MLOfertaSemanal1 GoOfertasSemanales() {
 		// TODO Auto-generated method stub
 		driver.get("https://www.mercadolibre.com.uy/");
-		ofertaSemanal.click();
-		return new MLOfertaSemanal1(driver);
+		ofertaSemanalLink.click();
+		return  new MLOfertaSemanal1(driver);
 	}
 
 }
