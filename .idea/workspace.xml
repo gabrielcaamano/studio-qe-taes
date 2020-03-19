@@ -36,11 +36,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="pageObjects.bingYgoogle" />
       <recent name="pageObjects.mercadoLibre" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.MerliTest.merliTest2">
-    <configuration name="GoogleTest.testGoogleSearch" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.PedidosYaTest.testPedidos">
+    <configuration name="MerliTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
         <pattern>
@@ -49,9 +50,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.GoogleTest" />
-      <option name="METHOD_NAME" value="testGoogleSearch" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
       <method v="2">
@@ -69,24 +69,6 @@
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
       <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
       <option name="METHOD_NAME" value="MerliTest2" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MerliTest.MerlisTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="cyf2020" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
-      <option name="METHOD_NAME" value="MerlisTest" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -112,7 +94,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RealBingTest.testBingSearch" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="MerliTest.merlisTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
         <pattern>
@@ -121,8 +103,26 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.RealBingTest" />
-      <option name="METHOD_NAME" value="testBingSearch" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.MerliTest" />
+      <option name="METHOD_NAME" value="merlisTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PedidosYaTest.testPedidos" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.PedidosYaTest" />
+      <option name="METHOD_NAME" value="testPedidos" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -132,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.PedidosYaTest.testPedidos" />
         <item itemvalue="TestNG.MerliTest.merliTest2" />
+        <item itemvalue="TestNG.MerliTest.merlisTest" />
+        <item itemvalue="TestNG.MerliTest" />
         <item itemvalue="TestNG.MerliTest.MerliTest2" />
-        <item itemvalue="TestNG.MerliTest.MerlisTest" />
-        <item itemvalue="TestNG.GoogleTest.testGoogleSearch" />
-        <item itemvalue="TestNG.RealBingTest.testBingSearch" />
       </list>
     </recent_temporary>
   </component>
@@ -166,10 +166,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1584475201428" />
-    <state x="479" y="249" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584479731433">
+    <state x="479" y="249" width="484" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584587100794">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="479" y="249" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1584479731433" />
+    <state x="479" y="249" width="484" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1584587100794" />
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584462455239">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -178,22 +178,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1584560261422" />
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom" timestamp="1584576689997">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom" timestamp="1584589087400">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
-    <state width="1323" height="228" key="GridCell.Tab.0.center" timestamp="1584576689997">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584589087400" />
+    <state width="1323" height="570" key="GridCell.Tab.0.center" timestamp="1584589087400">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
-    <state width="1323" height="228" key="GridCell.Tab.0.left" timestamp="1584576689997">
+    <state width="1323" height="570" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584589087400" />
+    <state width="1323" height="570" key="GridCell.Tab.0.left" timestamp="1584589087400">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
-    <state width="1323" height="228" key="GridCell.Tab.0.right" timestamp="1584576689997">
+    <state width="1323" height="570" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584589087400" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right" timestamp="1584589087400">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="228" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584576689997" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584589087400" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1584459495944">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -210,9 +210,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584536066215" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1584560624198">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1584587240330">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584560624198" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584587240330" />
   </component>
 </project>

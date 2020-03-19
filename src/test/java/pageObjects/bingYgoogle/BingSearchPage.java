@@ -1,4 +1,4 @@
-package pageObjects;
+package pageObjects.bingYgoogle;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

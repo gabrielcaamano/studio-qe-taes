@@ -3,12 +3,10 @@ package com.globant.automation.cyf2020.tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import pageObjects.BingHomePage;
-import pageObjects.BingSearchPage;
 import pageObjects.mercadoLibre.*;
 
 public class MerliTest {
@@ -50,10 +48,12 @@ public class MerliTest {
          MerliTiOf storesPage=  home.merliOfs(); //clicks on the stores tab
          MvdTienda tienda= storesPage.tiendaSearch("tiendas montevideo");// searches a store in the search bar of that area
          String laTienda= tienda.tiendaBuscada();
-         driverMerli.quit();
          Assert.assertTrue(laTienda.toLowerCase().contains("tiendas montevideo"));
+         }
 
-
+         @AfterSuite
+      public  void close(){
+             driverMerli.quit();
          }
 
 

@@ -3,14 +3,11 @@ package com.globant.automation.cyf2020.tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import pageObjects.BingHomePage;
-import pageObjects.BingSearchPage;
-import pageObjects.GoogleHomePage;
-import pageObjects.GoogleSearchPage;
+import pageObjects.bingYgoogle.GoogleHomePage;
+import pageObjects.bingYgoogle.GoogleSearchPage;
 
 public class GoogleTest {
 

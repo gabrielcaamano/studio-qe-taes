@@ -35,6 +35,7 @@ public class MerLiProd extends BasePage{
     public String getSaleP(){
         return getText(saleP);
     }
+
     public MerLiHome goHome(){
        click(homePage);
        return getNextPage(MerLiHome.class);

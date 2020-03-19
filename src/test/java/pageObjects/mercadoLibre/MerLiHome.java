@@ -4,7 +4,6 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.BingSearchPage;
 
 public class MerLiHome extends BasePage {
     public MerLiHome(WebDriver driver) {
