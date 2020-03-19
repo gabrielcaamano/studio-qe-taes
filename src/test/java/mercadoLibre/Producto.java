@@ -1,4 +1,4 @@
-package com.globant.automation.cyf2020.tests;
+package mercadoLibre;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,7 +39,7 @@ public class Producto extends BasePage{
 	
 	public void setDescuento(WebElement descuento) {
 		this.descuento = descuento; 
-	}
+	} 
 	public WebElement getDescuento() {
 		return this.descuento;
 	}

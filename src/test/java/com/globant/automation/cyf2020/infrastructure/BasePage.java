@@ -37,12 +37,12 @@ public abstract class BasePage {
 			JavascriptExecutor jsDriver = (JavascriptExecutor) webDriver;
 			return jsDriver.executeScript("return document.readyState").equals("complete");
 		});
-	}
+	} 
 	
 	protected <T extends BasePage> T getNextPage(Class<T> tClass) {
 		try {
 			return tClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);			
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			e.printStackTrace();
 			return null;
 		}
@@ -201,7 +201,7 @@ public abstract class BasePage {
 	protected void type(WebElement element, String text, Duration timeout) {
 		getWait(timeout).until(ExpectedConditions.elementToBeClickable(element));
 		element.clear();
-		element.sendKeys(text);
+		element.sendKeys(text); 
 	}
 	
 	protected void wait(Duration duration) {

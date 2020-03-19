@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import mercadoLibre.Barra;
+import mercadoLibre.Ofertas;
+import mercadoLibre.Producto;
+import mercadoLibre.TiendasOficiales;
 
 public class Main{
 	
@@ -24,21 +28,22 @@ public class Main{
 		
 		Barra barra = new Barra(driver);
 		Ofertas ofertas = barra.irOfertasSemana();
-		//
 		
-		
+		String descuento = ofertas.descuento1;
+		String precio = ofertas.precio1;
+		String nombre = ofertas.nombre1;
 		
 		
 		Producto prod = ofertas.irProducto();
 		// 
 		
-		System.out.println(producto.precio1);
+		System.out.println(precio);
 		System.out.println(prod.precio2);
 		
-		System.out.println(producto.descuento1);
+		System.out.println(descuento);
 		System.out.println(prod.descuento2);
 		
-		if ((producto.precio1.equals(prod.precio2)) && (producto.nombre1.equals(prod.nombre2)) && (producto.descuento1.equals(prod.descuento2))) {
+		if ((precio.equals(prod.precio2)) && (nombre.equals(prod.nombre2)) && (descuento.equals(prod.descuento2))) {
 			System.out.println ("Coinciden");
 		}else {
 			System.out.println ("No coinciden");

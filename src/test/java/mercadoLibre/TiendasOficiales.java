@@ -1,4 +1,4 @@
-package com.globant.automation.cyf2020.tests;
+package mercadoLibre;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +19,9 @@ public class TiendasOficiales extends BasePage{
 	@FindBy(xpath = "//a[@class='logo-search']")
 	private WebElement tiendasMontevideo;
 	
+	@FindBy (xpath = "//div[@class = 'logo-name-search']//span")
+	private WebElement titulo;
+	
 	public void setBuscador(WebElement buscador) {
 		this.buscador = buscador; 
 	}
@@ -33,12 +36,23 @@ public class TiendasOficiales extends BasePage{
 		return this.tiendasMontevideo;
 	}
 	
-	public void buscar(String toSearch) {
-		buscador.sendKeys(toSearch); 
+	public void setTitulo(WebElement titulo) {
+		this.titulo = titulo;
+	}
+	public WebElement getTitulo() {
+		return this.titulo;
 	}
 	
-	public void irTiendaMontevideo(){
-		click(getTiendasMontevideo());
+	
+	public void buscar(String toSearch) {
+		buscador.sendKeys(toSearch);
 	}
+	
+	public TiendasMontevideo irTiendaMontevideo(){
+		click(getTiendasMontevideo());
+		return getNextPage(TiendasMontevideo.class);
+	}
+	
+	public String tituloPagina = getText(getTitulo());	
 
 }

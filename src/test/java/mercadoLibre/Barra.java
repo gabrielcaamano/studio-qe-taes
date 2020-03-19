@@ -1,4 +1,4 @@
-package com.globant.automation.cyf2020.tests;
+package mercadoLibre;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,15 +46,17 @@ public class Barra extends BasePage{
 	
 	public Ofertas irOfertasSemana() {
 		click (getOfertas());
-		return getNextPage(Ofertas.class);
+		return getNextPage(Ofertas.class); 
 	}
 	
 	public void irInicio() {
 		click(getLogo());
 	}
 	
-	public void irTiendasOficiales() {
+	public TiendasOficiales irTiendasOficiales() {
 		click(getTiendasOficiales());
+		return getNextPage(TiendasOficiales.class);
+
 	}
 	
 }
