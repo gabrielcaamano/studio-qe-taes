@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 	
 
 		
-	public class EjecutorTest {
+	public class EjecutorMLTest {
 			
 		
 		private WebDriver driver;
@@ -47,11 +47,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			
 		}
 		
-		  public void cerrarNavegador() {
-		      	
-			  driver.close();
-;	   	   
-	   	   }
+		 
 		 
 		
 		public static WebDriver openDriver() {
