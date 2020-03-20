@@ -13,11 +13,18 @@ public class AgregarAcarrito extends BasePage {
     @FindBy (xpath = "//a[@class=\"button\"]//i")
     private WebElement price;
 
-    @FindBy (xpath ="(//a[@class=\"button\"])[4]")
+    @FindBy (xpath = "(//section[@class=\"optionsContainer\"]//li)[1]")
+    private WebElement pick;
+
+    @FindBy (xpath = "//small[@class=\"totalQuantity\"]")
+    private  WebElement pickOne
+
+    @FindBy (xpath ="//div[@class=\"tinner\"]//a")
     private WebElement add;
 
-    public String info(){
+    public String priceInfo(){
         return price.getText();}
+
 
         public  Validar goToVal(){
         click(add);

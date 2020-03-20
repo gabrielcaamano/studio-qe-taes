@@ -25,10 +25,10 @@ public class PedidosYaTest {
     public void testPedidos(){
         WorldwidePy one= new WorldwidePy(driverPedidos);
         PedidosYaUy two= one.clickUy();
-        Sugerencias three= two.addInfo("Hector Suppici sedes 954","Pizza");
+        Sugerencias three= two.addInfo("Chaná 1812","Pizza");
         String place= two.getAddress();
         AgregarAcarrito four= three.suggestion();
-        String price = four.info();
+        String price = four.priceInfo();
         Validar five = four.goToVal();
         String place2= five.addressRight();
         String price2=five.priceRight();
