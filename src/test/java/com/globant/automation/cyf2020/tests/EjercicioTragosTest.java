@@ -13,12 +13,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class EjercicioTragosTest extends BasePage {
-
-	public EjercicioTragosTest(WebDriver driver) {
-		super(driver);
-		// TODO Auto-generated constructor stub
-	}
+public class EjercicioTragosTest {
+	
+	WebDriver driver;
 
 	@BeforeMethod
 	public void abrirNavegador() {
@@ -36,7 +33,7 @@ public class EjercicioTragosTest extends BasePage {
 		System.out.println("El nombre del trago en la Pagina Web es: " + nombreTragoHome);
 		
 		//String nombreTragoURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome + '"'
-		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=");
+		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita");
 		String contenidoTrago = response.getBody().asString();
 
 		System.out.println(contenidoTrago);

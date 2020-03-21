@@ -16,11 +16,11 @@ public class EjercicioTragosHome extends BasePage{
 	@FindBy(id = "download-button")
 	WebElement recomendarBtn;
 	
-	@FindBy(id = "id=\"tit1\"")
+	@FindBy(id = "tit1")
 	WebElement nombrePrimerTrago;
 	
 	public String obtenerNombre() {
-		click(recomendarBtn);
+		click(recomendarBtn, EXTENDED_TIMEOUT);
 		return getText(nombrePrimerTrago);
 	}
 
