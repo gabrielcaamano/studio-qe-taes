@@ -1,14 +1,17 @@
 package com.globant.automation.cyf2020.tests;
 
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import org.json.JSONObject;
+import com.globant.automation.cyf2020.infrastructure.Trago;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
@@ -16,19 +19,16 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
-public class EjercicioTest {
-	
+public class Ejercicio1Test {
 	private WebDriver driver;
+	
 	
 	@BeforeClass
 	public void beforeClasss() {
-		System.out.println("ANTES DE TODOS");
+		System.out.println("Inicia el test");
 	}
 	
-	@BeforeClass
-	public void segundoBeforeClass() {
-		System.out.println("OTRO BEFORECLASS");
-	}
+	
 	
     @BeforeMethod
 	public void beforeMethod() {
@@ -42,25 +42,30 @@ public class EjercicioTest {
 		driver.close();
 	}
 	
-	
+
+	@Test
 	public void ejercicio1() {
-		System.out.println("ESTOY EN test1");
+		PagPincipalEJER1 PrincipalPagina = new PagPincipalEJER1(driver);
+		Trago tragoseleccionado = PrincipalPagina.navigateToTrago();
+		String elTitulo = tragoseleccionado.tituloTrago();
 		
-		Assert.assertEquals("pedro", "pedro", "los nombres no fueron iguales");
-		boolean variableFalse = false;
-		Assert.assertTrue(variableFalse, "la variable no fue true");
-		
-		System.out.println("CODIGO EXTRA");
+		buscarNombreDTrago(elTitulo);
 	}
 	
 	
-	public void ejercicioRestAssured() {
+	
+
+
+
+	
+	public void buscarNombreDTrago(String titulo) {
+		
 		
 		//Guardamos en una variable la url del método get
-		String endpointTrago = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
+		String endpointTrago = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + titulo;
 		
 		//Obtenemos la respuesta de la petición
-		Response response = RestAssured.given().get(endpointTrago);
+		Response response = RestAssured.given().get(endpointTrago); 
 		
 		//Pasamos a tipo String el body de la respuesta
 		String tragoaAsString = response.getBody().asString();
@@ -76,17 +81,14 @@ public class EjercicioTest {
 		//Imprimo en pantalla el nombre de trago
 		System.out.println("El nombre del trago es: " + nombreTrago);
 		
-		Assert.assertEquals(nombreTrago, "Margarita");
+		Assert.assertEquals(nombreTrago, titulo);
+		System.out.println("los titulos coinciden");
 		
-		//               ¡¡FIN!!!
-	}
-		
-	
-	
-	
-	@Test
-	public void ejercicio2() {
-		System.out.println("estoy en test2");
 	}
 	
+	
+	
+
+	 
+
 }
