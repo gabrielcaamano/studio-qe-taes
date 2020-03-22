@@ -27,6 +27,7 @@ public abstract class BasePage {
 	public static final Duration ANIMATION_DURATION = Duration.ofSeconds(5);
 	public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(15);
 	public static final Duration EXTENDED_TIMEOUT = Duration.ofSeconds(30);
+	public static final Duration MOREEXTENDED_TIMEOUT = Duration.ofSeconds(60);
 	protected WebDriver driver;
 
 	public BasePage(WebDriver driver) {

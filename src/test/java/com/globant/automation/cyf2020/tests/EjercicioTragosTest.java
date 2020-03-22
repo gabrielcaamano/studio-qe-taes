@@ -5,10 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.globant.automation.cyf2020.EjercicioTragosHome;
-import com.globant.automation.cyf2020.infrastructure.BasePage;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -31,12 +28,11 @@ public class EjercicioTragosTest {
 		EjercicioTragosHome tragosHome = new EjercicioTragosHome(driver);
 		String nombreTragoHome = tragosHome.obtenerNombre();
 		System.out.println("El nombre del trago en la Pagina Web es: " + nombreTragoHome);
-		
-		//String nombreTragoURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome + '"'
-		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita");
+		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome);
 		String contenidoTrago = response.getBody().asString();
-
-		System.out.println(contenidoTrago);
+		String sinParentesis = contenidoTrago.replace("[", "");
+		sinParentesis = contenidoTrago.replace("]", "");
+		System.out.println(sinParentesis);
 
 
 	}
