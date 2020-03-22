@@ -1,26 +1,21 @@
 package com.globant.automation.cyf2020.tests;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-
-
-public class Ejercicio1Test {
-	private WebDriver driver;
+public class Ejercicio2Test {
+private WebDriver driver;
 	
 	
 	@BeforeClass
@@ -37,58 +32,60 @@ public class Ejercicio1Test {
 		driver.get("https://cyf-2020.firebaseapp.com/");
 	} 
 	
-	@AfterMethod
+	//@AfterMethod
 	public void closeDriver() {
 		driver.close();
 	}
 	
-
 	@Test
 	public void ejercicio1() {
 		PagPincipalEJER1 PrincipalPagina = new PagPincipalEJER1(driver);
-		Trago tragoseleccionado = PrincipalPagina.navigateToTrago();
-		String elTitulo = tragoseleccionado.tituloTrago();
+		Ingredientes ingredientes = PrincipalPagina.navigateToIngredientes();
+		Trago trago2 = ingredientes.navigateToTragodeIngredients("Mint");
 		
-		buscarNombreDTrago(elTitulo);
+		System.out.println(trago2.obtenerIngredientesLista());
+		buscarSegundoElemento("Mint");
 	}
 	
 	
-	
-
-
-
-	
-	public void buscarNombreDTrago(String titulo) {
+public void buscarSegundoElemento(String ingrediente) {
 		
 		
 		//Guardamos en una variable la url del método get
-		String endpointTrago = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + titulo;
+		String endpointIngrediente = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingrediente;
 		
 		//Obtenemos la respuesta de la petición
-		Response response = RestAssured.given().get(endpointTrago); 
+		Response response = RestAssured.given().get(endpointIngrediente); 
 		
 		//Pasamos a tipo String el body de la respuesta
 		String tragoaAsString = response.getBody().asString();
 		
 		//Convertimos la respuesta a JSON
 		JSONObject responseToJson = new JSONObject(tragoaAsString);
+	
+		String segundoAtriculoJson = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+		
+		JSONArray array = responseToJson.getJSONArray("drinks");
+		
+		
 		
 		// Manipulamos el Json a nuestra manera para obtener lo que queremos
-		String contenidoTrago = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
-		JSONObject contenidoTragoJson = new JSONObject(contenidoTrago);
+		
+		String nombre = array.get(1).toString();
+		
+		JSONObject contenidoTragoJson = new JSONObject(nombre);
+		
 		String nombreTrago = contenidoTragoJson.get("strDrink").toString();
 		
 		//Imprimo en pantalla el nombre de trago
 		System.out.println("El nombre del trago es: " + nombreTrago);
 		
-		Assert.assertEquals(nombreTrago, titulo);
-		System.out.println("los titulos coinciden, ejercicio 1 finalizado");
+		
+		
+		
 		
 	}
 	
 	
 	
-
-	 
-
 }

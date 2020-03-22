@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
-import com.globant.automation.cyf2020.infrastructure.Trago;
 
 public class PagPincipalEJER1 extends BasePage{
 
@@ -15,6 +14,9 @@ public class PagPincipalEJER1 extends BasePage{
 
 	@FindBy(xpath = "//div[@class=\"col m4\"][1]//a[@class=\"btn-floating halfway-fab waves-effect waves-light teal\"]")
 	private WebElement primerTragoClick;
+	
+	@FindBy(xpath = "//A[@class=\"white-text\"]")
+	private WebElement queTragoButn;
 	 
 	public PagPincipalEJER1(WebDriver driver) {
 		super(driver);
@@ -27,6 +29,17 @@ public class PagPincipalEJER1 extends BasePage{
 		click(primerTragoClick);
 		return getNextPage(Trago.class);
 	}
+	
+	public Ingredientes navigateToIngredientes() {
+		
+		
+		click(queTragoButn);
+		return getNextPage(Ingredientes.class);
+	}
+	
+	
+
+	
 
 	private void click(WebElement recomendarButn2, int i) {
 		// TODO Auto-generated method stub
