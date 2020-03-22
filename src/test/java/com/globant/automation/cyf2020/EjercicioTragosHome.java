@@ -22,7 +22,12 @@ public class EjercicioTragosHome extends BasePage{
 	
 	public String obtenerNombre() {
 		click(recomendarBtn);
-		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		WebElement nombrePrimerTrago = getElement(By.id("tit1"));
 		return getText(nombrePrimerTrago);
 	}

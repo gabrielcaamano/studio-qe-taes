@@ -1,6 +1,11 @@
 
 package com.globant.automation.cyf2020.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
@@ -29,12 +34,12 @@ public class EjercicioTragosTest {
 		String nombreTragoHome = tragosHome.obtenerNombre();
 		System.out.println("El nombre del trago en la Pagina Web es: " + nombreTragoHome);
 		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome);
-		String contenidoTrago = response.getBody().asString();
-		String sinParentesis = contenidoTrago.replace("[", "");
-		sinParentesis = contenidoTrago.replace("]", "");
-		System.out.println(sinParentesis);
-
-
-	}
+		String infoApi = response.getBody().asString();
+		infoApi = infoApi.replace("[", "");
+		infoApi = infoApi.replace("]", "");
+		JSONObject objetoDrinks = new JSONObject(infoApi);
+		JSONObject infoTrago = objetoDrinks.getJSONObject("drinks");
+		String nombreTragoApi = infoTrago.getString("strDrink");		
+		}
 
 }
