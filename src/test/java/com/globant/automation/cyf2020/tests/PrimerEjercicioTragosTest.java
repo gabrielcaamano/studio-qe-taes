@@ -1,21 +1,19 @@
 
 package com.globant.automation.cyf2020.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.globant.automation.cyf2020.EjercicioTragosHome;
+import com.globant.automation.cyf2020.PrimerEjercicioTragosHome;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class EjercicioTragosTest {
+public class PrimerEjercicioTragosTest {
 	
 	WebDriver driver;
 
@@ -30,7 +28,7 @@ public class EjercicioTragosTest {
 	@Test
 	public void TestTragos() {
 
-		EjercicioTragosHome tragosHome = new EjercicioTragosHome(driver);
+		PrimerEjercicioTragosHome tragosHome = new PrimerEjercicioTragosHome(driver);
 		String nombreTragoHome = tragosHome.obtenerNombre();
 		System.out.println("El nombre del trago en la Pagina Web es: " + nombreTragoHome);
 		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome);
@@ -39,7 +37,14 @@ public class EjercicioTragosTest {
 		infoApi = infoApi.replace("]", "");
 		JSONObject objetoDrinks = new JSONObject(infoApi);
 		JSONObject infoTrago = objetoDrinks.getJSONObject("drinks");
-		String nombreTragoApi = infoTrago.getString("strDrink");		
+		String nombreTragoApi = infoTrago.getString("strDrink");
+		System.out.println("El nombre del trago en la API es: " + nombreTragoApi);
+		Assert.assertEquals(nombreTragoHome, nombreTragoApi, "Los nombres del trago en la página y en la API no coiniciden");
+		
 		}
 
+	@AfterMethod
+	public void cerrarNavegador() {
+		driver.close();	
+	}
 }

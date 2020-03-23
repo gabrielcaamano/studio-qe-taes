@@ -1,14 +1,19 @@
 package com.globant.automation.cyf2020.tests;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.globant.automation.cyf2020.QueTragoBusqueda;
-import com.globant.automation.cyf2020.SegundoEjerciciosTragos;
+import com.globant.automation.cyf2020.SegundoEjercicioTragos;
 import com.globant.automation.cyf2020.Trago;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 public class SegundoEjerciciosTragosTest {
 
@@ -25,9 +30,50 @@ public class SegundoEjerciciosTragosTest {
 
 	@Test
 	public void testTragosSegundo() {
-	SegundoEjerciciosTragos tragosHome = new SegundoEjerciciosTragos(driver);
-	QueTragoBusqueda busquedaIngrediente = tragosHome.ingresarIngrediente("frutilla");
-	Trago tragoBuscado = busquedaIngrediente.buscar();
-	tragoBuscado.mostrarIngredientes();
+	
+	//Busca en la app web tragos con "ingrediente" y trae los ingredientes del segundo de la lista
+	String ingrediente = "Vodka";
+	SegundoEjercicioTragos miPreviaHome = new SegundoEjercicioTragos(driver);
+	QueTragoBusqueda busquedaIngrediente = miPreviaHome.queTrago();
+	Trago tragoBuscado = busquedaIngrediente.buscarIngrediente(ingrediente);
+	String ingredientesWeb = tragoBuscado.mostrarIngredientes();
+	System.out.println(ingredientesWeb);
+	
+	//Busca en la api los tragos con "ingrediente" y devuelve el nombre del segundo de la lista, (esta direccion no tiene los ingredientes)
+	Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingrediente);
+	String infoApi = response.getBody().asString();
+	JSONObject objetoDrinks = new JSONObject(infoApi);
+	JSONArray infoTragosIngrediente = objetoDrinks.getJSONArray("drinks");
+	JSONObject segundoTrago = infoTragosIngrediente.getJSONObject(1);
+	String nombreTragoIngrediente = segundoTrago.getString("strDrink");
+	
+	//Busca en la api que tiene los ingredientes, el trago con el nombre "nombreTragoIngrediente" y devuelve los ingredientes
+	Response responseIngredientes = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoIngrediente);
+	String infoApiIngredientes = responseIngredientes.getBody().asString();
+	infoApiIngredientes = infoApiIngredientes.replace("[", "");
+	infoApi = infoApiIngredientes.replace("]", "");
+	JSONObject objetoDrinksIngredientes = new JSONObject(infoApi);
+	JSONObject infoTragoIngredientes = objetoDrinksIngredientes.getJSONObject("drinks");
+	String ingrTragoApi = "";
+	String ingredientesTragoApi = "";
+	int i = 2;
+	//ingrTragoApi != null
+	boolean ingredientesCoinciden = true;
+	while (( i < 5 ) && ingredientesCoinciden ) {
+		ingrTragoApi = infoTragoIngredientes.getString("strIngredient" + i);
+		ingredientesCoinciden = ingredientesWeb.contains(ingrTragoApi);
+		ingredientesTragoApi = ingredientesTragoApi + ingrTragoApi + " "; 
+		i++;
+	}
+	System.out.println(ingredientesTragoApi);
+	
+	//Compara las dos busquedas
+	System.out.println("Los ingredientes de la Web y de la API coinciden: " + ingredientesCoinciden);
+	Assert.assertTrue(ingredientesCoinciden, "Los ingredientes del segundo trago en la lista de tragos con el ingrediente " + ingrediente + ", no coinciden en la API con la Web");
+	}
+	
+	@AfterMethod
+	public void cerrarNavegador() {
+		driver.close();
 	}
 }
