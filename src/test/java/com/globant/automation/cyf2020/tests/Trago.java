@@ -1,5 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
+import java.util.StringTokenizer;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,10 +35,27 @@ public class Trago extends BasePage{
 		return titulo;
 	}
 	
-	
-	public String obtenerIngredientesLista() {
+	public void obtenerIngredientesLista() {
 		String ingredientes = getText(ingredientesList);
 		
-		return ingredientes;
+		System.out.println(ingredientes); 
+		
+		String sTexto = "Light rum 2 oz".replace(" ", "");
+		
+		int posicion = sTexto.indexOf("2");
+		
+		System.out.println(posicion);
+		StringTokenizer stPalabras = new StringTokenizer(sTexto);
+		
+		while (stPalabras.hasMoreTokens()) {
+			  String sPalabra = stPalabras.nextToken();
+			  System.out.println(sPalabra.substring(0,posicion));
+			}
+ 		
+		 
 	}
+
+
+
+	
 }

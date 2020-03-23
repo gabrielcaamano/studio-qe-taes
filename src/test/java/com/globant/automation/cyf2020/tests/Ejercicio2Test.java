@@ -43,7 +43,7 @@ private WebDriver driver;
 		Ingredientes ingredientes = PrincipalPagina.navigateToIngredientes();
 		Trago trago2 = ingredientes.navigateToTragodeIngredients("Mint");
 		
-		System.out.println(trago2.obtenerIngredientesLista());
+		trago2.obtenerIngredientesLista();
 		buscarSegundoElemento("Mint");
 	}
 	
@@ -81,6 +81,44 @@ public void buscarSegundoElemento(String ingrediente) {
 		System.out.println("El nombre del trago es: " + nombreTrago);
 		
 		
+		
+		
+		//Guardamos en una variable la url del método get
+		String endpointTrago = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTrago;
+				
+				//Obtenemos la respuesta de la petición
+		Response respuesta = RestAssured.given().get(endpointTrago); 
+				
+				//Pasamos a tipo String el body de la respuesta
+		String tragoComoString = respuesta.getBody().asString();
+				
+				//Convertimos la respuesta a JSON
+		JSONObject respuestaAJson = new JSONObject(tragoComoString);
+				
+		// Manipulamos el Json a nuestra manera para obtener lo que queremos
+		
+		String contenidoTrago = respuestaAJson.get("drinks").toString().replace("[", "").replace("]", "");
+				
+		JSONObject ingredientesJson = new JSONObject(contenidoTrago);
+				
+		String ingredientep = "";
+		for(int numero = 1;  ingredientep != "null"; numero++) {
+
+			ingredientep = ingredientesJson.get("strIngredient" + numero).toString();
+			
+			if (ingredientep != "null") {
+			
+			String cadena =  ingredientep;
+			
+			System.out.println("El primer ingrediente es: " + cadena);	
+			}
+			
+			
+			
+		}
+		
+				
+				//Imprimo en pantalla el nombre de trago
 		
 		
 		
