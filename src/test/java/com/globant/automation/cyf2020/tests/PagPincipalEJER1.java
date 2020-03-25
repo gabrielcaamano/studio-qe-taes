@@ -15,6 +15,10 @@ public class PagPincipalEJER1 extends BasePage{
 	@FindBy(xpath = "//div[@class=\"col m4\"][1]//a[@class=\"btn-floating halfway-fab waves-effect waves-light teal\"]")
 	private WebElement primerTragoClick;
 	
+	@FindBy(xpath = "//div[@class=\"col m4\"][3]//a[@class=\"btn-floating halfway-fab waves-effect waves-light teal\"]")
+	private WebElement tercerTragoClick;
+	
+	
 	@FindBy(xpath = "//A[@class=\"white-text\"]")
 	private WebElement queTragoButn;
 	 
@@ -23,12 +27,21 @@ public class PagPincipalEJER1 extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Trago navigateToTrago() {
+	public Trago navigateToPrimerTrago() {
 		click(recomendarButn, 10);
 		
 		click(primerTragoClick);
 		return getNextPage(Trago.class);
 	}
+	
+	public Trago navigateToTercerTrago() {
+		click(recomendarButn, 10);
+		
+		click(tercerTragoClick);
+		return getNextPage(Trago.class);
+	}
+	
+	
 	
 	public Ingredientes navigateToIngredientes() {
 		

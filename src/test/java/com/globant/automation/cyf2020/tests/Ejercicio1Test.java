@@ -46,7 +46,7 @@ public class Ejercicio1Test {
 	@Test
 	public void ejercicio1() {
 		PagPincipalEJER1 PrincipalPagina = new PagPincipalEJER1(driver);
-		Trago tragoseleccionado = PrincipalPagina.navigateToTrago();
+		Trago tragoseleccionado = PrincipalPagina.navigateToTercerTrago();
 		String elTitulo = tragoseleccionado.tituloTrago(); //el titulo toma el nombre del trago
 		
 		buscarNombreDTrago(elTitulo); 
