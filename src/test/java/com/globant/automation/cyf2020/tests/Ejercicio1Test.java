@@ -47,9 +47,9 @@ public class Ejercicio1Test {
 	public void ejercicio1() {
 		PagPincipalEJER1 PrincipalPagina = new PagPincipalEJER1(driver);
 		Trago tragoseleccionado = PrincipalPagina.navigateToTrago();
-		String elTitulo = tragoseleccionado.tituloTrago();
+		String elTitulo = tragoseleccionado.tituloTrago(); //el titulo toma el nombre del trago
 		
-		buscarNombreDTrago(elTitulo);
+		buscarNombreDTrago(elTitulo); 
 	}
 	
 	
@@ -58,7 +58,7 @@ public class Ejercicio1Test {
 
 
 	
-	public void buscarNombreDTrago(String titulo) {
+	public void buscarNombreDTrago(String titulo) { //toma el nombre del trago y se asegura de que coincida con la variable elTitulo.
 		
 		
 		//Guardamos en una variable la url del método get
