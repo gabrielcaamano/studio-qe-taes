@@ -27,7 +27,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.PreviaTest.previaTest2">
+    <configuration name="EjercicioTest.ejercicio1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.EjercicioTest" />
+      <option name="METHOD_NAME" value="ejercicio1" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PreviaTest.previaTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -46,9 +64,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PreviaTest.previaTest2" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.PreviaTest" />
+      <option name="METHOD_NAME" value="previaTest2" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.PreviaTest.previaTest2" />
         <item itemvalue="TestNG.PreviaTest.previaTest" />
+        <item itemvalue="TestNG.EjercicioTest.ejercicio1" />
       </list>
     </recent_temporary>
   </component>
@@ -70,41 +108,56 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1584978087628" />
-    <state width="1323" height="453" key="GridCell.Tab.0.bottom" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.0.bottom" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.0.center" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.0.center" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.0.left" timestamp="1584983610817">
+    <state width="1323" height="68" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.0.left" timestamp="1585161003487">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584983610817" />
-    <state width="1323" height="453" key="GridCell.Tab.0.right" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585161003487" />
+    <state width="1323" height="68" key="GridCell.Tab.0.right" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.1.bottom" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.1.bottom" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.1.center" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.1.center" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.1.left" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.1.left" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state width="1323" height="453" key="GridCell.Tab.1.right" timestamp="1584983610818">
+    <state width="1323" height="68" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="1323" height="68" key="GridCell.Tab.1.right" timestamp="1585161003488">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="453" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584983610818" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1584964150871">
+    <state width="1323" height="68" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1585160379025">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584964150871" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1585160379025" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585138010299">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585138010299" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/globant/automation/cyf2020/tests/PreviaTest.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

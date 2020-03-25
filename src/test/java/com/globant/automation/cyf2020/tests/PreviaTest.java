@@ -63,32 +63,34 @@ public class PreviaTest {
     public void previaTest2() {
         PreviaHomePage mainPage = new PreviaHomePage(driver);
         MiPreviaSearchPage goToSearch = mainPage.goToWhatDrink();
-        String ingredientSearched = goToSearch.insertIngredientAndSearch("strawberry");
+        String ingredientSearched = goToSearch.insertIngredientAndSearch("coffee");
         SecondDrinkListed getSecondDrink = goToSearch.goToDrinkTwo();
         String getIngredients = getSecondDrink.getAllIngredients();
-        System.out.print("You will need:" + getIngredients);
+        String ingredientsList[] = getIngredients.split("\n");
+        System.out.print("You will need:" + ingredientsList);
 
         String ingredients = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=" + ingredientSearched;
         //Using Response i'll get the apis info?
         Response response = RestAssured.given().get(ingredients);
         //Here i convert the response to string
-        String responseToString = response.getBody().asString();
+        String responseToString1 = response.getBody().asString();
 
         // I have to convert the response to  JSON
 
-        JSONObject responseToJson = new JSONObject(responseToString);
+        JSONObject responseToJson = new JSONObject(responseToString1);
 
         // First I need to get the second drink from the response i get from the api, this api doesn't return
         // each drink with ingredients but the names of drinks that contain the ingredient i searched for
         String ingredientInfo = responseToJson.get("ingredients").toString().replace("[", "").replace("]", "");
         JSONObject drinksThatHaveTheIngredientJson = new JSONObject(ingredientInfo);
-        JSONArray ingredientJson = drinksThatHaveTheIngredientJson.getJSONArray("drinks");
-        JSONObject getThe2ndDrink = ingredientJson.getJSONObject(1);
-        String the2ndDrink = getThe2ndDrink.getString("strDrink");
+        //JSONArray drinksWithTheIngreJson = drinksThatHaveTheIngredientJson.getJSONArray("drinks");
+        //JSONObject getThe2ndDrink = drinksWithTheIngreJson.getJSONObject(1);
+       // String the2ndDrink = getThe2ndDrink.getString("strDrink");
+        String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
 
         //now through another api i get the ingredients using the name i received from the other one
 
-        String drinksName = the2ndDrink.replaceAll("\\s", "%20");
+        String drinksName = getDrink2.replaceAll("\\s", "%20");
         String theDrinkIGot = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinksName;
         //Using Response i'll get the apis info?
         Response response2 = RestAssured.given().urlEncodingEnabled(false).get(theDrinkIGot);
@@ -102,7 +104,15 @@ public class PreviaTest {
         // Here I use the JSON to get what I want
         String drinksInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
         JSONObject drinksInfoInJson = new JSONObject(drinksInfo);
-        String drinksNameJson = drinksInfoInJson.get("strIngredient" + 1).toString();
+        int i= 1;
+       String getDrinksName = drinksInfoInJson.get("strIngredient"+ i).toString();
+        while(i < ingredientsList.length) {
+            Assert.assertTrue(ingredientsList[i-1].contains(getDrinksName), "The ingredients are not the same");
+            i++;
+
+                 }
+
+
 
 
     }

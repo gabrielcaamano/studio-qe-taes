@@ -9,7 +9,7 @@ public class SecondDrinkListed extends BasePage {
     public SecondDrinkListed(WebDriver driver) {
         super(driver);
     }
-    @FindBy (xpath = "((//div[@class=\"col s6\"]//h5[@class=\"white-text\"])[1])//p")
+    @FindBy (xpath = "(//h5[@class=\"white-text\"])[1]")
     private WebElement ingredients;
 
 

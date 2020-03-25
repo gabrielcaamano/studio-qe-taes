@@ -9,19 +9,24 @@ public class MiPreviaSearchPage extends BasePage {
     public MiPreviaSearchPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy (xpath = "//div[@class=\"col s4 offset-s3\"]//input")
+    @FindBy (xpath = "//input[@class=\"mdc-text-field__input white-text\"]")
     private WebElement searchIngredient;
     @FindBy (xpath = "//div[@class=\"row\"]//button")
     private  WebElement searchBtn;
     @FindBy (xpath = "(//div[@class=\"card\"]//i)[2]")
     private WebElement drink2;
+    @FindBy (id = "textoIngredientes")
+    private WebElement theIngredient;
 
 
     public String insertIngredientAndSearch(String validIngredient){
         type(searchIngredient,validIngredient);
         click(searchBtn);
-        return getText(searchIngredient);
+        return validIngredient;
     }
+   /* public String getTheIngredientISearched(){
+        return getText(theIngredient);
+    }*/
 
     public SecondDrinkListed goToDrinkTwo(){
         click(drink2);
