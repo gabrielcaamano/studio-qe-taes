@@ -29,7 +29,7 @@ public class PrimerEjercicioTragosTest {
 	public void TestTragos() {
 
 		PrimerEjercicioTragosHome tragosHome = new PrimerEjercicioTragosHome(driver);
-		String nombreTragoHome = tragosHome.obtenerNombre();
+		String nombreTragoHome = tragosHome.obtenerNombreTrago("1"); //Obtain recommended drink by index 1-3
 		System.out.println("El nombre del trago en la Pagina Web es: " + nombreTragoHome);
 		Response response = RestAssured.given().get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + nombreTragoHome);
 		String infoApi = response.getBody().asString();

@@ -16,8 +16,10 @@ public class PrimerEjercicioTragosHome extends BasePage{
 	
 	@FindBy(id = "download-button")
 	private WebElement recomendarBtn;
+
 	
-	public String obtenerNombre() {
+	public String obtenerNombreTrago(String indiceTragoRecomendado) {
+		
 		click(recomendarBtn);
 		try {
 			Thread.sleep(5000);
@@ -25,7 +27,7 @@ public class PrimerEjercicioTragosHome extends BasePage{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		WebElement nombrePrimerTrago = getElement(By.id("tit1"));
+		WebElement nombrePrimerTrago = getElement(By.id("tit" +indiceTragoRecomendado));
 		return getText(nombrePrimerTrago);
 	}
 
