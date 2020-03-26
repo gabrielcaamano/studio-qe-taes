@@ -88,4 +88,37 @@ public class EjercicioHTTP {
 		}
 	}
 	
+	@Test 
+	public void ejercicioExtra() {
+		HomePage home = new HomePage(driver);
+		home.clickRecomendar();
+		String name = home.tercerTragoName();
+		String link = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+ (name).replace(" ", "%20");
+
+		Response response = RestAssured.given().urlEncodingEnabled(false).get(link);
+		
+		String tragoResponse = response.getBody().asString();
+		
+		JSONObject responseToJson = new JSONObject(tragoResponse);
+		
+		String contenidoTrago = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+		JSONObject contenidoTragoJson = new JSONObject(contenidoTrago);
+		
+		String category = contenidoTragoJson.get("strCategory").toString();
+
+		
+		String linkCategory = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c="+ (category).replace(" ", "%20");
+		
+		Response responseCategory = RestAssured.given().urlEncodingEnabled(false).get(linkCategory);
+		
+		String categoryResponse = responseCategory.getBody().asString();
+		
+		JSONObject responseToJsonCategory = new JSONObject(categoryResponse);
+		
+		String contenidoCategory = responseToJsonCategory.get("drinks").toString().replace("[", "").replace("]", "");
+//		JSONObject contenidoCategoryJson = new JSONObject(contenidoCategory);
+//		String tragosInCategory = contenidoCategoryJson.get("strCategory").toString();
+		Assert.assertTrue(contenidoCategory.contains(name), "El trago no se encuentra en la responce");
+	}
+	
 }

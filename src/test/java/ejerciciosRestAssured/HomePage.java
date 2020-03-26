@@ -18,6 +18,9 @@ public class HomePage extends BasePage{
 	
 	@FindBy(css = "a[class = 'btn-floating halfway-fab waves-effect waves-light teal']")
 	private WebElement primerTrago;
+
+	@FindBy(xpath = "(//span[@class = 'card-title'])[3]")
+	private WebElement tercerTragoName;
 	
 	@FindBy(css = "a[class='white-text']")
 	private WebElement queTrago;
@@ -37,5 +40,8 @@ public class HomePage extends BasePage{
 		return getNextPage(QueTragoPage.class);
 	}
 	
+	public String tercerTragoName() {
+		return getText(tercerTragoName);
+	}
 	
 }
