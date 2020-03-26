@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SecondDrinkListed extends BasePage {
-    public SecondDrinkListed(WebDriver driver) {
+public class DrinkListed extends BasePage {
+    public DrinkListed(WebDriver driver) {
         super(driver);
     }
     @FindBy (xpath = "(//h5[@class=\"white-text\"])[1]")

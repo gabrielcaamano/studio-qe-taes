@@ -17,6 +17,8 @@ public class MiPreviaSearchPage extends BasePage {
     private WebElement drink2;
     @FindBy (id = "textoIngredientes")
     private WebElement theIngredient;
+    @FindBy (xpath = "(//div[@class=\"card\"]//i)[3]")
+    private WebElement drink3;
 
 
     public String insertIngredientAndSearch(String validIngredient){
@@ -28,8 +30,13 @@ public class MiPreviaSearchPage extends BasePage {
         return getText(theIngredient);
     }*/
 
-    public SecondDrinkListed goToDrinkTwo(){
+    public DrinkListed goToDrinkTwo(){
         click(drink2);
-        return getNextPage(SecondDrinkListed.class);
+        return getNextPage(DrinkListed.class);
+    }
+    public DrinkListed goToDrinkThree(){
+        click(drink3);
+        return getNextPage(DrinkListed.class);
     }
 }
+

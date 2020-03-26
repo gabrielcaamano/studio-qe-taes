@@ -2,7 +2,7 @@ package com.globant.automation.cyf2020.tests;
 
 import com.globant.automation.cyf2020.infrastructure.miprevia.MiPreviaSearchPage;
 import com.globant.automation.cyf2020.infrastructure.miprevia.PreviaHomePage;
-import com.globant.automation.cyf2020.infrastructure.miprevia.SecondDrinkListed;
+import com.globant.automation.cyf2020.infrastructure.miprevia.DrinkListed;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -65,60 +65,93 @@ public class PreviaTest {
         PreviaHomePage mainPage = new PreviaHomePage(driver);
         MiPreviaSearchPage goToSearch = mainPage.goToWhatDrink();
         String ingredientSearched = goToSearch.insertIngredientAndSearch("coffee");
-        SecondDrinkListed getSecondDrink = goToSearch.goToDrinkTwo();
+        DrinkListed getSecondDrink = goToSearch.goToDrinkTwo();
         String getIngredients = getSecondDrink.getAllIngredients();
         String ingredientsList[] = getIngredients.split("\n");
-        System.out.print("You will need:" + ingredientsList);
 
         String ingredients = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredientSearched;
         //Using Response i'll get the apis info?
         Response response = RestAssured.given().get(ingredients);
         //Here i convert the response to string
-        String responseToString1 = response.getBody().asString();
+        String IngredientsToString = response.getBody().asString();
 
         // I have to convert the response to  JSON
 
-        JSONObject responseToJson = new JSONObject(responseToString1);
+        JSONObject IngredientsResponseToJson = new JSONObject(IngredientsToString);
 
         // First I need to get the second drink from the response i get from the api, this api doesn't return
         // each drink with ingredients but the names of drinks that contain the ingredient i searched for
-      //  String ingredientInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+        //  String ingredientInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
         //JSONObject drinksThatHaveTheIngredientJson = new JSONObject(ingredientInfo);
-       JSONArray drinksWithTheIngreJson = responseToJson.getJSONArray("drinks");
+        JSONArray drinksWithTheIngreJson =  IngredientsResponseToJson .getJSONArray("drinks");
         JSONObject getThe2ndDrink = drinksWithTheIngreJson.getJSONObject(1);
         String the2ndDrink = getThe2ndDrink.getString("strDrink");
-       // String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
+        // String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
 
         //now through another api i get the ingredients using the name i received from the other one
 
         String drinksName = the2ndDrink.replaceAll("\\s", "%20");
         String theDrinkIGot = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinksName;
         //Using Response i'll get the apis info?
-        Response response2 = RestAssured.given().urlEncodingEnabled(false).get(theDrinkIGot);
+        Response DrinkResponse = RestAssured.given().urlEncodingEnabled(false).get(theDrinkIGot);
         //Here i convert the response to string
-        String responseToString2 = response2.getBody().asString();
+        String DrinkResponseToString = DrinkResponse.getBody().asString();
 
         // I have to convert the response to  JSON
 
-        JSONObject responseToJson2 = new JSONObject(responseToString2);
+        JSONObject responseToJson2 = new JSONObject(DrinkResponseToString);
 
         // Here I use the JSON to get what I want
-        String drinksInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+        String drinksInfo = responseToJson2.get("drinks").toString().replace("[", "").replace("]", "");
         JSONObject drinksInfoInJson = new JSONObject(drinksInfo);
-        int i= 1;
+        int i = 1;
 
-        while(i < ingredientsList.length) {
-            String getDrinksName = drinksInfoInJson.get("strIngredient"+ i).toString();
-            Assert.assertTrue(ingredientsList[i-1].contains(getDrinksName), "The ingredients are not the same");
+        while (i < ingredientsList.length) {
+            String getDrinksName = drinksInfoInJson.get("strIngredient" + i).toString();
+            Assert.assertTrue(ingredientsList[i - 1].contains(getDrinksName), "The ingredients are not the same");
             i++;
 
-                 }
-
-
+        }
 
 
     }
 
+     @Test
+     public void previaTest3() {
+         PreviaHomePage mainPage = new PreviaHomePage(driver);
+         String thirdDrinksName = mainPage.getRandomDrink();
+         String thirdDrinksName2 = thirdDrinksName.replaceAll("\\s", "%20");
+         String threeDrinks = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + thirdDrinksName2;
+         //Using Response i'll get the apis info?
+         Response threeDrinksResponse = RestAssured.given().urlEncodingEnabled(false).get(threeDrinks);
+         //Here i convert the response to string
+         String drinkResponseToString = threeDrinksResponse.getBody().asString();
+
+         // I have to convert the response to  JSON
+
+         JSONObject responseToJson = new JSONObject(drinkResponseToString);
+
+         // Here I use the JSON to get what I want
+         String theDrinksInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+         JSONObject drinksInfoInJson = new JSONObject(theDrinksInfo);
+         String theDrinksCategoryJson = drinksInfoInJson.get("strCategory").toString();
+
+         String category = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + theDrinksCategoryJson.replace(" ", "%20");
+         //Using Response i'll get the apis info?
+         Response categoryResponse = RestAssured.given().urlEncodingEnabled(false).get(category);
+         //Here i convert the response to string
+         String categoryToString = categoryResponse.getBody().asString();
+
+         // I have to convert the response to  JSON
+
+         JSONObject categoryResponseToJson = new JSONObject(categoryToString);
+
+        String drinksWithTheCatJson =  categoryResponseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+        // JSONObject getThe3rdDrink = drinksWithTheCatJson.getJSONObject(1);
+       //  String the3rdDrink = getThe3rdDrink.getString("strCategory");
+         Assert.assertTrue(drinksWithTheCatJson.contains(thirdDrinksName));
+
+     }
 
     @AfterSuite
     public  void close(){
