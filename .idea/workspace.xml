@@ -108,56 +108,45 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1584978087628" />
-    <state width="1323" height="68" key="GridCell.Tab.0.bottom" timestamp="1585161003488">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom" timestamp="1585232664926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.0.center" timestamp="1585161003488">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585232664926" />
+    <state width="1323" height="570" key="GridCell.Tab.0.center" timestamp="1585232664926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.0.left" timestamp="1585161003487">
+    <state width="1323" height="570" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585232664926" />
+    <state width="1323" height="570" key="GridCell.Tab.0.left" timestamp="1585232664925">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585161003487" />
-    <state width="1323" height="68" key="GridCell.Tab.0.right" timestamp="1585161003488">
+    <state width="1323" height="570" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585232664925" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right" timestamp="1585232664926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.1.bottom" timestamp="1585161003488">
+    <state width="1323" height="570" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585232664926" />
+    <state width="1323" height="480" key="GridCell.Tab.1.bottom" timestamp="1585226571899">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.1.center" timestamp="1585161003488">
+    <state width="1323" height="480" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585226571899" />
+    <state width="1323" height="480" key="GridCell.Tab.1.center" timestamp="1585226571898">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.1.left" timestamp="1585161003488">
+    <state width="1323" height="480" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585226571898" />
+    <state width="1323" height="480" key="GridCell.Tab.1.left" timestamp="1585226571898">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="1323" height="68" key="GridCell.Tab.1.right" timestamp="1585161003488">
+    <state width="1323" height="480" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585226571898" />
+    <state width="1323" height="480" key="GridCell.Tab.1.right" timestamp="1585226571899">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="68" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585161003488" />
-    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1585160379025">
+    <state width="1323" height="480" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585226571899" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1585226536251">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1585160379025" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585138010299">
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1585226536251" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585225737366">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585138010299" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/globant/automation/cyf2020/tests/PreviaTest.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585225737366" />
   </component>
 </project>

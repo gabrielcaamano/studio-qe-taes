@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -69,7 +70,7 @@ public class PreviaTest {
         String ingredientsList[] = getIngredients.split("\n");
         System.out.print("You will need:" + ingredientsList);
 
-        String ingredients = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=" + ingredientSearched;
+        String ingredients = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredientSearched;
         //Using Response i'll get the apis info?
         Response response = RestAssured.given().get(ingredients);
         //Here i convert the response to string
@@ -81,16 +82,16 @@ public class PreviaTest {
 
         // First I need to get the second drink from the response i get from the api, this api doesn't return
         // each drink with ingredients but the names of drinks that contain the ingredient i searched for
-        String ingredientInfo = responseToJson.get("ingredients").toString().replace("[", "").replace("]", "");
-        JSONObject drinksThatHaveTheIngredientJson = new JSONObject(ingredientInfo);
-        //JSONArray drinksWithTheIngreJson = drinksThatHaveTheIngredientJson.getJSONArray("drinks");
-        //JSONObject getThe2ndDrink = drinksWithTheIngreJson.getJSONObject(1);
-       // String the2ndDrink = getThe2ndDrink.getString("strDrink");
-        String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
+      //  String ingredientInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
+        //JSONObject drinksThatHaveTheIngredientJson = new JSONObject(ingredientInfo);
+       JSONArray drinksWithTheIngreJson = responseToJson.getJSONArray("drinks");
+        JSONObject getThe2ndDrink = drinksWithTheIngreJson.getJSONObject(1);
+        String the2ndDrink = getThe2ndDrink.getString("strDrink");
+       // String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
 
         //now through another api i get the ingredients using the name i received from the other one
 
-        String drinksName = getDrink2.replaceAll("\\s", "%20");
+        String drinksName = the2ndDrink.replaceAll("\\s", "%20");
         String theDrinkIGot = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinksName;
         //Using Response i'll get the apis info?
         Response response2 = RestAssured.given().urlEncodingEnabled(false).get(theDrinkIGot);
@@ -105,8 +106,9 @@ public class PreviaTest {
         String drinksInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
         JSONObject drinksInfoInJson = new JSONObject(drinksInfo);
         int i= 1;
-       String getDrinksName = drinksInfoInJson.get("strIngredient"+ i).toString();
+
         while(i < ingredientsList.length) {
+            String getDrinksName = drinksInfoInJson.get("strIngredient"+ i).toString();
             Assert.assertTrue(ingredientsList[i-1].contains(getDrinksName), "The ingredients are not the same");
             i++;
 
@@ -115,5 +117,11 @@ public class PreviaTest {
 
 
 
+    }
+
+
+    @AfterSuite
+    public  void close(){
+        driver.quit();
     }
 }
