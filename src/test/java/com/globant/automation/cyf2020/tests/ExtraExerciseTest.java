@@ -55,11 +55,10 @@ public class ExtraExerciseTest {
 		
 		int i = 1;
 		while ( i <= arrayTragosCat.length() && !iguales ) {
-			nombreApiCat = arrayTragosCat.getJSONObject(i - 1).get("strDrink").toString();
-			iguales = nombreApiCat.equals(nameTragoApiName);
+			Assert.assertTrue((!arrayTragosCat.getJSONObject(i - 1).get("strDrink").toString().equals(nameTragoApiName)), "No hay coincidencia en las APIs");
 			i++;
 		}
-		Assert.assertEquals(nombreApiCat, nameTragoApiName);
+		
 	}
 
 	@AfterMethod
