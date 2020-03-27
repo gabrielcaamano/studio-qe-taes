@@ -83,7 +83,7 @@ public class PreviaTest {
         // each drink with ingredients but the names of drinks that contain the ingredient i searched for
         //  String ingredientInfo = responseToJson.get("drinks").toString().replace("[", "").replace("]", "");
         //JSONObject drinksThatHaveTheIngredientJson = new JSONObject(ingredientInfo);
-        JSONArray drinksWithTheIngreJson =  IngredientsResponseToJson .getJSONArray("drinks");
+        JSONArray drinksWithTheIngreJson =  IngredientsResponseToJson.getJSONArray("drinks");
         JSONObject getThe2ndDrink = drinksWithTheIngreJson.getJSONObject(1);
         String the2ndDrink = getThe2ndDrink.getString("strDrink");
         // String getDrink2 = drinksThatHaveTheIngredientJson.getJSONObject("drinks").getJSONObject(String.valueOf(1)).getString("strDrink");
