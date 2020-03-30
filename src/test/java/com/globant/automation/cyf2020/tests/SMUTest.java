@@ -30,11 +30,12 @@ public class SMUTest {
         SMUHome loggedIn= loginPage.passwordLoginComplete("user60@bootcampsqe.com");
         String usersNamesAre= loggedIn.nameInfo();
         String usersJobIs= loggedIn.jobInfo();
-        String[] usernames= usersNamesAre.split(",",2);
+       //String[] usernames= usersNamesAre.split(" ",2);
+        String userNumber= username.substring(5,6);
 
 
 
-        Assert.assertTrue(username.contains(usernames[0]));
+        Assert.assertTrue(usersNamesAre.contains(userNumber));
 
 
     }
