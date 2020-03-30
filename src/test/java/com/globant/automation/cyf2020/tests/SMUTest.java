@@ -37,7 +37,7 @@ public class SMUTest {
 
         Assert.assertTrue(usersNamesAre.contains(userNumber));
 
-
+         //
     }
     @AfterSuite
     public  void close(){
