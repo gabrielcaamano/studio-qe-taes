@@ -27,11 +27,11 @@ public class SMUTest {
     @Test
      public void  testingLogin(){
         SMUser user = new SMUser();
-        user.setUsersEmail(("user61@bootcampsqe.com"));
-        user.setPassword("user61@bootcampsqe.com");
-        user.setUsersJob("job_afbhn");
-        user.setName("username61");
-        user.setLastName("feed61");
+        user.setUsersEmail(("user62@bootcampsqe.com"));
+        user.setPassword("user62@bootcampsqe.com");
+        user.setUsersJob("job_rhxmf");
+        user.setName("username62");
+        user.setLastName("feed62");
         StarMeUpLogin loginPage= new StarMeUpLogin(driver);
         String username= loginPage.usernameLogin(user.getUsersEmail());
         SMUHome loggedIn= loginPage.passwordLoginComplete(user.getPassword());

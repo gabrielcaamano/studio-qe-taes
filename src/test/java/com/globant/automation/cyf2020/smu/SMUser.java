@@ -10,6 +10,10 @@ public class SMUser {
     private String name;
     private String lastName;
 
+    public SMUser() {
+        // TODO Auto-generated constructor stub
+    }
+
     public SMUser(String usersEmail, String password, String usersJob,String name, String lastName) {
         this.password = password;
         this.usersJob = usersJob;
@@ -19,9 +23,6 @@ public class SMUser {
 
     }
 
-    public SMUser() {
-        // TODO Auto-generated constructor stub
-    }
 
     public void setUsersEmail(String usersEmail) {
         this.usersEmail = usersEmail;
