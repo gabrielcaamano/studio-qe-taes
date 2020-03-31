@@ -1,8 +1,6 @@
 package com.globant.automation.cyf2020.tests;
 
-import com.globant.automation.cyf2020.smu.SMUHome;
-import com.globant.automation.cyf2020.smu.SMUser;
-import com.globant.automation.cyf2020.smu.StarMeUpLogin;
+import com.globant.automation.cyf2020.smu.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +22,7 @@ public class SMUTest {
         driver.get("https://uat.starmeup.com/login.html");
     }
 
-    @Test
+    @Test (priority = 1)
      public void  testingLogin(){
         SMUser user = new SMUser();
         user.setUsersEmail(("user62@bootcampsqe.com"));
@@ -47,12 +45,43 @@ public class SMUTest {
         Assert.assertTrue(usersJobIs.contains(user.getUsersJob()));
         Assert.assertTrue(username.contains(user.getUsersEmail()));
 
-         //
+
+        SMUser user2= new SMUser();
+        user2.setName("username68");
+        SMUser2 sendStar= loggedIn.searchBar(user2.getName());
+        SendStar sendingTheStar= sendStar.sendStar();
+        String messageForUser2= sendingTheStar.sendingStar("gr8 work");
+        SMUser2 backToUser2= sendingTheStar.closeConfirmation();
+        SMUHome backToHome= backToUser2.goHome();
+
     }
-    @AfterSuite
-    public  void close(){
-        driver.quit();
+
+
+
+   /* @Test (priority = 2)
+    public void testingGiveStar(){
+        SMUser user2 = new SMUser();
+        user2.setName("username68");
+        SMUHome smuHome= new SMUHome(driver);
+        SendStar sendStar= smuHome.clickOnAStar();
+        String thisStarIsFor= sendStar.giveStarTo(user2.getName());
+        String messageForUser2= sendStar.sendStar("gr8 bro");
+        SMUHome backToStart= sendStar.closeConfirmation();
+
+
+
     }
+*/
+
+
+
+
+
+
+   //@AfterSuite
+   // public  void close(){
+     //   driver.quit();
+  //  }
 
 
 
