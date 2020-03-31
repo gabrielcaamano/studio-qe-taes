@@ -1,6 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
 import com.globant.automation.cyf2020.smu.SMUHome;
+import com.globant.automation.cyf2020.smu.SMUser;
 import com.globant.automation.cyf2020.smu.StarMeUpLogin;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -25,17 +26,26 @@ public class SMUTest {
 
     @Test
      public void  testingLogin(){
+        SMUser user = new SMUser();
+        user.setUsersEmail(("user61@bootcampsqe.com"));
+        user.setPassword("user61@bootcampsqe.com");
+        user.setUsersJob("job_afbhn");
+        user.setName("username61");
+        user.setLastName("feed61");
         StarMeUpLogin loginPage= new StarMeUpLogin(driver);
-        String username= loginPage.usernameLogin("user60@bootcampsqe.com");
-        SMUHome loggedIn= loginPage.passwordLoginComplete("user60@bootcampsqe.com");
+        String username= loginPage.usernameLogin(user.getUsersEmail());
+        SMUHome loggedIn= loginPage.passwordLoginComplete(user.getPassword());
         String usersNamesAre= loggedIn.nameInfo();
         String usersJobIs= loggedIn.jobInfo();
        //String[] usernames= usersNamesAre.split(" ",2);
-        String userNumber= username.substring(5,6);
+        //String userNumber= username.substring(5,6);
 
 
 
-        Assert.assertTrue(usersNamesAre.contains(userNumber));
+        Assert.assertTrue(usersNamesAre.contains(user.getName()));
+        Assert.assertTrue(usersNamesAre.contains(user.getLastName()));
+        Assert.assertTrue(usersJobIs.contains(user.getUsersJob()));
+        Assert.assertTrue(username.contains(user.getUsersEmail()));
 
          //
     }
@@ -46,6 +56,7 @@ public class SMUTest {
 
 
 
+    }
 
 
 
@@ -56,4 +67,6 @@ public class SMUTest {
 
 
 
-}
+
+
+
