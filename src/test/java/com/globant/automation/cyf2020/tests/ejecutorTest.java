@@ -62,11 +62,11 @@ private WebDriver driver;
 	
 	
    public void compararNombreApellidoYJob(String nombreSetteado,String appellidoSetteado, String nombreYapellidoEnLaPagina, String trabajoSetteado, String trabajoEnLaPagina) {
-	   String arrayDeNameAndLast[] = nombreYapellidoEnLaPagina.split(" ");
+	  
 	   
-	   String nombreYapellidoConcat = arrayDeNameAndLast[0] +" "+ arrayDeNameAndLast[1];
 	   
-	   assertEquals( nombreYapellidoConcat, nombreSetteado + " " + appellidoSetteado);
+	   
+	   assertEquals( nombreYapellidoEnLaPagina, nombreSetteado + " " + appellidoSetteado);
 	   
 	   assertEquals(trabajoSetteado, trabajoEnLaPagina);
 	   
