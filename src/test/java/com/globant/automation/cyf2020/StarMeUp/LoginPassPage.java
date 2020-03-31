@@ -16,7 +16,7 @@ public class LoginPassPage extends BasePage {
 	@FindBy(id = "password")
 	WebElement inputPassword;
 	
-	@FindBy(className = "btn btn-login")
+	@FindBy(xpath = "//li[@id='loginInputBtn']//button[@class='btn btn-login'][contains(text(),'Login')]")
 	WebElement loginBtn;
 	
 	public LogedFeedPage typePassword(String password) {

@@ -13,26 +13,25 @@ public class LogedFeedPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@FindBy(className = "info__name")
+	@FindBy(xpath = "//h3[@class='user-info__name']")
 	private WebElement infoNameLastname;
 	
 	@FindBy(className = "user-info__job")
 	private WebElement infoJob;
 	
-	@FindBy(className = "button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-")
+	@FindBy(xpath = "//button[@class='button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-']")
 	private WebElement userBtn;
 	
-	@FindBy(className = "button button--color- button--size-small")
+	@FindBy(xpath = "//button[@class='button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-']")
 	private WebElement logOutBtn;
 	
 	String namePage = "";
 	String lastnamePage = "";
 	
-	public String splitNameLastname() {
+	public void splitNameLastname() {
 		String nameLastname = getText(infoNameLastname, DEFAULT_TIMEOUT);
-		//split
-		//return namePage, lastnamePage separados
-		return namePage;
+		namePage = nameLastname.substring(0, 9);
+		lastnamePage = nameLastname.substring(11, 16);
 	}
 	
 	public UserInfo userInfoFeed() {

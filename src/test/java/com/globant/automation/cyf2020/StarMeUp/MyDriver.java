@@ -1,4 +1,4 @@
-package com.globant.automation.cyf2020.tests;
+package com.globant.automation.cyf2020.StarMeUp;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

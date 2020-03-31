@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import com.globant.automation.cyf2020.StarMeUp.LogedFeedPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginPassPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginUserPage;
+import com.globant.automation.cyf2020.StarMeUp.MyDriver;
 import com.globant.automation.cyf2020.StarMeUp.UserInfo;
 
 public class LoginStarMeUpTest {
@@ -23,8 +24,6 @@ public class LoginStarMeUpTest {
 
 		MyDriver myDriver = new MyDriver(browser);
 		driver = myDriver.getDriver();
-		StarMeUpHomePage homePage = new StarMeUpHomePage(driver);
-		loginUserPage = homePage.goStarMeUp();
 
 	}
 	
@@ -85,14 +84,15 @@ public class LoginStarMeUpTest {
 		return key;
 	}
 
-	@Test(dataProvider = "loginKey")
+	@Test(dataProvider = "infoProfile")
 	public void login(String userKey, String name, String lastname, String job) {
 
+		loginUserPage = new LoginUserPage(driver);
 		LoginPassPage loginPassPage = loginUserPage.typeUser(userKey);
 		LogedFeedPage logedFeedPage = loginPassPage.typePassword(userKey);
 		//comparar userInfo con dataProvider
 		UserInfo pageUserInfo = logedFeedPage.userInfoFeed();
-		loginUserPage = logedFeedPage.logOut();
+		logedFeedPage.logOut();
 		Assert.assertEquals(pageUserInfo.getName(), name, "Names doesnt match");
 		Assert.assertEquals(pageUserInfo.getLastname(), lastname, "Lastnames doesnt match");
 		Assert.assertEquals(pageUserInfo.getJob(), job, "Jobs doesnt match");

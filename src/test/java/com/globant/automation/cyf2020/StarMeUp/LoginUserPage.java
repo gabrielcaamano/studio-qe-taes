@@ -10,18 +10,25 @@ public class LoginUserPage extends BasePage {
 
 	public LoginUserPage(WebDriver driver) {
 		super(driver);
-		driver.get("https://www.starmeup.com/login.html");
+		driver.get("https://uat.starmeup.com/login.html");
 	}
 	
 	@FindBy(id = "username")
 	WebElement inputUserName;
 	
-	@FindBy(className = "btn btn-login")
+	@FindBy(xpath = "//button[@class='btn btn-login']")
 	WebElement nextBtn;
 	
+	@FindBy(linkText = "Use another account")
+	WebElement switchAccountLink;
+	
 	public LoginPassPage typeUser(String userName) {
+		if ( switchAccountLink.isDisplayed() ) {
+			click(switchAccountLink, DEFAULT_TIMEOUT);
+		}
 		type(inputUserName, userName, DEFAULT_TIMEOUT);
 		click(nextBtn, DEFAULT_TIMEOUT);
 		return new LoginPassPage(driver);
 	}
+	
 }
