@@ -2,6 +2,9 @@ package com.globant.automation.cyf2020.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -14,13 +17,12 @@ import com.globant.automation.cyf2020.StarMeUp.MyDriver;
 import com.globant.automation.cyf2020.StarMeUp.UserInfo;
 
 public class LoginStarMeUpTest {
-
-	LoginUserPage loginUserPage;
+	
 	WebDriver driver;
 
 	@BeforeTest
 	@Parameters({ "browser" })
-	public void iniciarlizarNavegador(String browser) {
+	public void startDriver(String browser) {
 
 		MyDriver myDriver = new MyDriver(browser);
 		driver = myDriver.getDriver();
@@ -84,19 +86,23 @@ public class LoginStarMeUpTest {
 		return key;
 	}
 
+	
 	@Test(dataProvider = "infoProfile")
-	public void login(String userKey, String name, String lastname, String job) {
-
-		loginUserPage = new LoginUserPage(driver);
+	public void login(String userKey, String nameKey, String lastnameKey, String jobKey) {
+		LoginUserPage loginUserPage = new LoginUserPage(driver);
 		LoginPassPage loginPassPage = loginUserPage.typeUser(userKey);
 		LogedFeedPage logedFeedPage = loginPassPage.typePassword(userKey);
-		//comparar userInfo con dataProvider
 		UserInfo pageUserInfo = logedFeedPage.userInfoFeed();
 		logedFeedPage.logOut();
-		Assert.assertEquals(pageUserInfo.getName(), name, "Names doesnt match");
-		Assert.assertEquals(pageUserInfo.getLastname(), lastname, "Lastnames doesnt match");
-		Assert.assertEquals(pageUserInfo.getJob(), job, "Jobs doesnt match");
+		Assert.assertEquals(pageUserInfo.getName(), nameKey, "Names doesnt match");
+		Assert.assertEquals(pageUserInfo.getLastname(), lastnameKey, "Lastnames doesnt match");
+		Assert.assertEquals(pageUserInfo.getJob(), jobKey, "Jobs doesnt match");
 
+	}
+	
+	@AfterTest
+	public void closeDriver() {
+		driver.close();
 	}
 
 }

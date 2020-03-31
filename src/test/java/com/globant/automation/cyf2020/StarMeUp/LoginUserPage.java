@@ -23,9 +23,6 @@ public class LoginUserPage extends BasePage {
 	WebElement switchAccountLink;
 	
 	public LoginPassPage typeUser(String userName) {
-		if ( switchAccountLink.isDisplayed() ) {
-			click(switchAccountLink, DEFAULT_TIMEOUT);
-		}
 		type(inputUserName, userName, DEFAULT_TIMEOUT);
 		click(nextBtn, DEFAULT_TIMEOUT);
 		return new LoginPassPage(driver);
