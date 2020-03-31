@@ -10,7 +10,7 @@ public class LoginUserPage extends BasePage {
 
 	public LoginUserPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		driver.get("https://www.starmeup.com/login.html");
 	}
 	
 	@FindBy(id = "username")
@@ -19,9 +19,9 @@ public class LoginUserPage extends BasePage {
 	@FindBy(className = "btn btn-login")
 	WebElement nextBtn;
 	
-	public LoginPassPage typeUsuario(String userName) {
-		type(inputUserName, userName);
-		click(nextBtn);
+	public LoginPassPage typeUser(String userName) {
+		type(inputUserName, userName, DEFAULT_TIMEOUT);
+		click(nextBtn, DEFAULT_TIMEOUT);
 		return new LoginPassPage(driver);
 	}
 }
