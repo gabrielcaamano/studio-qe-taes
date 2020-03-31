@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -34,7 +33,7 @@ private WebDriver driver;
 		driver.get("https://uat.starmeup.com/login.html?continue=aHR0cHM6Ly91YXQuc3Rhcm1ldXAuY29tLw%3D%3D&origin=SMU&logout=true");
 	} 
 	
-	@AfterMethod
+	
 	public void closeDriver() {
 		driver.close();
 	}
@@ -43,7 +42,7 @@ private WebDriver driver;
 	@Test
 	public void ejercicio1() {
 		
-		UsuarixStarMeUp usuario = new UsuarixStarMeUp(driver);
+		UsuarixStarMeUp usuario = new UsuarixStarMeUp();
 		usuario.setEmail("user81@bootcampsqe.com");
 		usuario.setContraseña("user81@bootcampsqe.com");
 		usuario.setJob("job_jurzv");
@@ -53,15 +52,18 @@ private WebDriver driver;
 		Login login = new Login(driver);
 		PaginaPrincipalStarOS paginaPrincipal = login.navigateToPrincipalPage(usuario.getEmail(), usuario.getContraseña());
 		
-		compararNombreApellidoYJob(usuario.getNombre(), usuario.getApellido(), paginaPrincipal.nombreYApellidoArray(), usuario.getJob(), paginaPrincipal.getTheJob());
+		
+		//Toma los datos y compara para ver si coinciden
+		compararNombreApellidoYJob(usuario.getNombre(), usuario.getApellido(), paginaPrincipal.nombreYApellido(), usuario.getJob(), paginaPrincipal.getTheJob());
 		
 	}
 	
 	
 	
-   public void compararNombreApellidoYJob(String nombreSetteado,String appellidoSetteado, String[] nombreYapellidoEnLaPagina, String trabajoSetteado, String trabajoEnLaPagina) {
+   public void compararNombreApellidoYJob(String nombreSetteado,String appellidoSetteado, String nombreYapellidoEnLaPagina, String trabajoSetteado, String trabajoEnLaPagina) {
+	   String arrayDeNameAndLast[] = nombreYapellidoEnLaPagina.split(" ");
 	   
-	   String nombreYapellidoConcat = nombreYapellidoEnLaPagina[0] +" "+ nombreYapellidoEnLaPagina[1];
+	   String nombreYapellidoConcat = arrayDeNameAndLast[0] +" "+ arrayDeNameAndLast[1];
 	   
 	   assertEquals( nombreYapellidoConcat, nombreSetteado + " " + appellidoSetteado);
 	   

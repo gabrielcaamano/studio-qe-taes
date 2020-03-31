@@ -1,5 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,17 +24,23 @@ public class PaginaPrincipalStarOS extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	//toma el nombre y el apellido de la pagina, con una espera previa ya que la pagina tarda en cargar
+	public String nombreYApellido () {
+		
+		     wait(Duration.ofSeconds(10));
+		     
+		     String nameAndLastName = getText(nombreYApellidoDUsuarix);
+		     
+			 return nameAndLastName;
 	
-	public String[] nombreYApellidoArray () {
 		
-		String nameAndLastName = nombreYApellidoDUsuarix.toString();
-		String arrayDeIngredientes[] = nameAndLastName.split("\n");
 		
-		return arrayDeIngredientes;
 	}
  
+	//toma el trabajo de la pagina
 	public String getTheJob() {
-		String trabajo = jobOfTheUser.toString();
+		String trabajo = getText(jobOfTheUser);
 		return trabajo;
 	}
 	

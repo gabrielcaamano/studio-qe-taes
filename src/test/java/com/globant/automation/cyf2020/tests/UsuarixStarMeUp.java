@@ -1,12 +1,9 @@
 package com.globant.automation.cyf2020.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-public class UsuarixStarMeUp extends BasePage {
+
+public class UsuarixStarMeUp {
 
 	
 
@@ -17,18 +14,27 @@ public class UsuarixStarMeUp extends BasePage {
     private String apellido;
    
   
-    public UsuarixStarMeUp(WebDriver driver) {
-		super(driver);
+   
+
+    public UsuarixStarMeUp(String email, String contraseña, String job,String nombre, String apellido) { 
+  	   this.contraseña = contraseña;
+  	   this.job = job;
+  	   this.nombre = nombre;
+  	   this.apellido = apellido;
+  	 
+  	 }
+
+
+
+		public UsuarixStarMeUp() {
 		// TODO Auto-generated constructor stub
 	}
 
 
 
-
-
 		// email
 	    public void setEmail(String email) {
-	 	   email = email;
+	 	   this.email = email;
 	    }
 	    
 	    public String getEmail() {
@@ -37,7 +43,7 @@ public class UsuarixStarMeUp extends BasePage {
 	    
 	   //contraseña
 	    public void setContraseña(String contraseña) {
-	 	   contraseña = contraseña;
+	 	   this.contraseña = contraseña;
 	    }
 	    
 	    public String getContraseña() {
@@ -46,7 +52,7 @@ public class UsuarixStarMeUp extends BasePage {
 	   
 	    //Job
 	    public void setJob(String job) {
-		 	   job = job;
+		 	   this.job = job;
 		    }
 		    
 		public String getJob() {
@@ -54,7 +60,7 @@ public class UsuarixStarMeUp extends BasePage {
 		    }
 	
 		 public void setNombre(String nombre) {
-		 	   nombre = nombre;
+		 	   this.nombre = nombre;
 		    }
 		    
 		public String getNombre() {
@@ -62,7 +68,7 @@ public class UsuarixStarMeUp extends BasePage {
 		    }
 		
 		 public void setApellido(String apellido) {
-		 	   apellido = apellido;
+		 	   this.apellido = apellido;
 		    }
 		    
 		public String getApellido() {

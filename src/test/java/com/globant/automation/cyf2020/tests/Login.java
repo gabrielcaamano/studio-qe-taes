@@ -14,13 +14,16 @@ public class Login extends BasePage {
 	@FindBy(id="username")
 	private WebElement imputUsuario;
 	
-	@FindBy(id="textoIngredientes")
+	@FindBy(id="password")
 	private WebElement imputPassword;
 	
 	
 	@FindBy(xpath = "//button[@class=\"btn btn-login\"]")
 	private WebElement nextBTN;
 	
+	@FindBy(xpath = "//li[@id=\"loginInputBtn\"]//button[@class=\"btn btn-login\"]")
+	private WebElement loginBTN;
+	 
 	
 	public Login(WebDriver driver) {
 		super(driver);
@@ -39,16 +42,17 @@ public class Login extends BasePage {
 		 
 	 }
 	
-	 public void clickEnNext() {
+	 public void clickEnNext(WebElement whereToClick) {
 		 
-		 click(nextBTN);
+		 click(whereToClick);
 	 }
 	 
 	 public PaginaPrincipalStarOS navigateToPrincipalPage(String nombre, String password) {
 		    ingresarUser(nombre);
-		    clickEnNext();
+		    clickEnNext(nextBTN);
+		    
 		    ingresarPassword(password);
-		    clickEnNext();
+		    clickEnNext(loginBTN);
 		    
 				
 			return getNextPage(PaginaPrincipalStarOS.class);
