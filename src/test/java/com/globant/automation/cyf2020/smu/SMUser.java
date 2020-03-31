@@ -15,6 +15,7 @@ public class SMUser {
         this.usersJob = usersJob;
         this.name = name;
         this.lastName = lastName;
+        this.usersEmail = usersEmail;
 
     }
 
@@ -22,7 +23,6 @@ public class SMUser {
         // TODO Auto-generated constructor stub
     }
 
-   // everything for the email info
     public void setUsersEmail(String usersEmail) {
         this.usersEmail = usersEmail;
     }
