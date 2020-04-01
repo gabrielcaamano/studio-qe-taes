@@ -26,23 +26,14 @@ public class LoginPage extends BasePage {
 	private WebElement loginButton;
 	
 	
-	public void writeUser(String name) {
+	public HomePage login(String name, String pass) {
+		wait(ANIMATION_DURATION);
 		user.sendKeys(name);
-	}
-	
-	public void clickNext() {
 		click(nextButton);
-	}
-	
-	public void writePassword(String pass) {
 		wait(ANIMATION_DURATION);
 		password.sendKeys(pass);
-	}
-	
-	public HomePage clickLogin() {
 		click(loginButton);
 		return getNextPage(HomePage.class);
 	}
-	
 
 }
