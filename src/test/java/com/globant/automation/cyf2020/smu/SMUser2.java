@@ -20,6 +20,7 @@ public class SMUser2 extends BasePage {
 
 
 
+
     public SendStar sendStar(){
         click(popUp1);
         click(popUp2);
@@ -27,6 +28,8 @@ public class SMUser2 extends BasePage {
         return getNextPage(SendStar.class);
 
     }
+
+
     public SMUHome goHome(){
         click(goHome);
         return getNextPage(SMUHome.class);

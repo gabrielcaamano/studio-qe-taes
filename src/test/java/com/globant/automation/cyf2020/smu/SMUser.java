@@ -9,17 +9,19 @@ public class SMUser {
     private String usersJob;
     private String name;
     private String lastName;
+    private int stars; //as string bc the number i receive from the page comes as a string
 
     public SMUser() {
         // TODO Auto-generated constructor stub
     }
 
-    public SMUser(String usersEmail, String password, String usersJob,String name, String lastName) {
+    public SMUser(String usersEmail, String password, String usersJob,String name, String lastName, int stars) {
         this.password = password;
         this.usersJob = usersJob;
         this.name = name;
         this.lastName = lastName;
         this.usersEmail = usersEmail;
+        this.stars = stars;
 
     }
 
@@ -63,5 +65,14 @@ public class SMUser {
     public String getLastName() {
         return lastName;
     }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
+    public int getStars() {
+        return stars;
+    }
 }
+
 

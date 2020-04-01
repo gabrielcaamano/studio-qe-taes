@@ -8,7 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="185" />
+    <option name="myElementSize" value="182" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -29,7 +29,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="TestNG.SMUTest.testingLogin">
+  <component name="RunManager" selected="TestNG.SMUTest.checkStars">
     <configuration name="SMUTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -41,6 +41,24 @@
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
       <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.SMUTest" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SMUTest.checkStars" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.SMUTest" />
+      <option name="METHOD_NAME" value="checkStars" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -85,8 +103,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.SMUTest.testingLogin" />
+        <item itemvalue="TestNG.SMUTest.checkStars" />
         <item itemvalue="TestNG.SMUTest.testingGiveStar" />
+        <item itemvalue="TestNG.SMUTest.testingLogin" />
         <item itemvalue="TestNG.SMUTest" />
       </list>
     </recent_temporary>
@@ -105,44 +124,47 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="200" key="GridCell.Tab.0.bottom" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.0.center" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.0.center" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.0.left" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.0.left" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.0.right" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.0.right" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.1.bottom" timestamp="1585679425978">
+    <state width="1323" height="570" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.1.bottom" timestamp="1585763367113">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585679425978" />
-    <state width="1323" height="200" key="GridCell.Tab.1.center" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585763367113" />
+    <state width="1323" height="570" key="GridCell.Tab.1.center" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.1.left" timestamp="1585679425977">
+    <state width="1323" height="570" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.1.left" timestamp="1585763367112">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585679425977" />
-    <state width="1323" height="200" key="GridCell.Tab.1.right" timestamp="1585679425978">
+    <state width="1323" height="570" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585763367112" />
+    <state width="1323" height="570" key="GridCell.Tab.1.right" timestamp="1585763367113">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="200" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585679425978" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585658076772">
+    <state width="1323" height="570" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585763367113" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585746039405">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585658076772" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585746039405" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cyf2020$SMUTest_checkStars.ic" NAME="SMUTest.checkStars Coverage Results" MODIFIED="1585758111632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.globant.automation.cyf2020.tests.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/cyf2020$SMUTest_testingLogin.ic" NAME="SMUTest.testingLogin Coverage Results" MODIFIED="1585592707046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.globant.automation.cyf2020.tests.*</FILTER>
     </SUITE>
