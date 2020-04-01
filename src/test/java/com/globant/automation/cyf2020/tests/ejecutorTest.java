@@ -63,18 +63,19 @@ private WebDriver driver;
 	public void SendStar() {
 		
 		UsuarixStarMeUp usuarioB = new UsuarixStarMeUp();
-		usuarioB.setEmail("user83@bootcampsqe.com");
-		usuarioB.setContraseña("user83@bootcampsqe.com");
-		usuarioB.setJob("job_pngty");
-		usuarioB.setNombre("username83");
-		usuarioB.setApellido("feed83");
+		usuarioB.setEmail("user84@bootcampsqe.com");
+		usuarioB.setContraseña("user84@bootcampsqe.com");
+		usuarioB.setJob("job_ssqlw");
+		usuarioB.setNombre("username84");
+		usuarioB.setApellido("feed84");
 		
 		Login login1 = new Login(driver);
 		PaginaPrincipalStarOS paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getContraseña());
 		int capturarNumeroDeEstrellasRecibidasUserB = paginaPrincipalB.getStarRecibed();
+		NavBar barraDeNavegacion = paginaPrincipalB.navigateToNavBar();
+		login1 = barraDeNavegacion.desloguearse();
 		
-		iniciarPaginaWeb(); //para El usuarioA
-		
+		//creaccion del userA
 		UsuarixStarMeUp usuarioA = new UsuarixStarMeUp();
 		usuarioA.setEmail("user82@bootcampsqe.com");
 		usuarioA.setContraseña("user82@bootcampsqe.com");
@@ -82,13 +83,15 @@ private WebDriver driver;
 		usuarioA.setNombre("username82");
 		usuarioA.setApellido("feed82");
 		
-		Login login2 = new Login(driver);
-		PaginaPrincipalStarOS paginaPrincipal2 = login2.navigateToPrincipalPage(usuarioA.getEmail(), usuarioA.getContraseña());
+		//para El usuarioA
+		PaginaPrincipalStarOS paginaPrincipal2 = login1.navigateToPrincipalPage(usuarioA.getEmail(), usuarioA.getContraseña());
+		
 		int capturarNumeroDeEstrellasEnviadasUserA = paginaPrincipal2.getStarSent();
 		
-	/*	
-		//navegar al perfil del userB
-		PerfilDeCoworker coworkerPerfil = paginaPrincipal2.navigateToPerfilDeCoworker(usuarioB.getEmail());
+		NavBar barraDeNavegacionA = paginaPrincipal2.navigateToNavBar();
+		
+		//navegar al perfil del user
+		PerfilDeCoworker coworkerPerfil = barraDeNavegacionA.navigateToPerfilDeCoworker(usuarioB.getEmail());
 		
 		/*  algo sobre navigateToPrincipalPageDesdePDCoworker, el numero es el tipo de reconocimiento que se le quiere enviar, esta ordenado asi:
 		 * 1 = Integrity
@@ -101,12 +104,12 @@ private WebDriver driver;
 		 * El siguiente campo es para comentarios hacia el coworker.
 		 * 
 		 *    */
-	
-		//paginaPrincipal2 = coworkerPerfil.navigateToPrincipalPageDesdePDCoworker(1, "tiene una integración eficaz");
-		//vuelvo a la pagina principal
-	     //capturo los datos en la variable
 		
-				
+		paginaPrincipal2 = coworkerPerfil.navigateToPrincipalPageDesdePDCoworker(3, "Good Job!");
+		//vuelvo a la pagina principal
+	    
+	    //capturo los datos en la variable
+		
 		String nombreYreemitenteActivityFeed = paginaPrincipal2.capturarNombreYreemitenteActivityFeed();
 		
 		//verificar si las estrellas enviadas se incrementaron en uno
@@ -114,7 +117,8 @@ private WebDriver driver;
 		
 		
 		//voy hacia el perfil personal del usuario
-		PerfilDeUser perfilPersonal = paginaPrincipal2.navigateToPerfilDeUser();
+		PerfilDeUser perfilPersonal = barraDeNavegacionA.navigateToPerfilDeUser();
+		
 		
 		perfilPersonal.clickSentTab();
 		
@@ -122,19 +126,36 @@ private WebDriver driver;
 		//comparo si los datos recabados son iguales
 		assertEquals( perfilPersonal.capturarNombreYreemitentePerfil(), nombreYreemitenteActivityFeed);
 		
-		
 		//voy hacia el usuarioB
-		paginaPrincipalB.clickEnLaCampana();
-		paginaPrincipalB.darClickEnLaNotificacion();
-		paginaPrincipalB.clickEnLaCampana();
-		paginaPrincipalB.clickEnPopUp();
-		System.out.println(paginaPrincipalB.verificarSiLaNotificacionEstaReadTrueONoFalse());
-		paginaPrincipalB.clickEnLaCampana();
+		
+		
+		
+	    barraDeNavegacionA.desloguearse();
+	    paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getContraseña());
+		
+		barraDeNavegacion.clickEnLaCampana();
+	    barraDeNavegacion.darClickEnLaNotificacion();
+	    
+	    barraDeNavegacion.clickEnLaCampana();
+		
+	    assertEquals(true, paginaPrincipalB.verificarSiLaNotificacionEstaReadTrueONoFalse()); 
+	    
+		barraDeNavegacion.clickEnLaCampanaActiva();
+		
+		barraDeNavegacion.navigateToPaginaPrincipal();
 		
 		//verifico si el numero de estrellas incremento
-		assertEquals(capturarNumeroDeEstrellasRecibidasUserB + 1, paginaPrincipal2.getStarRecibed());
+		assertEquals(capturarNumeroDeEstrellasRecibidasUserB , paginaPrincipal2.getStarRecibed());    
 		
+		String reemitenteActivityFeedUserB = paginaPrincipal2.nombreDelReemitenteActivityFeed();
 		
+		//voy hacia el perfil personal del usuario
+	    PerfilDeUser perfilPersonalUserB = barraDeNavegacion.navigateToPerfilDeUser();
+	    	
+	    
+	  //comparo si los datos recabados son iguales
+	   assertEquals( perfilPersonalUserB.nombreDelReemitente(), reemitenteActivityFeedUserB);
+	    
 	}
 	
 	

@@ -38,6 +38,15 @@ public class PerfilDeUser extends BasePage {
 		
 	}
 	
+	public String nombreDelReemitente() {
+		String usuarioQueEnviaElReconocimiento = getText(porQuienEsEnviadaLaEstrella);
+		return usuarioQueEnviaElReconocimiento;
+		
+	}
+	
+	
+	
+	
 	
 	
     
