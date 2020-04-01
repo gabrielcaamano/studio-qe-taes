@@ -47,6 +47,7 @@ public class Login extends BasePage {
 		 click(whereToClick);
 	 }
 	 
+	 
 	 public PaginaPrincipalStarOS navigateToPrincipalPage(String nombre, String password) {
 		    ingresarUser(nombre);
 		    clickEnNext(nextBTN);

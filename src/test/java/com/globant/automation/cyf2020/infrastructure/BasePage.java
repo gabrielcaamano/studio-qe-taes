@@ -29,6 +29,7 @@ public abstract class BasePage {
 	public static final Duration EXTENDED_TIMEOUT = Duration.ofSeconds(30);
 	protected final WebDriver driver;
 
+	
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
