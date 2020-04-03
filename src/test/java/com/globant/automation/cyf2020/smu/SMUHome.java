@@ -15,7 +15,7 @@ public class SMUHome extends BasePage {
     @FindBy (className = "user-info__job")
     private  WebElement job;
     @FindBy (xpath = "(//div[@class=\"core-value__button-wrapper\"]//span)[3]")
-    private  WebElement teamworkStar;
+    private  WebElement theStar;
     @FindBy (xpath = "//input[@class=\"suite-search-box__input\"]")
     private WebElement searchUsersName;
     @FindBy (xpath = "(//div[@class=\"avatar-media search-result-item__avatar avatar-media__medium\"])[1]")
@@ -28,21 +28,21 @@ public class SMUHome extends BasePage {
     private  WebElement logOutBtn;
     @FindBy (xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button button--color-\"]")
     private  WebElement notifBtn;
-    @FindBy (xpath = "//span[@class=\"ui-components-icon ui-component-icon ui-components-icon_notification ui-component-icon_medium  ui-component-icon_grey\"]")
-    private WebElement notifBtnWhenClicked;
+    @FindBy (xpath = "//button[@class=\"button button--transparent button--color- button--size-small\"]")
+    private WebElement viewAll;
     @FindBy (xpath = "//p[@class=\"notifications-list__info\"]")
     private WebElement noNotifsTxt;
-    @FindBy (xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--right suite-discovery__smu--open\"]")
+    @FindBy (xpath = "//span[contains(@class, 'suite-discovery suite-discovery__smu ')]")
      private WebElement popUp1;
-    @FindBy (xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
+    @FindBy (xpath = "//span[contains(@class, 'suite-discovery suite-discovery__smu ')]")
     private WebElement popUp2;
-    @FindBy (xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--top suite-discovery__smu--open\"]")
+    @FindBy (xpath = "//span[contains(@class, 'suite-discovery suite-discovery__smu ')]")
     private WebElement popUp3;
-    @FindBy (xpath = "//div[@class=\"curtain\"]")
+    @FindBy (xpath = "//div[@class=\"notifications\"]")
     private WebElement clickAny;
     @FindBy (xpath = "(//div[@class=\"feed-item__content-wrapper\"]//span)[1]")
     private WebElement activityFeedStar;
-    @FindBy (xpath = "(//a[@class=\"ui-navbar__menu-link\"])[2]")
+    @FindBy (xpath = "(//li[@class=\"ui-navbar__menu-item\"])[3]")
     private WebElement goToProfile;
 
 
@@ -56,28 +56,27 @@ public class SMUHome extends BasePage {
     }
 
     public SendStar clickOnAStar(){
-        click(teamworkStar);
+        click(theStar);
         return getNextPage(SendStar.class);
     }
     public String howManyStars(){
         return getText(starsUserHas);
     }
     public void popUps(){
-
         click(popUp1);
         click(popUp2);
         click(popUp3);
     }
-
-    public String notification(){
+    public Notifications starNotification(){
         click(notifBtn);
-        click(clickAny);
+        click(viewAll);
+        return  getNextPage(Notifications.class);
+    }
+    public String notification(){
         click(notifBtn);
         return getText(noNotifsTxt);
     }
-
-
-    public void clickOnce(){
+    public void imTryingMyHardest(){
         click(clickAny);
     }
 

@@ -10,10 +10,10 @@ public class SendStar extends BasePage {
         super(driver);
     }
 
-    @FindBy (xpath = "(//div[@class=\"value-icon\"])[2]")
+    @FindBy (xpath = "(//div[@class=\"value-icon\"])[6]")
     private WebElement star;
-    @FindBy (xpath = "//button[@class=\"button button--icon button--nomargin button--nopadding button--transparent send-star__message-textarea-button-emoji send-star__message-textarea-button-element button--color-\"]")
-    private WebElement whyStarEmogi;
+    @FindBy (xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
+    private WebElement whyStar;
     @FindBy (xpath = "(//span[@class=\"emoji-mart-emoji\"])[9]")
     private  WebElement emogi;
     @FindBy (xpath = "//button[@class=\"button button--nomargin-right button--transparent button--color-\"]")
@@ -26,12 +26,11 @@ public class SendStar extends BasePage {
 
 
 
-    public void sendingStar() {
+    public String sendingStar(String txt) {
         click(star);
-        click(whyStarEmogi);
-        click(emogi);
+        type(whyStar,txt);
         click(sendStarBtn);
-
+        return txt;
     }
 
     public String successfullySentStar(){
@@ -50,5 +49,13 @@ public class SendStar extends BasePage {
 
 
 
-    }
+
+
+
+}
+
+
+
+
+
 
