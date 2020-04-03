@@ -27,6 +27,7 @@ public abstract class BasePage {
 	public static final Duration ANIMATION_DURATION = Duration.ofSeconds(5);
 	public static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(15);
 	public static final Duration EXTENDED_TIMEOUT = Duration.ofSeconds(30);
+	public static final Duration MOSTEXTENDED_TIMEOUT = Duration.ofSeconds(100);
 	protected final WebDriver driver;
 
 	public BasePage(WebDriver driver) {
@@ -60,6 +61,10 @@ public abstract class BasePage {
 
 	protected void click(WebElement element, Duration timeout) {
 		getWait(timeout).until(ExpectedConditions.elementToBeClickable(element)).click();
+	}
+	
+	public void getElementAndClick(By locator) {
+		getElement(locator).click();
 	}
 	
 	protected WebElement getElement(By locator) {

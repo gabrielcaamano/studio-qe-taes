@@ -5,6 +5,7 @@
 		<listener class-name="com.globant.automation.cyf2020.StarMeUp.MyListener"/>
 	</listeners>
 	<parameter name="browser" value="chrome"/>
+	<parameter name="browserB" value="firefox"/>
 	<test thread-count="5" name="Test">
   	<classes>
   		<class name="com.globant.automation.cyf2020.tests.LoginStarMeUpTest"></class>

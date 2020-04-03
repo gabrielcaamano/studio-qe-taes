@@ -14,15 +14,18 @@ import com.globant.automation.cyf2020.StarMeUp.LogedFeedPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginPassPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginUserPage;
 import com.globant.automation.cyf2020.StarMeUp.MyDriver;
+import com.globant.automation.cyf2020.StarMeUp.StarInfo;
 import com.globant.automation.cyf2020.StarMeUp.UserInfo;
 
 public class LoginStarMeUpTest {
 	
 	WebDriver driver;
+	WebDriver driverA;
+	WebDriver driverB;
 
 	@BeforeTest
-	@Parameters({ "browser" })
-	public void startDriver(String browser) {
+	@Parameters({ "browser","browserB"})
+	public void startDriver(String browser, String browserB) {
 
 		MyDriver myDriver = new MyDriver(browser);
 		driver = myDriver.getDriver();
@@ -86,21 +89,68 @@ public class LoginStarMeUpTest {
 		return key;
 	}
 
+	public LogedFeedPage login(String userKey, LoginUserPage loginUserPage, LoginPassPage loginPassPage, LogedFeedPage logedFeedPage) {
+		
+		loginUserPage = new LoginUserPage(driver);
+		loginPassPage = loginUserPage.typeUser(userKey);
+		return loginPassPage.typePassword(userKey);
+	}
 	
-	@Test(dataProvider = "infoProfile")
-	public void login(String userKey, String nameKey, String lastnameKey, String jobKey) {
-		LoginUserPage loginUserPage = new LoginUserPage(driver);
-		LoginPassPage loginPassPage = loginUserPage.typeUser(userKey);
-		LogedFeedPage logedFeedPage = loginPassPage.typePassword(userKey);
-		UserInfo pageUserInfo = logedFeedPage.userInfoFeed();
+	//@Test(dataProvider = "infoProfile")
+	public void loginAndCheckInfo(String userKey, String nameKey, String lastnameKey, String jobKey) {
+		
+		LoginUserPage loginUserPage = null;
+		LoginPassPage loginPassPage = null;
+		LogedFeedPage logedFeedPage = null;
+		UserInfo pageUserInfo = null;
+		
+		login(userKey, loginUserPage, loginPassPage, logedFeedPage);
+		pageUserInfo = logedFeedPage.userInfoFeed();
 		logedFeedPage.logOut();
+		
 		Assert.assertEquals(pageUserInfo.getName(), nameKey, "Names doesnt match");
 		Assert.assertEquals(pageUserInfo.getLastname(), lastnameKey, "Lastnames doesnt match");
 		Assert.assertEquals(pageUserInfo.getJob(), jobKey, "Jobs doesnt match");
 
 	}
 	
-	@AfterTest
+	
+	@Test
+	public void loginAndSendAStar() {
+		
+		StarInfo starInfoBefore = new StarInfo();
+		
+		String userKeyB = "user53@bootcampsqe.com";
+		//LoginUserPage loginUserB = null;
+		//LoginPassPage loginPassB = null;
+		//LogedFeedPage logedFeedB = null;
+		//UserInfo infoUserB = null;
+		
+		//logedFeedB = login(userKeyB, loginUserB, loginPassB, logedFeedB);
+		//logedFeedB.setRecibedStarsBefore();
+		//logedFeedB.logOut();
+		
+		String userKeyA = "user57@bootcampsqe.com";
+		LoginUserPage loginUserA = null;
+		LoginPassPage loginPassA = null;
+		LogedFeedPage logedFeedA = null;
+		UserInfo infoUserA = null;
+		
+		logedFeedA = login(userKeyA, loginUserA, loginPassA, logedFeedA);
+		logedFeedA.setSentStarsBefore();
+		starInfoBefore.setNameWhoRecibes("username59");
+		starInfoBefore.setNameWhoSends("username57");
+		starInfoBefore.setValue("Innovation");
+		logedFeedA.sendAStar("username59");
+		Assert.assertEquals(logedFeedA.starDeliveryChecking(), "Your star to username59 was sent successfully", "Unsuccessful star delivery");
+		logedFeedA.setSentStarsAfter();
+		//Assert.assertEquals(logedFeedA.getSentStarsAfter(), logedFeedA.getSentStarsBefore() + 1, "Wrong stars counting" );
+		logedFeedA.searchStarOnActivityFeed(starInfoBefore.getNameWhoRecibes(), starInfoBefore.getValue());
+	
+	}
+	
+	
+	//@AfterTest
 	public void closeDriver() {
 		driver.close();
 	}
