@@ -136,14 +136,14 @@ public class LoginStarMeUpTest {
 		
 		String whoSent = "username59";
 		String whoRecibed = "username58";
-		String value = "Innovation";
+		String value = "Teamwork";
 		
 		logedFeedA = login(userKeyA, loginUserA, loginPassA);
 		logedFeedA.setSentStarsBefore();
 		starInfoBefore.setNameWhoRecibes(whoRecibed);
 		starInfoBefore.setNameWhoSends(whoSent);
 		starInfoBefore.setValue(value);
-		logedFeedA.sendAStar(whoRecibed);
+		logedFeedA.sendAStar(whoRecibed, value);
 		Assert.assertEquals(logedFeedA.starDeliveryChecking(), "Your star to " + whoRecibed + " was sent successfully", "Unsuccessful star delivery");
 		logedFeedA.setSentStarsAfter();
 		//Assert.assertEquals(logedFeedA.getSentStarsAfter(), logedFeedA.getSentStarsBefore() + 1, "Wrong sent stars counting" );
@@ -164,7 +164,7 @@ public class LoginStarMeUpTest {
 		
 	}
 
-	// @AfterTest
+	@AfterTest
 	public void closeDriver() {
 		driver.close();
 	}

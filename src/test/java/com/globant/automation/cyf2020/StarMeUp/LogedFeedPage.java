@@ -38,8 +38,23 @@ public class LogedFeedPage extends BasePage {
 	@FindBy(xpath = "//div[@class='profile-stats']//div[2]//div[1]//div[1]//div[2]")
 	private WebElement sentStars;
 
+	@FindBy(xpath = "//span[contains(text(),'Integrity')]")
+	private WebElement globantIntegrityValue;
+	
+	@FindBy(xpath = "//span[contains(text(),'Excellence')]")
+	private WebElement globantExcellenceValue;
+	
+	@FindBy(xpath = "//span[contains(text(),'Teamwork')]")
+	private WebElement globantTeamworkValue;
+	
 	@FindBy(xpath = "//span[contains(text(),'Innovation')]")
-	private WebElement globantValue;
+	private WebElement globantInnovationValue;
+	
+	@FindBy(xpath = "//span[contains(text(),'Learning')]")
+	private WebElement globantLearningValue;
+	
+	@FindBy(xpath = "//span[contains(text(),'Think big')]")
+	private WebElement globantThinkBigValue;
 
 	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 	private WebElement searchColleagueInput;
@@ -123,13 +138,36 @@ public class LogedFeedPage extends BasePage {
 
 		return sentStarsAfter;
 	}
+	
+	public WebElement switchValueBtn (String value) {
+		
+		switch(value) {
+		  case "Integrity":
+		    return globantIntegrityValue;
+		  case "Excelence":
+		    return globantExcellenceValue;
+		  case "Teamwork":
+			    return globantTeamworkValue;
+		  case "Innovation":
+			  return globantInnovationValue;
+		  case "Learning":
+			    return globantLearningValue;
+		  case "Think big":
+			    return globantThinkBigValue;
+		  default: return globantExcellenceValue;    
+		
+		}
+		
+	}
 
-	public void sendAStar(String who) {
+	public void sendAStar(String who, String value) {
 
 		avoidPopUps();
-		type(searchColleagueInput, who, MOSTEXTENDED_TIMEOUT);
+		WebElement valueBtn = switchValueBtn(value);
+		click(valueBtn, EXTENDED_TIMEOUT);
+		type(searchColleagueInput, who, EXTENDED_TIMEOUT);
 		WebElement userToStar = getElement(By.xpath("//div[@class='search-result-item__content']"),
-				MOSTEXTENDED_TIMEOUT);
+				EXTENDED_TIMEOUT);
 		click(userToStar);
 		click(messageBox);
 		messageInput.sendKeys("This is an automation star");
@@ -143,9 +181,6 @@ public class LogedFeedPage extends BasePage {
 		getElementAndClick(By.xpath(
 				"//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]"));
 		getElementAndClick(By.xpath("/html[1]/body[1]/div[22]/div[1]/span[1]"));
-		String text = getText(globantValue);
-		System.out.println(text);
-		click(globantValue, MOSTEXTENDED_TIMEOUT);
 
 	}
 
