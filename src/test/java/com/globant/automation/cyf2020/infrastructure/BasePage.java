@@ -67,6 +67,10 @@ public abstract class BasePage {
 		getElement(locator).click();
 	}
 	
+	public void getElementAndGetText(By locator) {
+		getElement(locator).getText();
+	}
+	
 	protected WebElement getElement(By locator) {
 		return getElement(locator, DEFAULT_TIMEOUT);
 	}

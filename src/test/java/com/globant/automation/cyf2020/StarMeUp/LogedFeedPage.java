@@ -11,6 +11,8 @@ import org.w3c.dom.Document;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
+import groovyjarjarantlr.RecognitionException;
+
 public class LogedFeedPage extends BasePage {
 
 	public LogedFeedPage(WebDriver driver) {
@@ -53,6 +55,12 @@ public class LogedFeedPage extends BasePage {
 
 	@FindBy(xpath = "//button[@class='button button--nomargin-right button--transparent button--color-']")
 	private WebElement sendStarBtn;
+	
+	@FindBy(linkText = "MY PROFILE")
+	private WebElement myProfileBtn;
+	
+	@FindBy(linkText = "ACTIVITY FEED")
+	private WebElement activityFeedBtn;
 
 	private String namePage = "";
 	private String lastnamePage = "";
@@ -150,18 +158,21 @@ public class LogedFeedPage extends BasePage {
 		return deliveryConfirmationText;
 	}
 
-	public boolean searchStarOnActivityFeed( String whoRecibesName, String value ) {
-
+	public boolean searchStarOnActivityFeed( String whoRecibesName, String value, String whoSendsName ) {
+		
 		int index = 1;
-		boolean starFound = false;
+		boolean starFound = true;
+		activityFeedBtn.click();
 		WebElement userWhoRecibesFeed = getElement(By.cssSelector("div.home-layout.ui-components.ui-container.ui-container--centered:nth-child(3) div.ui-components.suite-grid div.ui-components.suite-column.suite-column-desktop-size-6.suite-column-desktop-sm-size-8.suite-column-tablet-size-12:nth-child(2) div.main-panel div.feed div.ui-components.suite-segment:nth-child(2) div.suite-segment__children div.ui-components.suite-panel.feed-item.suite-panel--nopadding:nth-child(" + index + ") div.feed-item__content-wrapper div.feed-item__description-wrapper div.feed-item__avatar-title:nth-child(1) div.feed-item__avatar-name > span.feed-item__avatar-name--cursor"));;
 		WebElement userWhoSendsFeed = getElement(By.cssSelector("div.home-layout.ui-components.ui-container.ui-container--centered:nth-child(3) div.ui-components.suite-grid div.ui-components.suite-column.suite-column-desktop-size-6.suite-column-desktop-sm-size-8.suite-column-tablet-size-12:nth-child(2) div.main-panel div.feed div.ui-components.suite-segment:nth-child(2) div.suite-segment__children div.ui-components.suite-panel.feed-item.suite-panel--nopadding:nth-child(" + index + ") div.feed-footer.feed-footer--dark span.feed-footer__user-info p.feed-footer__prefix-text.feed-footer__prefix-text--smu > strong.feed-footer__full-name"));;
 		WebElement valueFeed = getElement(By.cssSelector("div.home-layout.ui-components.ui-container.ui-container--centered:nth-child(3) div.ui-components.suite-grid div.ui-components.suite-column.suite-column-desktop-size-6.suite-column-desktop-sm-size-8.suite-column-tablet-size-12:nth-child(2) div.main-panel div.feed div.ui-components.suite-segment:nth-child(2) div.suite-segment__children div.ui-components.suite-panel.feed-item.suite-panel--nopadding:nth-child(" + index + ") div.feed-item__content-wrapper div.feed-item__description-wrapper div.feed-item__badge-wrapper:nth-child(2) > div.feed-item__badge-description"));
 		String userWhoRecibesFeedText = getText(userWhoRecibesFeed);
 		String userWhoSendsFeedText = getText(userWhoSendsFeed);
 		String valueFeedText = getText(valueFeed);
+		String valueToUpperCase;
+		valueToUpperCase = value.toUpperCase();
 
-		while ( (userWhoRecibesFeedText != "null")  && (! userWhoRecibesFeedText.contains(whoRecibesName))) {
+		while ( (userWhoRecibesFeedText.contentEquals("null"))  && (! userWhoRecibesFeedText.contains(whoRecibesName))) {
 
 			userWhoRecibesFeed = getElement(By.cssSelector("div.home-layout.ui-components.ui-container.ui-container--centered:nth-child(3) div.ui-components.suite-grid div.ui-components.suite-column.suite-column-desktop-size-6.suite-column-desktop-sm-size-8.suite-column-tablet-size-12:nth-child(2) div.main-panel div.feed div.ui-components.suite-segment:nth-child(2) div.suite-segment__children div.ui-components.suite-panel.feed-item.suite-panel--nopadding:nth-child(\" + index + \") div.feed-footer.feed-footer--dark span.feed-footer__user-info p.feed-footer__prefix-text.feed-footer__prefix-text--smu > strong.feed-footer__full-name"));
 			userWhoSendsFeed = getElement(By.cssSelector("div.home-layout.ui-components.ui-container.ui-container--centered:nth-child(3) div.ui-components.suite-grid div.ui-components.suite-column.suite-column-desktop-size-6.suite-column-desktop-sm-size-8.suite-column-tablet-size-12:nth-child(2) div.main-panel div.feed div.ui-components.suite-segment:nth-child(2) div.suite-segment__children div.ui-components.suite-panel.feed-item.suite-panel--nopadding:nth-child(\" + index + \") div.feed-item__content-wrapper div.feed-item__description-wrapper div.feed-item__avatar-title:nth-child(1) div.feed-item__avatar-name > span.feed-item__avatar-name--cursor"));
@@ -174,13 +185,50 @@ public class LogedFeedPage extends BasePage {
 			index++;
 		}
 		
-		if ( userWhoRecibesFeedText == "null" ) {
+		if ( userWhoRecibesFeedText.contentEquals("null") ) {
 			starFound = false;
 			return starFound;
 		} else {
-			starFound = ( userWhoSendsFeedText == "me" ) && ( value.toUpperCase() == valueFeedText );
+			starFound = (( userWhoSendsFeedText.contains(whoSendsName) ) && ( valueToUpperCase.contentEquals(valueFeedText)));
 			return starFound;
 		}
 	}
-
+	
+	public RecognitionPage goRecognition() {
+		
+		myProfileBtn.click();
+		return new RecognitionPage(driver);
+	}
+	
+	public boolean thereIsANotification() {
+		getElement(By.xpath("\"//div[@class='notifications-button__label']\""));
+		return true;
+	}
+	
+	public boolean checkNotification(String whoSent, String value) {
+		
+		WebElement firstNotName ;
+		WebElement valueNot;
+		String firstNotNameText;
+		String valueNotText;
+		
+		getElementAndClick(By.xpath("//div[@class='notifications-button__label']"));
+		firstNotName = getElement(By.xpath("//span[@class='notifications-item__content-header']"));
+		firstNotNameText = getText(firstNotName);
+		valueNot = getElement(By.cssSelector("nav.ui-navbar:nth-child(1) div.ui-navbar__container div.ui-navbar__icon-container div.notifications div.ui-components.suite-segment.notifications-list div.suite-segment__children div.notifications-list__content ul.notifications-list__list li.notifications-item.notifications-item--active div.notifications-item__content div.notifications-item__content-description div:nth-child(1) > span:nth-child(1)"));
+		valueNotText = getText(valueNot);
+		getElementAndClick(By.xpath("//button[contains(@class,'button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-')]"));
+		
+		return ( firstNotNameText.contains(whoSent) && ( valueNotText.contains(value)));
+		
+	}
+	
+	public boolean notificationWasRead() {
+		
+		getElementAndClick(By.xpath("//button[contains(@class,'button button--icon button--nopadding button--transparent notifications-button button--color-')]"));
+		WebElement notRead = getElement(By.xpath("//span[contains(text(),\"You don't have notifications\")]"));
+		getElementAndClick(By.xpath("//button[contains(@class,'button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-')]"));
+		return true;
+		
+	}
 }
