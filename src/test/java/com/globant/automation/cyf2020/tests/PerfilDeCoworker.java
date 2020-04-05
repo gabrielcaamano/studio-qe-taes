@@ -49,7 +49,6 @@ public class PerfilDeCoworker extends BasePage{
 	private WebElement volverAlaPaginaDeInicio;
 	
 	
-	     			
 	
 	
 	public PerfilDeCoworker(WebDriver driver) {
@@ -104,6 +103,11 @@ public class PerfilDeCoworker extends BasePage{
 	public void clickParaComfirmarEnvioDStar() {
 		click(sendStarBtnComfirm);
 	}
+	
+	
+	
+	
+	
 	
 	
 	

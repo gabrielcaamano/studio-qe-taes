@@ -46,7 +46,7 @@ public class UsuarixStarMeUp {
 	 	   this.contraseña = contraseña;
 	    }
 	    
-	    public String getContraseña() {
+	    public String getPassword() {
 	 	   return contraseña;
 	    }
 	   

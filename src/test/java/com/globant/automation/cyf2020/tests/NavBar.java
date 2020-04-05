@@ -69,7 +69,7 @@ public class NavBar extends BasePage {
 	}
 	
 	public void clickEnLaCampana() {
-		wait(Duration.ofSeconds(3));
+		wait(Duration.ofSeconds(6));
 		click(campanaNotificationBtn);
 	}
 	

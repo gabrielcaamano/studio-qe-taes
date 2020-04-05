@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ejecutorTest {
+public class EjecutorTest {
 
 	//https://uat.starmeup.com/login.html?continue=aHR0cHM6Ly91YXQuc3Rhcm1ldXAuY29tLw%3D%3D&origin=SMU&logout=true
 	//pagina a la que hay que ir
@@ -31,6 +31,7 @@ private WebDriver driver;
 	public void iniciarPaginaWeb() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://uat.starmeup.com/login.html?continue=aHR0cHM6Ly91YXQuc3Rhcm1ldXAuY29tLw%3D%3D&origin=SMU&logout=true");
 	} 
 	
@@ -51,46 +52,43 @@ private WebDriver driver;
 		usuario.setApellido("feed81");
 		
 		Login login = new Login(driver);
-		PaginaPrincipalStarOS paginaPrincipal = login.navigateToPrincipalPage(usuario.getEmail(), usuario.getContraseña());
+		PaginaPrincipalStarOS paginaPrincipal = login.navigateToPrincipalPage(usuario.getEmail(), usuario.getPassword());
 		
 		
-		//Toma los datos y compara para ver si coinciden
+		//Take the data and compare to see if they match
 		compararNombreApellidoYJob(usuario.getNombre(), usuario.getApellido(), paginaPrincipal.nombreYApellido(), usuario.getJob(), paginaPrincipal.getTheJob());
 		
 	}
 	
-	@Test
-	public void SendStar() {
+	//@Test
+	public void SendStar1Y2() {
 		
 		UsuarixStarMeUp usuarioB = new UsuarixStarMeUp();
-		usuarioB.setEmail("user84@bootcampsqe.com");
-		usuarioB.setContraseña("user84@bootcampsqe.com");
-		usuarioB.setJob("job_ssqlw");
-		usuarioB.setNombre("username84");
-		usuarioB.setApellido("feed84");
+		usuarioB.setEmail("user85@bootcampsqe.com");
+		usuarioB.setContraseña("user85@bootcampsqe.com");
+		
 		
 		Login login1 = new Login(driver);
-		PaginaPrincipalStarOS paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getContraseña());
-		int capturarNumeroDeEstrellasRecibidasUserB = paginaPrincipalB.getStarRecibed();
+		PaginaPrincipalStarOS paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getPassword());
+		int capturarNumeroDeEstrellasRecibidasUserB = 0;
+		capturarNumeroDeEstrellasRecibidasUserB = paginaPrincipalB.getStarRecibed();
 		NavBar barraDeNavegacion = paginaPrincipalB.navigateToNavBar();
 		login1 = barraDeNavegacion.desloguearse();
 		
-		//creaccion del userA
+		//userA is created
 		UsuarixStarMeUp usuarioA = new UsuarixStarMeUp();
 		usuarioA.setEmail("user82@bootcampsqe.com");
 		usuarioA.setContraseña("user82@bootcampsqe.com");
-		usuarioA.setJob("job_qdqcu");
-		usuarioA.setNombre("username82");
-		usuarioA.setApellido("feed82");
 		
-		//para El usuarioA
-		PaginaPrincipalStarOS paginaPrincipal2 = login1.navigateToPrincipalPage(usuarioA.getEmail(), usuarioA.getContraseña());
+		
+		//for the userA
+		PaginaPrincipalStarOS paginaPrincipal2 = login1.navigateToPrincipalPage(usuarioA.getEmail(), usuarioA.getPassword());
 		
 		int capturarNumeroDeEstrellasEnviadasUserA = paginaPrincipal2.getStarSent();
 		
 		NavBar barraDeNavegacionA = paginaPrincipal2.navigateToNavBar();
 		
-		//navegar al perfil del user
+		//driver at user profile
 		PerfilDeCoworker coworkerPerfil = barraDeNavegacionA.navigateToPerfilDeCoworker(usuarioB.getEmail());
 		
 		/*  algo sobre navigateToPrincipalPageDesdePDCoworker, el numero es el tipo de reconocimiento que se le quiere enviar, esta ordenado asi:
@@ -105,11 +103,12 @@ private WebDriver driver;
 		 * 
 		 *    */
 		
-		paginaPrincipal2 = coworkerPerfil.navigateToPrincipalPageDesdePDCoworker(3, "Good Job!");
+		paginaPrincipal2 = coworkerPerfil.navigateToPrincipalPageDesdePDCoworker(3, ":O"); 
 		//vuelvo a la pagina principal
 	    
 	    //capturo los datos en la variable
 		
+		paginaPrincipal2.reLoadTheActivity();
 		String nombreYreemitenteActivityFeed = paginaPrincipal2.capturarNombreYreemitenteActivityFeed();
 		
 		//verificar si las estrellas enviadas se incrementaron en uno
@@ -122,16 +121,16 @@ private WebDriver driver;
 		
 		perfilPersonal.clickSentTab();
 		
-		
+		String nombreYreemitenteActivityFeed2 = perfilPersonal.capturarNombreYreemitentePerfil();
 		//comparo si los datos recabados son iguales
-		assertEquals( perfilPersonal.capturarNombreYreemitentePerfil(), nombreYreemitenteActivityFeed);
+		assertEquals(nombreYreemitenteActivityFeed2, nombreYreemitenteActivityFeed);
 		
 		//voy hacia el usuarioB
 		
-		
+	
 		
 	    barraDeNavegacionA.desloguearse();
-	    paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getContraseña());
+	    paginaPrincipalB = login1.navigateToPrincipalPage(usuarioB.getEmail(), usuarioB.getPassword());
 		
 		barraDeNavegacion.clickEnLaCampana();
 	    barraDeNavegacion.darClickEnLaNotificacion();
@@ -155,8 +154,74 @@ private WebDriver driver;
 	    
 	  //comparo si los datos recabados son iguales
 	   assertEquals( perfilPersonalUserB.nombreDelReemitente(), reemitenteActivityFeedUserB);
-	    
+	   
 	}
+	
+	
+	
+	
+	@Test
+	public void SendStar3() {
+		
+		UsuarixStarMeUp userB = new UsuarixStarMeUp();
+		userB.setEmail("user85@bootcampsqe.com");
+		userB.setContraseña("user85@bootcampsqe.com");
+		
+		Login login = new Login(driver);
+		PaginaPrincipalStarOS principalPage = login.navigateToPrincipalPage(userB.getEmail(), userB.getPassword());
+		NavBar barraDeNavegacion = principalPage.navigateToNavBar();
+		
+		PerfilDeUser perfilPersonalUser = barraDeNavegacion.navigateToPerfilDeUser();
+		int cantidadDeComentarios1 = 0;
+		cantidadDeComentarios1 =+ perfilPersonalUser.cantidadDeComentarios();
+		System.out.println(cantidadDeComentarios1);
+		
+		perfilPersonalUser.clicktoOpenComments();
+		System.out.println(perfilPersonalUser.primercomentarioExisteOno());
+		
+		 barraDeNavegacion.desloguearse();
+		 
+		 UsuarixStarMeUp userA = new UsuarixStarMeUp();
+		 userA.setEmail("user82@bootcampsqe.com");
+		 userA.setContraseña("user82@bootcampsqe.com");
+		 
+		 principalPage = login.navigateToPrincipalPage(userA.getEmail(), userA.getPassword());
+		 
+	     perfilPersonalUser.clickSentTab();
+	     
+	     String enviarComentarioYguardar = perfilPersonalUser.escribirUnComentario(" Holas");
+	     perfilPersonalUser.clickPopUpRight();
+	     perfilPersonalUser.clickForSentTheComent();
+	     perfilPersonalUser.clickPopUpInMyProfile();
+	     
+	     //perfilPersonalUser.clicktoOpenComments();
+	     String getCommentType = perfilPersonalUser.primercomentarioExisteOno();
+	     System.out.println(getCommentType);
+	     barraDeNavegacion.desloguearse();
+	     
+	     //start session the userB again
+	     principalPage = login.navigateToPrincipalPage(userB.getEmail(), userB.getPassword());
+	     perfilPersonalUser.clickPopUpInMyProfile(); // close a pop up that blocks an action
+	     barraDeNavegacion.clickEnLaCampana();
+		 barraDeNavegacion.darClickEnLaNotificacion();
+		 
+		 //get the comment in the notifications 
+		 //perfilPersonalUser.clicktoOpenComments();
+		 String getCommentTypeInNotifications = perfilPersonalUser.primercomentarioExisteOno();
+		 
+		 System.out.println(getCommentTypeInNotifications);
+		 
+		 int cantidadDeComentarios2 = 0;
+			cantidadDeComentarios2 =+ perfilPersonalUser.cantidadDeComentarios();
+			System.out.println(cantidadDeComentarios2);
+		 
+		 assertEquals(getCommentType, getCommentTypeInNotifications);
+		
+	     assertEquals(cantidadDeComentarios2, cantidadDeComentarios1 + 1);
+	}
+	
+	
+	
 	
 	
 	

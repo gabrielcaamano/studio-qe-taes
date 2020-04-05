@@ -27,8 +27,11 @@ public class PaginaPrincipalStarOS extends BasePage {
 	private WebElement starParaEnviar;
 	
 	
-	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]")
-	private WebElement recentTab;
+	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]") 
+	private WebElement recentTabInactive;
+	
+	@FindBy(xpath = "//div[@class=\"tab-panel__item tab-panel__item--active\"]") 
+	private WebElement recentTabActive;
 	
 	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"feed-item__avatar-name--cursor\"]")
 	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
@@ -94,6 +97,10 @@ public class PaginaPrincipalStarOS extends BasePage {
 		click(popUpUpInTheNav);
 		
 	}
+	
+	public void reLoadTheActivity() {
+		click(recentTabActive);	
+		}
 	
 	
 	
