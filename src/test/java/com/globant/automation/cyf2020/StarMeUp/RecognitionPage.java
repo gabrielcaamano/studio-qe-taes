@@ -9,9 +9,9 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 
 public class RecognitionPage extends BasePage {
 
-	public RecognitionPage(WebDriver driver) {
+	public RecognitionPage(WebDriver driver, boolean popUpRecognition) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		popUpRecognitionDisplayed = popUpRecognition;
 	}
 
 	@FindBy(xpath = "//div[@class='tab-panel__item tab-panel__item--active']")
@@ -20,6 +20,8 @@ public class RecognitionPage extends BasePage {
 	@FindBy(xpath = "//div[@class='tab-panel__item']")
 	WebElement sentBtn;
 
+	private boolean popUpRecognitionDisplayed;
+	
 	public boolean checkRecognitionSent(String whoRecibed, String value) {
 
 		boolean founded;
@@ -30,8 +32,11 @@ public class RecognitionPage extends BasePage {
 		String valueToUpperCase;
 		valueToUpperCase = value.toUpperCase();
 		
-		getElementAndClick(By.xpath(
-			"//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]"));
+		if ( popUpRecognitionDisplayed ) {
+			WebElement popUpRecognitionElement = getElement(By.xpath(
+					"//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]"));
+			popUpRecognitionElement.click();
+		}
 		sentBtn.click();
 		whoRecibedElement = getElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/span[1]"));
 		valueElement = getElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]"));

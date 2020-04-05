@@ -2,14 +2,11 @@ package com.globant.automation.cyf2020.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.globant.automation.cyf2020.StarMeUp.LogedFeedPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginPassPage;
 import com.globant.automation.cyf2020.StarMeUp.LoginUserPage;
@@ -120,7 +117,7 @@ public class LoginStarMeUpTest {
 		
 		StarInfo starInfoBefore = new StarInfo();
 		
-		String userKeyB = "user58@bootcampsqe.com";
+		String userKeyB = "user56@bootcampsqe.com";
 		LoginUserPage loginUserB = null;
 		LoginPassPage loginPassB = null;
 		LogedFeedPage logedFeedB = null;
@@ -135,7 +132,7 @@ public class LoginStarMeUpTest {
 		LogedFeedPage logedFeedA = null;
 		
 		String whoSent = "username59";
-		String whoRecibed = "username58";
+		String whoRecibed = "username56";
 		String value = "Teamwork";
 		
 		logedFeedA = login(userKeyA, loginUserA, loginPassA);
@@ -143,7 +140,8 @@ public class LoginStarMeUpTest {
 		starInfoBefore.setNameWhoRecibes(whoRecibed);
 		starInfoBefore.setNameWhoSends(whoSent);
 		starInfoBefore.setValue(value);
-		logedFeedA.sendAStar(whoRecibed, value);
+		//logedFeedA.searchUserAndSendAStar(whoRecibed, value, false); //USER STORY 150
+		logedFeedA.selectValueAndSendAStar(whoRecibed, value, true); //USER STORY 151
 		Assert.assertEquals(logedFeedA.starDeliveryChecking(), "Your star to " + whoRecibed + " was sent successfully", "Unsuccessful star delivery");
 		logedFeedA.setSentStarsAfter();
 		//Assert.assertEquals(logedFeedA.getSentStarsAfter(), logedFeedA.getSentStarsBefore() + 1, "Wrong sent stars counting" );
