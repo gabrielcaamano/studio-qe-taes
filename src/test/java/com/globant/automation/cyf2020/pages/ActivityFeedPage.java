@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-public class HomePage extends BasePage {
+public class ActivityFeedPage extends BasePage {
 
-	public HomePage(WebDriver driver) {
+	public ActivityFeedPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -25,17 +25,21 @@ public class HomePage extends BasePage {
 	@FindBy (xpath = "(//div [@class = 'stat__content'])[2]")
 	private WebElement sentStar;
 	
-	@FindBy (xpath = "//input [@class = 'suite-search-box__input']")
-	private WebElement search;
+	@FindBy (xpath= "//strong[@class = 'feed-footer__full-name']")
+	private WebElement firstStarSentBy;
 	
-	@FindBy (xpath = "//div [@class = 'search-result-item__content']")
-	private WebElement searchButton;
+	@FindBy (xpath = "//div[@class = 'feed-item__badge-description']")
+	private WebElement kindOfStar;
 	
-	@FindBy (xpath = "//button[@class = 'button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-']")
-	private WebElement button;
-
-	@FindBy (xpath = "//button[@class = 'button button--color- button--size-small']")
-	private WebElement logoutButton;
+	@FindBy (xpath = "//span [@class = 'feed-item__avatar-name--cursor']")
+	private WebElement starSentTo;
+	
+	@FindBy (xpath = "//span [contains (@class , 'suite-discovery__smu--open')]")
+	private WebElement popUp;
+	
+	public void clickPopUp() {
+		click(popUp);
+	}
 	
 	public String getName() {
 		String[] completeName = getText(name).split(" ");
@@ -59,19 +63,15 @@ public class HomePage extends BasePage {
 		return getText(sentStar);
 	}
 	
-	public void searchColleague(String colleague) {
-		search.sendKeys(colleague);
+	public String starSentBy() {
+		return getText(firstStarSentBy);
 	}
 	
-	public void clickSearch() {
-		click(searchButton);
-	}	
-	
-	public void clickButton() {
-		click(button);
+	public String kindOfStar() {
+		return getText(kindOfStar);
 	}
 	
-	public void clickLogout() {
-		click(logoutButton);
+	public String starSentTo() {
+		return getText(starSentTo);
 	}
 }
