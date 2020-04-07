@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-public class PaginaPrincipalStarOS extends BasePage {
+public class ActivityFeedStarOS extends BasePage {
 
 	
 	@FindBy(xpath = "//h3[@class = \"user-info__name\"]")
@@ -47,7 +47,7 @@ public class PaginaPrincipalStarOS extends BasePage {
 	private WebElement popUpUpInTheNav;
 	
 	
-	public PaginaPrincipalStarOS(WebDriver driver) {
+	public ActivityFeedStarOS(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -107,7 +107,7 @@ public class PaginaPrincipalStarOS extends BasePage {
 	
 	
 	
-	public String capturarNombreYreemitenteActivityFeed() {
+	public String captureNameAndSenderActivityFeed() {
 		
 		String nombreYApellidoObtenido = getText(nombreDelCoworkerAlQueLeEnvieLaEstrella);
 		String usuarioQueEnviaElReconocimiento = getText(porQuienEsEnviadaLaEstrella);
@@ -115,14 +115,14 @@ public class PaginaPrincipalStarOS extends BasePage {
 		
 	}
 	
-	public String nombreDelReemitenteActivityFeed() {
+	public String senderNameActivityFeed() {
 		String usuarioQueEnviaElReconocimiento = getText(porQuienEsEnviadaLaEstrella);
 		return usuarioQueEnviaElReconocimiento;
 		
 	}
 	
 	
-	public boolean verificarSiLaNotificacionEstaReadTrueONoFalse() {
+	public boolean VerifyNotificationThisReadTrueOrFalse() {
 		
 		String youNotienesNotificaciones = getText(youDontHaveNotifications);
 		

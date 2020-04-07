@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.globant.automation.cyf2020.infrastructure.BasePage;
 
-public class PerfilDeCoworker extends BasePage{
+public class ProfileOfCoworker extends BasePage{
 
 	
 
@@ -51,7 +51,7 @@ public class PerfilDeCoworker extends BasePage{
 	
 	
 	
-	public PerfilDeCoworker(WebDriver driver) {
+	public ProfileOfCoworker(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -113,7 +113,7 @@ public class PerfilDeCoworker extends BasePage{
 	
 	
 	
-	 public PaginaPrincipalStarOS navigateToPrincipalPageDesdePDCoworker(int opcion, String notaOcomentario) {
+	 public ActivityFeedStarOS navigateToPrincipalPageFromPDCoworker(int opcion, String notaOcomentario) {
 		 enviarUnaEstrellaBtn();
 		 wait(Duration.ofSeconds(6));
 		 click(popUspDeArriba);
@@ -124,7 +124,7 @@ public class PerfilDeCoworker extends BasePage{
 		 wait(Duration.ofSeconds(3));
 		 click(cerrarConfirmacionDeEnvioDeEstrella);
 		 click(volverAlaPaginaDeInicio);
-			return getNextPage(PaginaPrincipalStarOS.class);
+			return getNextPage(ActivityFeedStarOS.class);
 		}
 	 
 	

@@ -48,7 +48,7 @@ public class Login extends BasePage {
 	 }
 	 
 	 
-	 public PaginaPrincipalStarOS navigateToPrincipalPage(String nombre, String password) {
+	 public ActivityFeedStarOS navigateToActivityFeed(String nombre, String password) {
 		    ingresarUser(nombre);
 		    clickEnNext(nextBTN);
 		    
@@ -56,7 +56,7 @@ public class Login extends BasePage {
 		    clickEnNext(loginBTN);
 		    
 				
-			return getNextPage(PaginaPrincipalStarOS.class);
+			return getNextPage(ActivityFeedStarOS.class);
 		}
 	 
 	 
