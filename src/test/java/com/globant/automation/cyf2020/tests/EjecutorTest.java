@@ -160,7 +160,7 @@ private WebDriver driver;
 	
 	
 	
-	@Test
+	//@Test
 	public void SendStar3() {
 		
 		UsuarixStarMeUp userB = new UsuarixStarMeUp();
@@ -205,8 +205,7 @@ private WebDriver driver;
 	     barraDeNavegacion.clickEnLaCampana();
 		 barraDeNavegacion.darClickEnLaNotificacion();
 		 
-		 //get the comment in the notifications 
-		 //perfilPersonalUser.clicktoOpenComments();
+		 
 		 String getCommentTypeInNotifications = perfilPersonalUser.primercomentarioExisteOno();
 		 
 		 System.out.println(getCommentTypeInNotifications);
@@ -220,6 +219,63 @@ private WebDriver driver;
 	     assertEquals(cantidadDeComentarios2, cantidadDeComentarios1 + 1);
 	}
 	
+	
+	
+	@Test
+	public void  sanityLikeAStar() {
+		
+		UsuarixStarMeUp userB = new UsuarixStarMeUp();
+		userB.setEmail("user82@bootcampsqe.com");
+		userB.setContraseña("user82@bootcampsqe.com");
+		
+		Login login = new Login(driver);
+		PaginaPrincipalStarOS principalPage = login.navigateToPrincipalPage(userB.getEmail(), userB.getPassword());
+		NavBar barraDeNavegacion = principalPage.navigateToNavBar();
+		
+		PerfilDeUser perfilPersonalUser = barraDeNavegacion.navigateToPerfilDeUser();
+		
+		//amount of reactions in the first star
+		int amountOfReactions = 0;
+		amountOfReactions =+ perfilPersonalUser.getAmountOfReactions();
+		System.out.println(amountOfReactions);
+		
+		 //log out of the user B
+		 barraDeNavegacion.desloguearse();
+		 
+		 UsuarixStarMeUp userA = new UsuarixStarMeUp();
+		 userA.setEmail("user81@bootcampsqe.com");
+		 userA.setContraseña("user81@bootcampsqe.com");
+		 
+		 principalPage = login.navigateToPrincipalPage(userA.getEmail(), userA.getPassword());
+		 
+	     perfilPersonalUser.clickSentTab();
+	     
+	     //send a like in a star of the user B
+	    perfilPersonalUser.clickToSendLike();
+	     perfilPersonalUser.clickPopUpRight();
+	     perfilPersonalUser.clickPopUpInMyProfile();
+	     
+	     //close the session of user A
+	     barraDeNavegacion.desloguearse();
+	          
+	     //start session the userB again
+	     principalPage = login.navigateToPrincipalPage(userB.getEmail(), userB.getPassword());
+	     perfilPersonalUser.clickPopUpInMyProfile(); // close a pop up that blocks an action
+	     barraDeNavegacion.clickEnLaCampana();
+		 barraDeNavegacion.darClickEnLaNotificacion();
+
+		 
+		 int amountOfReactions2 = 0;
+		 amountOfReactions2 =+ perfilPersonalUser.getAmountOfReactionsInNotifications();
+			System.out.println(amountOfReactions2);
+		 
+		
+		 assertEquals(amountOfReactions2, amountOfReactions + 1);
+		 
+		 assertEquals(perfilPersonalUser.firstLikeIsPresentOrNot(), true);
+		 
+		 
+	}
 	
 	
 	

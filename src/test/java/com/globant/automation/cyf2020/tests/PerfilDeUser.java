@@ -24,10 +24,28 @@ public class PerfilDeUser extends BasePage {
 	//comentario
 	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][1]//span[@class=\"counter__value\"]")
 	private WebElement cantidadDecomentarios;
+	
+	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][2]//span[@class=\"counter__value\"]")
+	private WebElement amountOfLikes;
+	
+	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][3]//span[@class=\"counter__value\"]")
+	private WebElement amountOfLikesInNotifications;
+	
+	
 		
+	
 	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"]")
 	private WebElement comentario1Bttn;
-		
+	
+	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"feed-footer__counters feed-footer__counters--smu\"]//div[@class=\"counter feed-footer__counter\"][2]//span[1]")
+	private WebElement like1Bttn;
+	
+	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item\"][1]//span[@class=\"message-item__author-name\"]")
+	private WebElement autorOfComments;
+	
+	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item\"][1]//small//span")
+	private WebElement mentionsOfTheLike;
+	
 	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item__text\"]")
 	private WebElement primerComentarioTxt;
 		     			
@@ -90,6 +108,14 @@ public class PerfilDeUser extends BasePage {
 			return comentario1; } else {return "Aun no hay comentarios";}
 		}
 	
+	
+	public boolean firstLikeIsPresentOrNot() {
+		
+		if(isElementPresent(mentionsOfTheLike)) {
+		
+		return true; } else {return false;}
+	}
+
 	public String escribirUnComentario(String comentario) {
 		clicktoOpenComments();
 		type(input1Comentario, comentario);
@@ -115,11 +141,31 @@ public class PerfilDeUser extends BasePage {
 		click(comentario1Bttn);
 	}
 	
+	public void clickToSendLike() {
+		click(like1Bttn);
+	}
+	
+	
 	
 	public void clickPopUpInMyProfile() {
 		click(popUpMyProfile);
 	}
 	
+	
+	//get the amount of reactions
+	public int getAmountOfReactions() {
+				String numbersOfReactions = getText(amountOfLikes);
+				int numbersOfReactionsConvertToInt = Integer.parseInt(numbersOfReactions);
+				return numbersOfReactionsConvertToInt;
+			}
+
+    public int getAmountOfReactionsInNotifications() {
+	String numbersOfReactionsNotifications = getText(amountOfLikesInNotifications);
+	int numbersOfReactionsConvertToInt = Integer.parseInt(numbersOfReactionsNotifications);
+	return numbersOfReactionsConvertToInt;
+   }
+
+
 	
     
 	
