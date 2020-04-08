@@ -12,28 +12,28 @@ public class ProfileOfCoworker extends BasePage{
 
 	
 
-	@FindBy(xpath = "//button[@class=\"button profile-board__btn-wrapper-button button--color-black\"]")
+	@FindBy(xpath = "//button[contains(@class, 'profile-board__btn-wrapper-button')]")
 	private WebElement sendStarBTN;
 	
 	@FindBy(xpath = "//button[@class=\"button button--nomargin-right button--transparent button--color-\"]")
 	private WebElement sendStarBtnComfirm;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][1]")
+	@FindBy(xpath = "//div[@class=\"value-icon\"]")
 	private WebElement integrityBTN;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][2]")
+	@FindBy(xpath = "//div[@class=\"value-icon\"][2]")
 	private WebElement excellenceBTN;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][3]")
+	@FindBy(xpath = "//div[@class=\"value-icon\"][3]")
 	private WebElement teamworkBTN;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][4]")
+	@FindBy(xpath = "//div[@class=\"value-icon\"][4]")
 	private WebElement innovationBTN;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][5]//img")
+	@FindBy(xpath = "//div[@class=\"value-icon\"][5]")
 	private WebElement learningBTN;
 	
-	@FindBy(xpath = "//div[@class=\"what-value what-value--horizontal\"]//div[@class=\"value-icon\"][6]")
+	@FindBy(xpath = "//div[@class=\"value-icon\"][6]")
 	private WebElement thinkBigBTN;
 	
 	@FindBy(xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")

@@ -10,153 +10,177 @@ import com.globant.automation.cyf2020.infrastructure.BasePage;
 
 public class ActivityFeedStarOS extends BasePage {
 
-	
 	@FindBy(xpath = "//h3[@class = \"user-info__name\"]")
 	private WebElement nombreYApellidoDUsuarix;
-	
+
 	@FindBy(xpath = "//p[@class=\"user-info__job\"]")
 	private WebElement jobOfTheUser;
-	
-	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"][1]//div[@class=\"stat__content\"]")
+
+	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"]//div[@class=\"stat__content\"]")
 	private WebElement starRecibed;
-	
+
 	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"][2]//div[@class=\"stat__content\"]")
 	private WebElement starSent;
-	
+
 	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"][3]//div[@class=\"stat__content\"]")
 	private WebElement starParaEnviar;
+
+	@FindBy(xpath = "//div[@class=\"feed-item__content-wrapper\"]")
+	private WebElement starSentByUserA;
+
+	@FindBy(xpath = "//button[contains(@class, 'button--icon button--nopadding button--c')]")
+	private WebElement editStarSentByUserA;
+
+	@FindBy(xpath = "//div[contains(@class, 'public-DraftStyleDefault-ltr')]//span[@data-text=\"true\"]")
+	private WebElement conctentOfTheWhy;
 	
-	
-	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]") 
-	private WebElement recentTabInactive;
-	
-	@FindBy(xpath = "//div[@class=\"tab-panel__item tab-panel__item--active\"]") 
-	private WebElement recentTabActive;
-	
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"feed-item__avatar-name--cursor\"]")
-	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
-	
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//strong[@class=\"feed-footer__full-name\"]")
-	private WebElement porQuienEsEnviadaLaEstrella;
+	@FindBy(xpath = "//div[@class=\"feed-item__description-notes\"]")
+	private WebElement textMessageOfStartSent;
 
 	
+	@FindBy(xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
+	private WebElement whyMessageInput;
+
+	@FindBy(xpath = "//button[@class=\"button button--nomargin-right button--transparent button--color-\"]")
+	private WebElement editStarBtnConfirm;
+
+	@FindBy(xpath = "//i[@class=\"close large icon confirmation__close\"]")
+	private WebElement cerrarConfirmacionDeEnvioDeEstrella;	
+	
+	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]")
+	private WebElement recentTabInactive;
+
+	@FindBy(xpath = "//div[@class=\"tab-panel__item tab-panel__item--active\"]")
+	private WebElement recentTabActive;
+
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-item__avatar-name--cursor\"]")
+	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
+
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//strong[@class=\"feed-footer__full-name\"]")
+	private WebElement porQuienEsEnviadaLaEstrella;
+
 	@FindBy(xpath = "//p[@class=\"notifications-list__info\"]//span")
 	private WebElement youDontHaveNotifications;
-	
+
 	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
-	private WebElement popUpUpInTheNav;
+	private WebElement popUpUpInTheNav;  
 	
 	
+
 	public ActivityFeedStarOS(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
+	// toma el nombre y el apellido de la pagina, con una espera previa ya que la
+	// pagina tarda en cargar
+	public String nombreYApellido() {
 
-	//toma el nombre y el apellido de la pagina, con una espera previa ya que la pagina tarda en cargar
-	public String nombreYApellido () {
-		
-		     wait(Duration.ofSeconds(10));
-		     
-		     String nameAndLastName = getText(nombreYApellidoDUsuarix);
-		     
-			 return nameAndLastName;
+		wait(Duration.ofSeconds(10));
+
+		String nameAndLastName = getText(nombreYApellidoDUsuarix);
+
+		return nameAndLastName;
 	}
- 
-	
-	
-	
-	//toma el trabajo de la pagina
+
+	// toma el trabajo de la pagina
 	public String getTheJob() {
 		String trabajo = getText(jobOfTheUser);
 		return trabajo;
 	}
-	
-	
-	
-	
+
 	public int getStarRecibed() {
 		String estrellasRecibidas = getText(starRecibed);
 		int numStarGive = Integer.parseInt(estrellasRecibidas);
 		return numStarGive;
 	}
-	
+
 	public int getStarSent() {
 		String estrellasEnviadas = getText(starSent);
 		int numStarSent = Integer.parseInt(estrellasEnviadas);
 		return numStarSent;
 	}
-	
-	
-	
-	
-	
-	
+
+	public void clickInStartSendForUserA() {
+
+		click(starSentByUserA);
+
+	}
+
+	public void clickInEditStar() {
+
+		click(editStarSentByUserA);
+
+	}
+
 	public void clickEnPopUp() {
-		
+
 		click(popUpUpInTheNav);
+
+	}
+
+	public void reLoadTheActivity() {
+		click(recentTabActive);
+	}
+
+	public String modifyTheContentFromWhy(String textToAdd) {
+
+		String message = getText(conctentOfTheWhy);
+
+		type(whyMessageInput, message + " " + textToAdd);
 		
+		return textToAdd;
+
 	}
 	
-	public void reLoadTheActivity() {
-		click(recentTabActive);	
-		}
+	public String contentOfThStarMessage() {
+
+		String messageModified = getText(textMessageOfStartSent);
+
+		return messageModified;
+
+	}
 	
-	
-	
-	
-	
-	
-	public String captureNameAndSenderActivityFeed() {
+
+	public void editStarBtnConfirmAndCloseConfirm() {
+
+		click(editStarBtnConfirm);
 		
+		click(cerrarConfirmacionDeEnvioDeEstrella);
+
+	}
+	
+
+	public String captureNameAndSenderActivityFeed() {
+
 		String nombreYApellidoObtenido = getText(nombreDelCoworkerAlQueLeEnvieLaEstrella);
 		String usuarioQueEnviaElReconocimiento = getText(porQuienEsEnviadaLaEstrella);
 		return usuarioQueEnviaElReconocimiento + " envia a " + nombreYApellidoObtenido;
-		
+
 	}
-	
+
 	public String senderNameActivityFeed() {
 		String usuarioQueEnviaElReconocimiento = getText(porQuienEsEnviadaLaEstrella);
 		return usuarioQueEnviaElReconocimiento;
-		
+
 	}
-	
-	
+
 	public boolean VerifyNotificationThisReadTrueOrFalse() {
-		
+
 		String youNotienesNotificaciones = getText(youDontHaveNotifications);
-		
-		if(youNotienesNotificaciones.equals("You don't have notifications")) {
+
+		if (youNotienesNotificaciones.equals("You don't have notifications")) {
 			System.out.println(youNotienesNotificaciones);
 			return true;
-		}  
-		
+		}
+
 		return false;
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	 
-	 
-	 public NavBar navigateToNavBar() {
-    	 
-  			
-	return getNextPage(NavBar.class);
+
+	public NavBar navigateToNavBar() {
+
+		return getNextPage(NavBar.class);
 	}
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	
-	
-	
+
 }

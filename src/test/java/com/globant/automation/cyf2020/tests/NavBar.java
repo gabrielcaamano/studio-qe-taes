@@ -25,7 +25,7 @@ public class NavBar extends BasePage {
 	@FindBy(xpath = "//button[@class=\"button button--color- button--size-small\"]")
 	private WebElement LogOutBttn;
 
-	@FindBy(xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button button--color-\"]")
+	@FindBy(xpath = "//button[contains(@class, 'button--icon button--nopadding')]")
 	private WebElement campanaNotificationBtn;
 
 	@FindBy(xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-\"]")

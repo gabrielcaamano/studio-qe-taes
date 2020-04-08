@@ -14,41 +14,41 @@ public class ProfileOfUser extends BasePage {
 	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]")
 	private WebElement sentTab;
 	//
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"feed-item__avatar-name--cursor\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-item__avatar-name--cursor\"]")
 	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//strong[@class=\"feed-footer__full-name\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//strong[@class=\"feed-footer__full-name\"]")
 	private WebElement porQuienEsEnviadaLaEstrella;
 
 	// comentario
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][1]//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//span[@class=\"counter__value\"]")
 	private WebElement cantidadDecomentarios;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][2]//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"][2]//span[@class=\"counter__value\"]")
 	private WebElement amountOfLikes;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"][3]//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"][3]//span[@class=\"counter__value\"]")
 	private WebElement amountOfLikesInNotifications;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"counter feed-footer__counter\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"]")
 	private WebElement comentario1Bttn;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"feed-footer__counters feed-footer__counters--smu\"]//div[@class=\"counter feed-footer__counter\"][2]//span[1]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-footer__counters feed-footer__counters--smu\"]//div[@class=\"counter feed-footer__counter\"][2]//span")
 	private WebElement like1Bttn;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item\"][1]//span[@class=\"message-item__author-name\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item\"]//span[@class=\"message-item__author-name\"]")
 	private WebElement autorOfComments;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item\"][1]//small//span")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item\"]//small//span")
 	private WebElement mentionsOfTheLike;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"message-item__text\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item__text\"]")
 	private WebElement primerComentarioTxt;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//div[@class=\"notranslate public-DraftEditor-content\"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"notranslate public-DraftEditor-content\"]")
 	private WebElement input1Comentario;
 
-	@FindBy(xpath = "//div[@class=\"ui-components suite-panel feed-item suite-panel--nopadding\"][1]//span[@class=\"ui-components-icon ui-component-icon ui-components-icon_send-message ui-component-icon_small messages__input-icon ui-component-icon_white messages__input-icon \"]")
+	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[contains(@class, 'messages__input-icon' )]")
 	private WebElement sendComentarioBttn;
 
 	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--right suite-discovery__smu--open\"]")

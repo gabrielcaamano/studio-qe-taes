@@ -1,6 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -263,25 +264,26 @@ public class ExecutorTest {
 	public void editStar() {
 
 		UserStarMeUp userA = new UserStarMeUp();
-		userA.setEmail("user82@bootcampsqe.com");
-		userA.setPassword("user82@bootcampsqe.com");
+		userA.setEmail("user81@bootcampsqe.com");
+		userA.setPassword("user81@bootcampsqe.com");
 
 		Login login = new Login(driver);
 		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(userA.getEmail(), userA.getPassword());
 		NavBar barraDeNavegacion = principalPage.navigateToNavBar();
 
-		ProfileOfUser perfilPersonalUser = barraDeNavegacion.navigateToProfileOfUser();
-
-		perfilPersonalUser.clickSentTab();
-		// amount of reactions in the first star
-		// int amountOfReactions = 0;
-		// amountOfReactions = +perfilPersonalUser.getAmountOfReactions();
-		// System.out.println(amountOfReactions);
-
-		// log out of the user A
-		// barraDeNavegacion.desloguearse();
-
-	}
+		principalPage.clickInStartSendForUserA();
+		principalPage.clickInEditStar();
+		
+		String contentBeforeBeingModified = principalPage.contentOfThStarMessage();
+		principalPage.modifyTheContentFromWhy("-Edited-");
+		principalPage.clickEnPopUp();
+		principalPage.editStarBtnConfirmAndCloseConfirm();
+		
+		String contentAfterBeingModified = principalPage.contentOfThStarMessage();
+		
+		assertNotEquals(contentAfterBeingModified, contentBeforeBeingModified, "los cambios en el mensaje no fueron aplicados");
+		
+		}
 
 	public void compararNombreApellidoYJob(String nombreSetteado, String appellidoSetteado,
 			String nombreYapellidoEnLaPagina, String trabajoSetteado, String trabajoEnLaPagina) {
