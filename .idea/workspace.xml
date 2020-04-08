@@ -30,7 +30,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
   </component>
-  <component name="RunManager" selected="TestNG.SMUTest">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mhelani.coniglio\Documents\GitHub\cyf2020\src\test\java\com\globant\automation\cyf2020\democonsof" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.SMUTest.commentStar">
+    <configuration name="C:/Users/mhelani.coniglio/Documents/GitHub/cyf2020/src/test/java/com/globant/automation/cyf2020/democonsof/testNGincludeDemo.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/java/com/globant/automation/cyf2020/democonsof/testNGincludeDemo.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SMUTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -66,6 +81,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SMUTest.commentStar" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cyf2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.SMUTest" />
+      <option name="METHOD_NAME" value="commentStar" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SMUTest.testingGiveStar" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cyf2020" />
       <extension name="coverage">
@@ -84,18 +117,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SMUTest.testingLogin" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="com.globant.automation.cyf2020.tests" type="TestNG" nameIsGenerated="true">
       <module name="cyf2020" />
+      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.globant.automation.cyf2020.tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="com.globant.automation.cyf2020.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.globant.automation.cyf2020.tests.SMUTest" />
-      <option name="METHOD_NAME" value="testingLogin" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="testDemo" />
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -104,10 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.SMUTest" />
-        <item itemvalue="TestNG.SMUTest.testingLogin" />
-        <item itemvalue="TestNG.SMUTest.checkStars" />
+        <item itemvalue="TestNG.SMUTest.commentStar" />
         <item itemvalue="TestNG.SMUTest.testingGiveStar" />
+        <item itemvalue="TestNG.SMUTest" />
+        <item itemvalue="TestNG.SMUTest.checkStars" />
+        <item itemvalue="TestNG.C:/Users/mhelani.coniglio/Documents/GitHub/cyf2020/src/test/java/com/globant/automation/cyf2020/democonsof/testNGincludeDemo.xml" />
       </list>
     </recent_temporary>
   </component>
@@ -125,52 +165,83 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="74" key="GridCell.Tab.0.bottom" timestamp="1585933989968">
+    <state x="392" y="0" width="596" height="728" key="#&lt;default&gt;" timestamp="1586133491652">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585933989968" />
-    <state width="1323" height="74" key="GridCell.Tab.0.center" timestamp="1585933989968">
+    <state x="392" y="0" width="596" height="728" key="#&lt;default&gt;/0.0.1366.728@0.0.1366.728" timestamp="1586133491652" />
+    <state x="392" y="11" key="#EjercicioTest" timestamp="1586129953130">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585933989968" />
-    <state width="1323" height="74" key="GridCell.Tab.0.left" timestamp="1585933989968">
+    <state x="392" y="11" key="#EjercicioTest/0.0.1366.728@0.0.1366.728" timestamp="1586129953130" />
+    <state x="392" y="11" key="#SMUTest" timestamp="1586130716817">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585933989968" />
-    <state width="1323" height="74" key="GridCell.Tab.0.right" timestamp="1585933989968">
+    <state x="392" y="11" key="#SMUTest/0.0.1366.728@0.0.1366.728" timestamp="1586130716817" />
+    <state x="392" y="0" width="596" height="728" key="#com.globant.automation.cyf2020.tests" timestamp="1586133696842">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585933989968" />
-    <state width="1323" height="74" key="GridCell.Tab.1.bottom" timestamp="1585933989739">
+    <state x="392" y="0" width="596" height="728" key="#com.globant.automation.cyf2020.tests/0.0.1366.728@0.0.1366.728" timestamp="1586133696842" />
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586282393538">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585933989739" />
-    <state width="1323" height="74" key="GridCell.Tab.1.center" timestamp="1585933989739">
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1586282393538" />
+    <state x="470" y="105" key="FileChooserDialogImpl" timestamp="1586133555841">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585933989739" />
-    <state width="1323" height="74" key="GridCell.Tab.1.left" timestamp="1585933989739">
+    <state x="470" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586133555841" />
+    <state width="1323" height="118" key="GridCell.Tab.0.bottom" timestamp="1586368939668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585933989739" />
-    <state width="1323" height="74" key="GridCell.Tab.1.right" timestamp="1585933989739">
+    <state width="1323" height="118" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.0.center" timestamp="1586368939668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="74" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585933989739" />
+    <state width="1323" height="118" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.0.left" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.0.right" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.1.bottom" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.1.center" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.1.left" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
+    <state width="1323" height="118" key="GridCell.Tab.1.right" timestamp="1586368939668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="118" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586368939668" />
     <state x="355" y="13" key="SettingsEditor" timestamp="1585935047089">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="355" y="13" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1585935047088" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1585928836913">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586351355742">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585928836913" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586351355742" />
+    <state x="379" y="96" width="607" height="536" key="find.popup" timestamp="1586271986932">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586271986932" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cyf2020$SMUTest_checkStars.ic" NAME="SMUTest.checkStars Coverage Results" MODIFIED="1585758111632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.globant.automation.cyf2020.tests.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/cyf2020$SMUTest_testingLogin.ic" NAME="SMUTest.testingLogin Coverage Results" MODIFIED="1585592707046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.globant.automation.cyf2020.tests.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cyf2020$SMUTest_commentStar.ic" NAME="SMUTest.commentStar Coverage Results" MODIFIED="1586280384860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.globant.automation.cyf2020.tests.*</FILTER>
     </SUITE>
   </component>

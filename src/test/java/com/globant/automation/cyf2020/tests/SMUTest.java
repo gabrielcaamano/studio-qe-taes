@@ -2,20 +2,17 @@ package com.globant.automation.cyf2020.tests;
 
 import com.globant.automation.cyf2020.smu.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import javax.management.Notification;
-import java.sql.Struct;
+import java.util.concurrent.TimeUnit;
 
 public class SMUTest {
     private WebDriver driver;
+
 
     @BeforeSuite
     public void openSMU() {
@@ -33,7 +30,7 @@ public class SMUTest {
         userB.setUsersJob("job_zxbpb");
         userB.setName("username69");
         userB.setLastName("feed69");
-        userB.setStars(6);
+        userB.setStars(10);
         StarMeUpLogin loginPage= new StarMeUpLogin(driver);
         String username= loginPage.usernameLogin(userB.getUsersEmail());
         SMUHome loggedIn= loginPage.passwordLoginComplete(userB.getPassword());
@@ -66,17 +63,17 @@ public class SMUTest {
     @Test (priority = 2)
     public void testingGiveStar(){
         SMUser userA = new SMUser();
-        userA.setUsersEmail(("user64@bootcampsqe.com"));
-        userA.setPassword("user64@bootcampsqe.com");
+        userA.setUsersEmail(("user62@bootcampsqe.com"));
+        userA.setPassword("user62@bootcampsqe.com");
         StarMeUpLogin loginPage= new StarMeUpLogin(driver);
         String usernameB= loginPage.usernameLogin(userA.getUsersEmail());
         SMUHome smuHomeB= loginPage.passwordLoginComplete(userA.getPassword());
         SMUser userB= new SMUser();
         userB.setName("username69");
-        SMUser2 sendStar= smuHomeB.searchBar(userB.getName());
-        SendStar sendingTheStar= sendStar.sendStar();
-        sendingTheStar.sendingStar("test");
-        SMUser2 backToUser= sendingTheStar.closeConfirmation();
+        SMUUserThatReceives searchUser= smuHomeB.searchBar(userB.getName());
+        SendStar sendingTheStar= searchUser.sendStar();
+        sendingTheStar.sendingStar("  if you're reading this it means the test works");
+        SMUUserThatReceives backToUser= sendingTheStar.closeConfirmation();
         SMUHome backToHome= backToUser.goHome();
         backToHome.logOut();
 
@@ -89,26 +86,27 @@ public class SMUTest {
        userB.setPassword("user69@bootcampsqe.com");
        userB.setName("username69");
        userB.setLastName("feed69");
-       userB.setStars(4);
+       userB.setStars(10);
+
        SMUser userA = new SMUser();
-       userA.setUsersEmail(("user64@bootcampsqe.com"));
-       userA.setPassword("user64@bootcampsqe.com");
-       userA.setLastName("feed64");
+       userA.setUsersEmail(("user62@bootcampsqe.com"));
+       userA.setPassword("user62@bootcampsqe.com");
+       userA.setLastName("feed62");
+
        StarMeUpLogin loginPage= new StarMeUpLogin(driver);
        String username= loginPage.usernameLogin(userB.getUsersEmail());
        SMUHome loggedIn= loginPage.passwordLoginComplete(userB.getPassword());
       // loggedIn.popUps();
-       Notifications starNotification= loggedIn.starNotification();
-      NotificationInfo theStarNotification= starNotification.goToNotificationInfo();
-      SMUHome goHome= theStarNotification.goBackHome();
+       Notifications starNotification= loggedIn.aNotification();
+       NotificationInfo theStarNotification= starNotification.goToNotificationInfo();
+       SMUHome goHome= theStarNotification.goBackHome();
        String notification= goHome.notification();
-      goHome.imTryingMyHardest();
+       goHome.clickOnNotificationAgain();
 
 
        int starsAdd= userB.getStars()+1;
        String stars = Integer.toString(starsAdd);
 
-      // loggedIn.popUps();
 
       String actStar= loggedIn.activityFeedStar(); //userB should be the first star to appear
       Assert.assertTrue(actStar.contains(userB.getName()),"Not the same names");
@@ -116,17 +114,80 @@ public class SMUTest {
       MyProfile myProfile= loggedIn.goToProfile();
       SMUHome actFeed1= myProfile.goBackHome();
       MyProfile myProfile1= actFeed1.goToProfile();
+      myProfile1.clickReceived();
+
       String starsBHas= myProfile1.howManyStars();
-    Assert.assertTrue(starsBHas.contains(stars), "not the same amount of stars");
+      Assert.assertTrue(starsBHas.contains(stars), "not the same amount of stars");
+
       String theStarWasSentBy= myProfile1.starSentBy(); //verifies if the star is in received bc the star shows with who sent it
-    Assert.assertTrue(theStarWasSentBy.contains(userA.getLastName()), "Different last names");
-  String noNotification = myProfile1.notification();
+      Assert.assertTrue(theStarWasSentBy.contains(userA.getLastName()), "Different last names");
+
+      String noNotification = myProfile1.notification();
        Assert.assertTrue(noNotification.toLowerCase().contains("don't"), "no");
+
+       myProfile1.logOut();
+
+
    }
 
 
 
+   @Test
+    public void commentStar(){
+       SMUser userA = new SMUser();
+       userA.setUsersEmail(("user62@bootcampsqe.com"));
+       userA.setPassword("user62@bootcampsqe.com");
+ //User b checks their star comments
+       SMUser userB = new SMUser();
+       userB.setUsersEmail(("user69@bootcampsqe.com"));
+       userB.setPassword("user69@bootcampsqe.com");
+       userB.setName("username69");
+       userB.setLastName("feed69");
+       StarMeUpLogin loginPageB= new StarMeUpLogin(driver);
+       String usernameB= loginPageB.usernameLogin(userB.getUsersEmail());
+       SMUHome loggedInB= loginPageB.passwordLoginComplete(userB.getPassword());
+       MyProfile myProfileB= loggedInB.goToProfile();
+       String comments= myProfileB.howManyCommentsOnTheLastStarReceived();
+       int amountOfComments = Integer.parseInt(comments);
+       Assert.assertEquals("2",comments, "there's more than x comments");
+       myProfileB.logOut(); //UserB logout
 
+//span[contains(@class, 'counter__value')]
+       StarMeUpLogin loginPageA= new StarMeUpLogin(driver);
+       String usernameA= loginPageA.usernameLogin(userA.getUsersEmail());
+       SMUHome homePageA= loginPageA.passwordLoginComplete(userA.getPassword());
+       SMUUserThatReceives searchUserB= homePageA.searchBar(userB.getName());
+       String sentComment= searchUserB.commentOnSentStar(" I promise I'll comment somewhere else sooner or later...");
+       String commentsNmbr= searchUserB.howManyCommentsOnTheLastStarReceived();
+       int actualNumber = (amountOfComments+1);
+       driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+       int numberOfCom = Integer.parseInt(commentsNmbr);
+      // Assert.assertEquals(actualNumber,numberOfCom,"Different amount of comments");
+       SMUHome goBackToHome= searchUserB.goHome();
+       goBackToHome.logOut(); //UserA logout
+
+       //UserB logs back in
+       StarMeUpLogin bLoginPage= new StarMeUpLogin(driver);
+       String bUsername= bLoginPage.usernameLogin(userB.getUsersEmail());
+       SMUHome bHome= bLoginPage.passwordLoginComplete(userB.getPassword());
+       Notifications theresAnotification= bHome.aNotification();
+       //Here i check if the notification is for the comment
+       String commentNote= theresAnotification.getsTheText();
+       Assert.assertTrue(commentNote.toLowerCase().contains("comment"));
+
+       NotificationInfo theNotification= theresAnotification.goToNotificationInfo();
+       MyProfile profileB= theNotification.goToProfile();
+       String checkingHowManyComments= myProfileB.howManyCommentsOnTheLastStarReceived();
+       int howManyComments = Integer.parseInt(checkingHowManyComments);
+       //Assert.assertEquals(numberOfCom,howManyComments,"it's showing a different number");
+       String noNotification = profileB.notification();
+       Assert.assertTrue(noNotification.toLowerCase().contains("don't"), "no");
+       myProfileB.logOut(); //UserB logout
+
+
+
+
+   }
 
 
    //@AfterSuite

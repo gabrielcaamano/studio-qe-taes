@@ -18,15 +18,15 @@ public class SMUHome extends BasePage {
     private  WebElement theStar;
     @FindBy (xpath = "//input[@class=\"suite-search-box__input\"]")
     private WebElement searchUsersName;
-    @FindBy (xpath = "(//div[@class=\"avatar-media search-result-item__avatar avatar-media__medium\"])[1]")
+    @FindBy (xpath = "//div[@class=\"search-result-item__content\"]")
     private  WebElement receivingUser;
     @FindBy (xpath = "(//div[@class=\"stat__content\"])[1]")
     private  WebElement starsUserHas;
-    @FindBy (xpath = "(//button[@class=\"button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-\"])[1]")
-    private  WebElement clickToLogOut;
+    @FindBy (xpath = "//button[contains(@class, 'suite-user_menu__profile-image-icon')]")
+    private  WebElement profileBtn;
     @FindBy (xpath = "(//button[@class=\"button button--color- button--size-small\"])[1]")
     private  WebElement logOutBtn;
-    @FindBy (xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button button--color-\"]")
+    @FindBy (xpath = "//button[contains(@class,'notifications-button')]")
     private  WebElement notifBtn;
     @FindBy (xpath = "//button[@class=\"button button--transparent button--color- button--size-small\"]")
     private WebElement viewAll;
@@ -39,7 +39,7 @@ public class SMUHome extends BasePage {
     @FindBy (xpath = "//span[contains(@class, 'suite-discovery suite-discovery__smu ')]")
     private WebElement popUp3;
     @FindBy (xpath = "//div[@class=\"notifications\"]")
-    private WebElement clickAny;
+    private WebElement clickNotif;
     @FindBy (xpath = "(//div[@class=\"feed-item__content-wrapper\"]//span)[1]")
     private WebElement activityFeedStar;
     @FindBy (xpath = "(//li[@class=\"ui-navbar__menu-item\"])[3]")
@@ -67,7 +67,7 @@ public class SMUHome extends BasePage {
         click(popUp2);
         click(popUp3);
     }
-    public Notifications starNotification(){
+    public Notifications aNotification(){
         click(notifBtn);
         click(viewAll);
         return  getNextPage(Notifications.class);
@@ -76,8 +76,8 @@ public class SMUHome extends BasePage {
         click(notifBtn);
         return getText(noNotifsTxt);
     }
-    public void imTryingMyHardest(){
-        click(clickAny);
+    public void clickOnNotificationAgain(){
+        click(clickNotif);
     }
 
 
@@ -87,16 +87,16 @@ public class SMUHome extends BasePage {
 
 
     public StarMeUpLogin logOut(){
-        click(clickToLogOut);
+        click(profileBtn);
         click(logOutBtn);
         return getNextPage(StarMeUpLogin.class);
     }
 
 
-    public SMUser2 searchBar(String user2){
+    public SMUUserThatReceives searchBar(String user2){
         type(searchUsersName,user2);
         click(receivingUser);
-        return getNextPage(SMUser2.class);
+        return getNextPage(SMUUserThatReceives.class);
     }
 
     public MyProfile goToProfile(){

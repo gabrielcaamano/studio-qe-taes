@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MyProfile extends BasePage {
-    public MyProfile(WebDriver driver) {
-        super(driver);
-    }
      @FindBy (xpath = "(//strong[@class=\"feed-footer__full-name\"])[1]")
     private WebElement userWhoSentStar;
     @FindBy (xpath = "(//div[@class=\"stat__content\"])[1]")
@@ -23,6 +20,22 @@ public class MyProfile extends BasePage {
     private WebElement noNotifsTxt;
     @FindBy (xpath = "(//li[@class=\"ui-navbar__menu-item\"])[1]")
     private WebElement home;
+    @FindBy (xpath = "//div[@class=\"tab-panel__item tab-panel__item--active\"]")
+    private  WebElement received;
+    @FindBy (xpath = "(//span[contains(@class, 'counter__value')])[2]")
+    private  WebElement amountOfComments;
+    @FindBy (xpath = "(//button[@class=\"button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-\"])[1]")
+    private  WebElement clickToLogOut;
+    @FindBy (xpath = "(//button[@class=\"button button--color- button--size-small\"])[1]")
+    private  WebElement logOutBtn;
+
+
+
+
+
+    public MyProfile(WebDriver driver) {
+        super(driver);
+    }
 
     public SMUHome goBackHome(){
         click(home);
@@ -30,6 +43,9 @@ public class MyProfile extends BasePage {
     }
 
 
+    public void clickReceived(){
+        click(received);
+    }
 
 
 
@@ -38,12 +54,22 @@ public class MyProfile extends BasePage {
        // click(popUp1);
         return getText(starsUserHas);}
 
+        public String howManyCommentsOnTheLastStarReceived(){
+        return getText(amountOfComments);
+        }
+
         public String starSentBy() {
             return getText(userWhoSentStar);
         }
     public String notification(){
         click(notifBtn);
         return getText(noNotifsTxt);
+    }
+
+    public StarMeUpLogin logOut(){
+        click(clickToLogOut);
+        click(logOutBtn);
+        return getNextPage(StarMeUpLogin.class);
     }
 
     }

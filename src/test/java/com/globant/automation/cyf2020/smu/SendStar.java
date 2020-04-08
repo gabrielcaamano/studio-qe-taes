@@ -10,12 +10,10 @@ public class SendStar extends BasePage {
         super(driver);
     }
 
-    @FindBy (xpath = "(//div[@class=\"value-icon\"])[6]")
+    @FindBy (xpath = "(//div[@class=\"value-icon\"])[4]")
     private WebElement star;
     @FindBy (xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
     private WebElement whyStar;
-    @FindBy (xpath = "(//span[@class=\"emoji-mart-emoji\"])[9]")
-    private  WebElement emogi;
     @FindBy (xpath = "//button[@class=\"button button--nomargin-right button--transparent button--color-\"]")
     private  WebElement sendStarBtn;
     @FindBy (xpath = "//h2[@class=\"confirmation__header-title\"]")
@@ -36,9 +34,9 @@ public class SendStar extends BasePage {
     public String successfullySentStar(){
         return getText(confirmationTxt); }
 
-        public SMUser2 closeConfirmation(){
+        public SMUUserThatReceives closeConfirmation(){
         click(closeConf);
-        return getNextPage(SMUser2.class);
+        return getNextPage(SMUUserThatReceives.class);
         }
 
 
