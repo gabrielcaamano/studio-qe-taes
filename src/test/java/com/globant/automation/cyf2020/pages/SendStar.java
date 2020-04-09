@@ -13,7 +13,13 @@ public class SendStar extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
-	@FindBy (xpath = "(//div [@class ='value-icon'])[6]")
+	@FindBy (xpath = "//div [@class ='send-star__colleague'] //input") //[@class = 'suite-search-box__input']
+	private WebElement starTo;
+	
+	@FindBy (xpath = "//li [@class='search-result-item search-result-item--visitable']")
+	private WebElement firtInList;
+	
+	@FindBy (xpath = "(//div [@class ='value-icon'])[2]")
 	private WebElement starValue;
 	
 	@FindBy (xpath = "//div[contains (@class , 'public-DraftEditor-content')]")
@@ -28,7 +34,16 @@ public class SendStar extends BasePage {
 	@FindBy (xpath = "//strong [@class= 'selected-value__name']")
 	private WebElement starValueSelected;
 
-	public void clickTeamWork() {
+	public void starTo (String name) {
+		wait(ANIMATION_DURATION);
+		type(starTo, name);
+	}
+	
+	public void clickFirstInList() {
+		click(firtInList);
+	}
+	
+	public void clickStarValue() {
 		click(starValue);
 	}
 	

@@ -34,6 +34,9 @@ public class BarPage extends BasePage {
 	@FindBy(xpath = "//button [contains (@class , 'button--nopadding')]")
 	private WebElement notifications;
 	
+	@FindBy (xpath = "//div [contains (@class, 'notifications-button__label')]")
+	private WebElement thereIsNotification;
+	
 	@FindBy(xpath = "//li [contains (@class , 'notifications-item--active')]")
 	private WebElement notificationUnread;
 	
@@ -54,17 +57,21 @@ public class BarPage extends BasePage {
 	}
 	
 	public ActivityFeedPage clickActivityFeed() {
-		click(activityFeed);
+		click(activityFeed, EXTENDED_TIMEOUT);
 		return getNextPage(ActivityFeedPage.class);
 	}
 	
 	public UserProfilePage clickMyProfile() {
-		click(myProfile);
+		click(myProfile, EXTENDED_TIMEOUT);
 		return getNextPage(UserProfilePage.class);
 	}
 	
 	public void clickNotifications() {
 		click(notifications);
+	}
+	
+	public boolean thereIsNotification() {
+		return isElementDisplayed(thereIsNotification);
 	}
 	
 	public boolean notificationUnread() {

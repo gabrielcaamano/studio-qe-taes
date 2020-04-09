@@ -41,15 +41,24 @@ public class GLBSNDBX150 {
 	@Test(priority=1)
 	public void loginUserB() {
 		LoginPage login = new LoginPage(driver);
-		ActivityFeedPage home = login.login(userB.getUser(), userB.getPassword());
+		BarPage bar = login.login(userB.getUser(), userB.getPassword());
+		ActivityFeedPage home = bar.clickActivityFeed();
 		
 		Assert.assertEquals(userB.getName(), home.getName(), "The names are not the same");
 		Assert.assertEquals(userB.getLastName(), home.getLastName(), "Last names are not the same");
 		Assert.assertEquals(userB.getJob(), home.getJob(), "Jobs are not the same");
 		
-		recivedStar =  Integer.parseInt(home.amountRecivedStar());
 	}
 	
+	@Test (priority=2)
+	public void amountOfStar() {
+		BarPage bar = new BarPage(driver);
+		ActivityFeedPage home = bar.clickActivityFeed();
+
+		recivedStar =  Integer.parseInt(home.amountRecivedStar());
+
+	}
+		
 	@Test (priority=2)
 	public void logout() {
 		BarPage home = new BarPage(driver);
@@ -60,7 +69,8 @@ public class GLBSNDBX150 {
 	@Test(priority=3)
 	public void loginUserA() {
 		LoginPage login = new LoginPage(driver);
-		ActivityFeedPage home = login.login(userA.getUser(), userA.getPassword());
+		BarPage bar = login.login(userA.getUser(), userA.getPassword());
+		ActivityFeedPage home = bar.clickActivityFeed();
 		
 		Assert.assertEquals(userA.getName(), home.getName(), "The names are not the same");
 		Assert.assertEquals(userA.getLastName(), home.getLastName(), "Last names are not the same");
@@ -79,18 +89,17 @@ public class GLBSNDBX150 {
 	@Test (priority=5)
 	public void sendStar() {
 		UserProfilePage userProfile = new UserProfilePage(driver);
-		userProfile.clickPopUp1();
-		userProfile.clickPopUp2();
+		userProfile.clickPopUp();
+		userProfile.clickPopUp();
 		SendStar star = userProfile.clickSendStar();
-		star.clickTeamWork();
+		star.clickStarValue();
 		selectedValue = star.starValueSelected();
 		star.whyStarMessage(" Test");
-		star.clickSendButton();
-		Assert.assertFalse(userProfile.starWasSentBefore(), "The star was sent before");
-		star.clickCloseButton();
+//		star.clickSendButton();
+//		Assert.assertFalse(userProfile.starWasSentBefore(), "The star was sent before");
+//		star.clickCloseButton();
 		BarPage activityFeed = new BarPage(driver);
 		ActivityFeedPage home = activityFeed.clickActivityFeed();
-//		driver.navigate().refresh();
 		
 //		Assert.assertEquals(Integer.parseInt(home.amountSentStar()), (sentStar + 1), "The number of stars sent does't increase 1");
 		Assert.assertEquals(home.starSentBy(), "me", "The user who sent the star does't match in the feed");
@@ -98,19 +107,22 @@ public class GLBSNDBX150 {
 		Assert.assertEquals(home.starSentTo(), userB.getName() + " "+  userB.getLastName(), "The user who received the star does't match in the feed");
 
 		UserProfilePage myProfile = activityFeed.clickMyProfile();
+		myProfile.clickPopUp();
+
+		myProfile.clickRecognition();
 		myProfile.sentStar();
 		Assert.assertEquals(myProfile.starSentTo(), userB.getName() + " "+ userB.getLastName(), "The user who received the star does't match in the profile");
 		Assert.assertEquals(myProfile.kindOfStar(), selectedValue, "The kind of star does't match in the profile");
 
 	}
 	
-	@Test (priority=7)
+	@Test (priority=6)
 	public void logOutAAndLoginB() {
 		logout();
 		loginUserB();
 	}
 	
-	@Test (priority = 8)
+	@Test (priority = 7)
 	public void recivedStar() {
 		BarPage bar = new BarPage(driver);
 		bar.clickNotifications();
@@ -126,7 +138,10 @@ public class GLBSNDBX150 {
 		Assert.assertEquals(home.starSentTo(), userB.getName() + " " + userB.getLastName(), "The user who received the star does't match in the feed");
 
 		UserProfilePage myProfile = bar.clickMyProfile();
-		Assert.assertEquals(myProfile.starSentBy(), userA.getName() + " " + userA.getLastName(), "The user who received the star does't match in the profile");
+		myProfile.clickPopUp();
+		myProfile.clickPopUp();
+//		myProfile.clickRecognition();
+		Assert.assertEquals(myProfile.starSentBy(), userA.getName() + " " + userA.getLastName(), "The user who sent the star does't match in the profile");
 		Assert.assertEquals(myProfile.kindOfStar(), selectedValue, "The kind of star does't match in the profile");
 
 	}

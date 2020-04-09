@@ -13,6 +13,9 @@ public class ActivityFeedPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 
+	@FindBy (xpath = "(//button [@class ='core-value__button'])[3]")
+	private WebElement value;
+	
 	@FindBy (xpath = "//h3 [@class = 'user-info__name']")
 	private WebElement name;
 	
@@ -36,9 +39,15 @@ public class ActivityFeedPage extends BasePage {
 	
 	@FindBy (xpath = "//span [contains (@class , 'suite-discovery__smu--open')]")
 	private WebElement popUp;
+
+	@FindBy (xpath = "//span [@class= 'ui-components-suite__toast__text']")
+	private WebElement starWasSent;
+	
 	
 	public void clickPopUp() {
-		click(popUp);
+		if (isElementDisplayed(popUp, DEFAULT_TIMEOUT)) {
+			click(popUp);
+		}
 	}
 	
 	public String getName() {
@@ -73,5 +82,14 @@ public class ActivityFeedPage extends BasePage {
 	
 	public String starSentTo() {
 		return getText(starSentTo);
+	}
+	
+	public SendStar clickAValueToSendStar() {
+		click(value);
+		return getNextPage(SendStar.class);
+	}
+	
+	public boolean starWasSentBefore() {
+		return isElementDisplayed(starWasSent);
 	}
 }

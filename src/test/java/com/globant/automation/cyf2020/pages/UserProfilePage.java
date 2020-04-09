@@ -22,7 +22,7 @@ public class UserProfilePage extends BasePage {
 	@FindBy (xpath = "//div [@class = 'tab-panel__item']")
 	private WebElement sentStar;
 	
-	@FindBy (xpath= "//strong[@class = 'feed-footer__full-name']")
+	@FindBy (xpath= "(//strong[@class = 'feed-footer__full-name'])[1]")
 	private WebElement starSentBy;
 	
 	@FindBy (xpath = "//div[@class = 'feed-item__badge-description']")
@@ -34,11 +34,34 @@ public class UserProfilePage extends BasePage {
 	@FindBy (xpath = "//span [@class= 'ui-components-suite__toast__text']")
 	private WebElement starWasSent;
 	
-	public void clickPopUp1() {
-		click(popUp);
-	}
-	public void clickPopUp2() {
-		click(popUp);
+	@FindBy (xpath = "(//div [contains (@class, 'action-link--active')] //span)[2]")
+	private WebElement recognition;
+	
+	@FindBy (xpath = "( //span [@class = 'counter__value'])[2]")
+	private WebElement amountCommentsOfLastStarRecived;
+	
+	@FindBy (xpath = "( //span [@class = 'counter__value'])[1]")
+	private WebElement amountCommentsOfLastStarSent;
+	
+	@FindBy (xpath = "(//div [@class = 'counter feed-footer__counter'])[1]")
+	private WebElement firstClickToComment;
+	
+	@FindBy (xpath = "(//div [@class = 'notranslate public-DraftEditor-content'])[1]")
+	private WebElement whereComment;
+	
+	@FindBy (xpath = "//span [contains (@class, 'ui-components-icon_send-message')]")
+	private WebElement sendComment;
+	
+	@FindBy (xpath = "//div[contains (@class, 'message-item__text')]")
+	private WebElement textOfComment;
+	
+	@FindBy (xpath = "//span [contains (@class, 'ui-components-icon_comment')] ")
+	private WebElement commentInRecivedStar;
+	
+	public void clickPopUp() {
+		if (isElementDisplayed(popUp, ANIMATION_DURATION)) {
+			click(popUp);
+		}
 	}
 	
 	public SendStar clickSendStar() {
@@ -65,4 +88,36 @@ public class UserProfilePage extends BasePage {
 	public boolean starWasSentBefore() {
 		return isElementDisplayed(starWasSent);
 	}
+	
+	public void clickRecognition() {
+		click(recognition);
+	}
+	
+	public String getAmountCommentsOfLastStarRecived() {
+		wait(DEFAULT_TIMEOUT);
+		return getText(amountCommentsOfLastStarRecived);
+	}
+	
+	public String getAmountCommentsOfLastStarSent() {
+		wait(DEFAULT_TIMEOUT);
+		return getText(amountCommentsOfLastStarSent);
+	}
+	
+	public void comment (String text) {
+		click(firstClickToComment);	
+		whereComment.sendKeys(text);
+		click(sendComment);
+	}
+	
+	public String lastCommentInSentStar() {
+//		click(firstClickToComment);
+		return getText(textOfComment);
+	}
+	
+	public String lastCommentInRecivedStar() {
+		click(commentInRecivedStar);
+		return getText(textOfComment);
+	}
+	
+	
 }
