@@ -1,10 +1,12 @@
 package com.globant.automation.cyf2020.StarMeUp;
 
+import com.globant.automation.cyf2020.tests.LoginStarMeUpTest.GLOBANTVALUES;
+
 public class StarInfo {
 
 	private String nameWhoSends;
 	private String nameWhoRecibes;
-	private String valueSent;
+	private GLOBANTVALUES valueSent;
 
 	public void setNameWhoRecibes(String name) {
 		
@@ -18,7 +20,7 @@ public class StarInfo {
 		
 	}
 	
-	public void setValue(String value) {
+	public void setValue(GLOBANTVALUES value) {
 		
 		valueSent = value;
 	}
@@ -34,7 +36,7 @@ public class StarInfo {
 		return nameWhoSends;
 	}
 	
-	public String getValue() {
+	public GLOBANTVALUES getValue() {
 		
 		return valueSent;
 		

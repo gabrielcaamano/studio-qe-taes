@@ -58,14 +58,19 @@ public abstract class BasePage {
 	protected void click(WebElement element) {
 		click(element, DEFAULT_TIMEOUT);
 	}
+	
+	public void clickPresentElement(WebElement element) {
+		getWait(EXTENDED_TIMEOUT).until(ExpectedConditions.visibilityOf(element)).click();
+	}
 
 	protected void click(WebElement element, Duration timeout) {
 		getWait(timeout).until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 	
-	public void getElementAndClick(By locator) {
-		getElement(locator).click();
+	public void getElementAndClick(By locator, Duration timeout) {
+		getWait(timeout).until(ExpectedConditions.presenceOfElementLocated(locator)).click();
 	}
+	
 	
 	public void getElementAndGetText(By locator) {
 		getElement(locator).getText();

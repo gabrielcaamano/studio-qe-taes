@@ -1,5 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -94,7 +96,7 @@ public class LoginStarMeUpTest {
 		return loginPassPage.typePassword(userKey);
 	}
 
-	// @Test(dataProvider = "infoProfile")
+	//@Test(dataProvider = "infoProfile")  //LOGIN
 	public void loginAndCheckInfo(String userKey, String nameKey, String lastnameKey, String jobKey) {
 
 		LoginUserPage loginUserPage = null;
@@ -111,58 +113,132 @@ public class LoginStarMeUpTest {
 		Assert.assertEquals(pageUserInfo.getJob(), jobKey, "Jobs doesnt match");
 
 	}
+	
+	public enum GLOBANTVALUES {
 
-	@Test
+		INTEGRITY("Integrity"),
+		EXCELLENCE("Excellence"),
+		TEAMWORK("Teamwork"),
+		INNOVATION("Innovation"),
+		LEARNING("Learning"),
+		THINK_BIG("Think big");
+
+		private final String valueStr;
+
+		GLOBANTVALUES(String valueStr) {
+			this.valueStr = valueStr;
+		}
+		
+		public String getValue() {
+			return valueStr;
+		}
+
+	}
+
+	String userKeyB = "user60@bootcampsqe.com";
+	LoginUserPage loginUserB = null;
+	LoginPassPage loginPassB = null;
+	LogedFeedPage logedFeedB = null;
+	String userKeyA = "user59@bootcampsqe.com";
+	LoginUserPage loginUserA = null;
+	LoginPassPage loginPassA = null;
+	LogedFeedPage logedFeedA = null;
+	String whoSent = "username59";
+	String whoRecibed = "username60";
+	GLOBANTVALUES value = GLOBANTVALUES.TEAMWORK;
+
+	@Test(priority = 1) //US 150 and 151
 	public void loginAndSendAStar() {
-		
+
 		StarInfo starInfoBefore = new StarInfo();
-		
-		String userKeyB = "user56@bootcampsqe.com";
-		LoginUserPage loginUserB = null;
-		LoginPassPage loginPassB = null;
-		LogedFeedPage logedFeedB = null;
-		
+
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
 		logedFeedB.setRecibedStarsBefore();
 		logedFeedB.logOut();
-		
-		String userKeyA = "user59@bootcampsqe.com";
-		LoginUserPage loginUserA = null;
-		LoginPassPage loginPassA = null;
-		LogedFeedPage logedFeedA = null;
-		
-		String whoSent = "username59";
-		String whoRecibed = "username56";
-		String value = "Teamwork";
-		
+
 		logedFeedA = login(userKeyA, loginUserA, loginPassA);
 		logedFeedA.setSentStarsBefore();
 		starInfoBefore.setNameWhoRecibes(whoRecibed);
 		starInfoBefore.setNameWhoSends(whoSent);
 		starInfoBefore.setValue(value);
-		//logedFeedA.searchUserAndSendAStar(whoRecibed, value, false); //USER STORY 150
-		logedFeedA.selectValueAndSendAStar(whoRecibed, value, true); //USER STORY 151
-		Assert.assertEquals(logedFeedA.starDeliveryChecking(), "Your star to " + whoRecibed + " was sent successfully", "Unsuccessful star delivery");
+		// logedFeedA.searchUserAndSendAStar(whoRecibed, value, false); //USER STORY 150
+		logedFeedA.selectValueAndSendAStar(whoRecibed, value, true); // USER STORY 151
+		Assert.assertEquals(logedFeedA.starDeliveryChecking(), "Your star to " + whoRecibed + " was sent successfully",
+				"Unsuccessful star delivery");
 		logedFeedA.setSentStarsAfter();
-		//Assert.assertEquals(logedFeedA.getSentStarsAfter(), logedFeedA.getSentStarsBefore() + 1, "Wrong sent stars counting" );
-		Assert.assertTrue(logedFeedA.searchStarOnActivityFeed(starInfoBefore.getNameWhoRecibes(), starInfoBefore.getValue(), "me"), "Star not founded in whos sends feed");
+		// Assert.assertEquals(logedFeedA.getSentStarsAfter(),                         - BUG
+		// logedFeedA.getSentStarsBefore() + 1, "Wrong sent stars counting" );
+		Assert.assertTrue(logedFeedA.searchStarOnActivityFeed(starInfoBefore.getNameWhoRecibes(),
+				starInfoBefore.getValue(), "me"), "Star not founded in whos sends feed");
 		RecognitionPage recognitionA = logedFeedA.goRecognition();
-		Assert.assertTrue(recognitionA.checkRecognitionSent(whoRecibed, value), "Star is not founded in sent recognition");
+		Assert.assertTrue(recognitionA.checkRecognitionSent(whoRecibed, value),
+				"Star is not founded in sent recognition");
+		logedFeedA.logOut();
+
+		logedFeedB = login(userKeyB, loginUserB, loginPassB);
+		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notifcation");
+		Assert.assertTrue(logedFeedB.checkStarNotification(whoSent, value), "The notification doesnt match the star");
+		Assert.assertTrue(logedFeedB.notificationWasRead(), "Notification was not read");
+		logedFeedB.setRecibedStarsAfter();
+		// Assert.assertEquals(logedFeedB.getSentStarsAfter(),                        - BUG
+		// logedFeedB.getRecibedStarsBefore() + 1, "Wrong received stars counting");
+		RecognitionPage recognitionB = logedFeedB.goRecognition();
+		Assert.assertTrue(recognitionB.checkRecognitionRecived(whoSent, value),
+				"Star is not founded in recived recognition");
+		Assert.assertTrue(logedFeedB.searchStarOnActivityFeed(whoRecibed, value, whoSent),
+				"Star is not found in whos recives feed");
+		logedFeedB.logOut();
+
+	}
+
+	@Test(priority = 2) //US 152
+	public void commentOnAStarWithText() {
+
+		logedFeedB = login(userKeyB, loginUserB, loginPassB);
+		logedFeedB.avoidPopUps();
+		int commentAmountBeforeB = logedFeedB.getAmount(false, "commentAmount");
+		logedFeedB.logOut();
+
+		logedFeedA = login(userKeyA, loginUserA, loginPassA);
+		logedFeedA.comment();
+		Assert.assertTrue(logedFeedA.checkComment(whoSent), "Comment not found");
+		int commentsAmountAfterA = logedFeedA.getAmount(false, "commentAmount");
+		Assert.assertEquals(commentsAmountAfterA, commentAmountBeforeB + 1, "Wrong star's comment counting");
 		logedFeedA.logOut();
 		
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
-		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notifcation");
-		Assert.assertTrue(logedFeedB.checkNotification(whoSent, value), "The notification doesnt match the star");
-		Assert.assertTrue(logedFeedB.notificationWasRead(), "Notification was not read");
-		logedFeedB.setRecibedStarsAfter();
-		//Assert.assertEquals(logedFeedB.getSentStarsAfter(), logedFeedB.getRecibedStarsBefore() + 1, "Wrong received stars counting");
-		RecognitionPage recognitionB = logedFeedB.goRecognition();
-		Assert.assertTrue(recognitionB.checkRecognitionRecived(whoSent, value), "Star is not founded in recived recognition");
-		Assert.assertTrue(logedFeedB.searchStarOnActivityFeed(whoRecibed, value, whoSent), "Star is not found in whos recives feed");
+		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notification for the comment");
+		Assert.assertTrue(logedFeedB.checkCommentNotification(whoSent, value), "Notification doesnt match the comment");
+		int commentsAmountAfterB = logedFeedB.getAmount(false, "commentAmount");
+		logedFeedB.logOut();
+		Assert.assertEquals(commentsAmountAfterB, commentAmountBeforeB + 1, "Wrong star's comment counting");
+
+	}
+	
+	@Test(priority = 3)
+	public void likeAStar() {
+		
+		logedFeedB = login(userKeyB, loginUserB, loginPassB);
+		int likeAmountBeforeB = logedFeedB.getAmount(false, "likeAmount");
+		logedFeedB.logOut();
+		
+		logedFeedA = login(userKeyA, loginUserA, loginPassA);
+		logedFeedA.likear();
+		int likeAmountAfterA = logedFeedA.getAmount(false, "likeAmount");
+		Assert.assertEquals(likeAmountAfterA, likeAmountBeforeB + 1, "Wrong star's like counting");
+		logedFeedA.logOut();
+		
+		
+		logedFeedB = login(userKeyB, loginUserB, loginPassB);
+		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notification for the comment");
+		Assert.assertTrue(logedFeedB.checkLikeNotification(whoSent), "Notification doesnt match the like");
+		int likeAmountAfterB = logedFeedB.getAmount(false, "likeAmount");
+		Assert.assertEquals(likeAmountAfterB, likeAmountBeforeB + 1, "Wrong likes count");
+		logedFeedB.logOut();
 		
 	}
 
-	@AfterTest
+	//@AfterTest
 	public void closeDriver() {
 		driver.close();
 	}
