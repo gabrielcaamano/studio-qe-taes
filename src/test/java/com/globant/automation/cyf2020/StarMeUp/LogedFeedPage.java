@@ -5,10 +5,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.globant.automation.cyf2020.infrastructure.BasePage;
 import com.globant.automation.cyf2020.tests.LoginStarMeUpTest.GLOBANTVALUES;
 
-public class LogedFeedPage extends BasePage {
+public class LogedFeedPage extends StarMeUp {
 
 	public LogedFeedPage(WebDriver driver) {
 		super(driver);
@@ -21,35 +20,11 @@ public class LogedFeedPage extends BasePage {
 	@FindBy(className = "user-info__job")
 	private WebElement infoJob;
 
-	@FindBy(xpath = "//button[@class='button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-']//img[@class='user-avatar']")
-	private WebElement userBtn;
-
-	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/nav[1]/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/button[2]")
-	private WebElement logOutBtn;
-
 	@FindBy(xpath = "//div[@class='profile-stats']//div[1]//div[1]//div[1]//div[2]")
 	private WebElement recibedStars;
 
 	@FindBy(xpath = "//div[@class='profile-stats']//div[2]//div[1]//div[1]//div[2]")
 	private WebElement sentStars;
-
-	@FindBy(xpath = "//span[contains(text(),'Integrity')]")
-	private WebElement globantIntegrityValue;
-
-	@FindBy(xpath = "//span[contains(text(),'Excellence')]")
-	private WebElement globantExcellenceValue;
-
-	@FindBy(xpath = "//span[contains(text(),'Teamwork')]")
-	private WebElement globantTeamworkValue;
-
-	@FindBy(xpath = "//span[contains(text(),'Innovation')]")
-	private WebElement globantInnovationValue;
-
-	@FindBy(xpath = "//span[contains(text(),'Learning')]")
-	private WebElement globantLearningValue;
-
-	@FindBy(xpath = "//span[contains(text(),'Think big')]")
-	private WebElement globantThinkBigValue;
 
 	@FindBy(xpath = "//div[contains(@class,\"send-star__colleague-wrapper\")]//input")
 	private WebElement searchColleagueInputWHO;
@@ -62,19 +37,6 @@ public class LogedFeedPage extends BasePage {
 
 	@FindBy(xpath = "//button[@class='button button--nomargin-right button--transparent button--color-']")
 	private WebElement sendStarBtn;
-
-	@FindBy(linkText = "MY PROFILE")
-	private WebElement myProfileBtn;
-
-	@FindBy(linkText = "ACTIVITY FEED")
-	private WebElement activityFeedBtn;
-
-	@FindBy(css = "nav.ui-navbar:nth-child(1) div.ui-navbar__container div.ui-navbar__search-container div.search-wrapper div:nth-child(1) div.search-results.search-results-starmeup div.ui-components.suite-search-box > input.suite-search-box__input")
-	private WebElement searchColleagueInput;
-	String searchColleagueCss = "nav.ui-navbar:nth-child(1) div.ui-navbar__container div.ui-navbar__search-container div.search-wrapper div:nth-child(1) div.search-results.search-results-starmeup div.ui-components.suite-search-box > input.suite-search-box__input";
-
-	@FindBy(css = "nav.ui-navbar:nth-child(1) div.ui-navbar__container div.ui-navbar__search-container div.search-wrapper div:nth-child(1) div.search-results.search-results-starmeup div.ui-components.suite-search-box > button.button.button--icon.button--nomargin.suite-search-box__input-button.suite-search-box__input-button--secondary-gray.button--color-")
-	private WebElement searchColleagueBtn;
 
 	@FindBy(xpath = "//div[contains(@class,'suite-segment__children')]//div[1]//div[2]//span[2]//div[1]//span[2]")
 	private WebElement commentAmount;
@@ -267,7 +229,7 @@ public class LogedFeedPage extends BasePage {
 		String userWhoSendsFeedText = getText(userWhoSendsFeed);
 		String valueFeedText = getText(valueFeed);
 		String valueStr;
-		valueStr = value.getValue();
+		valueStr = value.getValue().toUpperCase();
 
 		userWhoRecibesFeedText = getText(userWhoRecibesFeed);
 		userWhoSendsFeedText = getText(userWhoSendsFeed);
@@ -320,7 +282,7 @@ public class LogedFeedPage extends BasePage {
 				"//button[contains(@class,'button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-')]"),
 				EXTENDED_TIMEOUT);
 
-		return firstNotNameText.contains(whoSent) &&valueNotText.contains(value.toString());
+		return firstNotNameText.contains(whoSent) &&valueNotText.contains(value.getValue());
 	}
 
 	public boolean checkLikeNotification(String whoSent) {
@@ -348,14 +310,8 @@ public class LogedFeedPage extends BasePage {
 
 	}
 
-	public int getAmount(boolean popUpPresent, String amountOf) {
-
-		if (popUpPresent) {
-			getElementAndClick(By.xpath(
-					"//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]"),
-					EXTENDED_TIMEOUT);
-		}
-
+	public int getAmount(String amountOf) {
+		
 		switch (amountOf) {
 		case "commentAmount":
 			return Integer.parseInt(getText(commentAmount));
@@ -381,7 +337,7 @@ public class LogedFeedPage extends BasePage {
 		}
 		type(addACommentInput, "This is an automation comment");
 		sendCommentIcon.click();
-		wait(ANIMATION_DURATION);
+		wait(DEFAULT_TIMEOUT);
 
 	}
 

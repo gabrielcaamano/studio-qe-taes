@@ -139,15 +139,15 @@ public class LoginStarMeUpTest {
 	LoginUserPage loginUserB = null;
 	LoginPassPage loginPassB = null;
 	LogedFeedPage logedFeedB = null;
-	String userKeyA = "user59@bootcampsqe.com";
+	String userKeyA = "user53@bootcampsqe.com";
 	LoginUserPage loginUserA = null;
 	LoginPassPage loginPassA = null;
 	LogedFeedPage logedFeedA = null;
-	String whoSent = "username59";
+	String whoSent = "username53";
 	String whoRecibed = "username60";
-	GLOBANTVALUES value = GLOBANTVALUES.TEAMWORK;
+	GLOBANTVALUES value = GLOBANTVALUES.THINK_BIG;
 
-	@Test(priority = 1) //US 150 and 151
+	//@Test(priority = 1) //US 150 and 151
 	public void loginAndSendAStar() {
 
 		StarInfo starInfoBefore = new StarInfo();
@@ -191,40 +191,40 @@ public class LoginStarMeUpTest {
 
 	}
 
-	@Test(priority = 2) //US 152
+	@Test(priority = 1) //US 152
 	public void commentOnAStarWithText() {
 
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
 		logedFeedB.avoidPopUps();
-		int commentAmountBeforeB = logedFeedB.getAmount(false, "commentAmount");
+		int commentAmountBeforeB = logedFeedB.getAmount("commentAmount");
 		logedFeedB.logOut();
 
 		logedFeedA = login(userKeyA, loginUserA, loginPassA);
 		logedFeedA.comment();
 		Assert.assertTrue(logedFeedA.checkComment(whoSent), "Comment not found");
-		int commentsAmountAfterA = logedFeedA.getAmount(false, "commentAmount");
+		int commentsAmountAfterA = logedFeedA.getAmount("commentAmount");
 		Assert.assertEquals(commentsAmountAfterA, commentAmountBeforeB + 1, "Wrong star's comment counting");
 		logedFeedA.logOut();
 		
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
 		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notification for the comment");
 		Assert.assertTrue(logedFeedB.checkCommentNotification(whoSent, value), "Notification doesnt match the comment");
-		int commentsAmountAfterB = logedFeedB.getAmount(false, "commentAmount");
+		int commentsAmountAfterB = logedFeedB.getAmount("commentAmount");
 		logedFeedB.logOut();
 		Assert.assertEquals(commentsAmountAfterB, commentAmountBeforeB + 1, "Wrong star's comment counting");
 
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void likeAStar() {
 		
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
-		int likeAmountBeforeB = logedFeedB.getAmount(false, "likeAmount");
+		int likeAmountBeforeB = logedFeedB.getAmount("likeAmount");
 		logedFeedB.logOut();
 		
 		logedFeedA = login(userKeyA, loginUserA, loginPassA);
 		logedFeedA.likear();
-		int likeAmountAfterA = logedFeedA.getAmount(false, "likeAmount");
+		int likeAmountAfterA = logedFeedA.getAmount("likeAmount");
 		Assert.assertEquals(likeAmountAfterA, likeAmountBeforeB + 1, "Wrong star's like counting");
 		logedFeedA.logOut();
 		
@@ -232,7 +232,7 @@ public class LoginStarMeUpTest {
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
 		Assert.assertTrue(logedFeedB.thereIsANotification(), "There is not a notification for the comment");
 		Assert.assertTrue(logedFeedB.checkLikeNotification(whoSent), "Notification doesnt match the like");
-		int likeAmountAfterB = logedFeedB.getAmount(false, "likeAmount");
+		int likeAmountAfterB = logedFeedB.getAmount("likeAmount");
 		Assert.assertEquals(likeAmountAfterB, likeAmountBeforeB + 1, "Wrong likes count");
 		logedFeedB.logOut();
 		
