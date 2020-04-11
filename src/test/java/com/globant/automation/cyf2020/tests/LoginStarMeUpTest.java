@@ -1,10 +1,7 @@
 package com.globant.automation.cyf2020.tests;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -191,7 +188,7 @@ public class LoginStarMeUpTest {
 
 	}
 
-	@Test(priority = 1) //US 152
+	//@Test(priority = 1) //US 152
 	public void commentOnAStarWithText() {
 
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
@@ -215,7 +212,7 @@ public class LoginStarMeUpTest {
 
 	}
 	
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void likeAStar() {
 		
 		logedFeedB = login(userKeyB, loginUserB, loginPassB);
@@ -238,6 +235,24 @@ public class LoginStarMeUpTest {
 		
 	}
 
+	@Test //US 155
+	public void editAStar() {
+		
+		logedFeedA = login(userKeyA, loginUserA, loginPassA);
+		logedFeedA.editAStar();
+		Assert.assertTrue(logedFeedA.starEditedChecking(whoRecibed), "The star wasnt edited");
+		Assert.assertTrue(logedFeedA.starIsUpdated(), "Text in star wasnt updated");
+		logedFeedA.logOut();
+	}
+	
+	@Test //US 157
+	public void filtersAdvSearch() {
+		
+		logedFeedA = login(userKeyA, loginUserA, loginPassA);
+		Assert.assertTrue(logedFeedA.goLeaderboardAndFilter(), "There isnt a filter in LEADERBOARD");
+		
+	}
+	
 	//@AfterTest
 	public void closeDriver() {
 		driver.close();

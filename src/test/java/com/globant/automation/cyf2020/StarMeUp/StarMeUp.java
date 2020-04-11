@@ -39,6 +39,9 @@ public class StarMeUp extends BasePage {
 	
 	@FindBy(linkText = "MY PROFILE")
 	protected WebElement myProfileBtn;
+	
+	@FindBy(linkText = "LEADERBOARD")
+	protected WebElement leaderboardBtn;
 
 	@FindBy(linkText = "ACTIVITY FEED")
 	protected WebElement activityFeedBtn;

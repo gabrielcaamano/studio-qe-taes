@@ -38,6 +38,9 @@ public class LogedFeedPage extends StarMeUp {
 	@FindBy(xpath = "//button[@class='button button--nomargin-right button--transparent button--color-']")
 	private WebElement sendStarBtn;
 
+	@FindBy(xpath = "//span[contains(text(),'edit star')]")
+	private WebElement editStarBtn;
+
 	@FindBy(xpath = "//div[contains(@class,'suite-segment__children')]//div[1]//div[2]//span[2]//div[1]//span[2]")
 	private WebElement commentAmount;
 
@@ -65,6 +68,7 @@ public class LogedFeedPage extends StarMeUp {
 	private int recibedStarsAfter;
 	private int sentStarsAfter;
 	private boolean popUpRecognition = true;
+	private int iterationComment = 0;
 
 	public void splitNameLastname() {
 		String nameLastname = getText(infoNameLastname, DEFAULT_TIMEOUT);
@@ -156,8 +160,9 @@ public class LogedFeedPage extends StarMeUp {
 		WebElement userToStar = getElement(By.xpath("//div[@class='search-result-item__content']"), EXTENDED_TIMEOUT);
 		click(userToStar);
 		click(messageBox);
-		messageInput.sendKeys("This is an automation star");
+		messageInput.sendKeys("This is an automation star " + iterationComment);
 		sendStarBtn.click();
+		iterationComment++;
 
 	}
 
@@ -204,8 +209,9 @@ public class LogedFeedPage extends StarMeUp {
 			getElementAndClick(By.xpath(
 					"//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]"),
 					EXTENDED_TIMEOUT);
-			getElementAndClick(By.xpath("//span[contains(@class, \"suite-discovery__smu--open\")]"), EXTENDED_TIMEOUT);
-			click(activityFeedBtn);
+		}
+		if (isElementPresent(By.xpath("//span[contains(@class, \"suite-discovery__smu--open\")]"), EXTENDED_TIMEOUT)) {
+			getElement(By.xpath("//span[contains(@class, \"suite-discovery__smu--open\")]")).click();
 		}
 	}
 
@@ -282,7 +288,7 @@ public class LogedFeedPage extends StarMeUp {
 				"//button[contains(@class,'button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-')]"),
 				EXTENDED_TIMEOUT);
 
-		return firstNotNameText.contains(whoSent) &&valueNotText.contains(value.getValue());
+		return firstNotNameText.contains(whoSent) && valueNotText.contains(value.getValue());
 	}
 
 	public boolean checkLikeNotification(String whoSent) {
@@ -311,7 +317,7 @@ public class LogedFeedPage extends StarMeUp {
 	}
 
 	public int getAmount(String amountOf) {
-		
+
 		switch (amountOf) {
 		case "commentAmount":
 			return Integer.parseInt(getText(commentAmount));
@@ -335,8 +341,9 @@ public class LogedFeedPage extends StarMeUp {
 			Thread.sleep(5000);
 		} catch (InterruptedException ie) {
 		}
-		type(addACommentInput, "This is an automation comment");
+		type(addACommentInput, "This is an automation comment " + iterationComment);
 		sendCommentIcon.click();
+		iterationComment++;
 		wait(DEFAULT_TIMEOUT);
 
 	}
@@ -348,4 +355,40 @@ public class LogedFeedPage extends StarMeUp {
 		return nameCommentText.contains(whoSent);
 
 	}
+
+	public void editAStar() {
+
+		avoidPopUps();
+		getElement(By.xpath("//div[@class=\"feed-item__content-wrapper\"]")).click();
+		getElement(By.xpath("//button[contains(@class, 'button--icon button--nopadding button--color-')]")).click();
+		click(messageBox);
+		messageInput.sendKeys(" edited" + iterationComment);
+		editStarBtn.click();
+
+	}
+
+	public boolean starEditedChecking(String whoReceived) {
+
+		String editedStarConf = getText(getElement(By.xpath("//p[contains (@class, 'confirmation__header-message')]")));
+		getElement(By.xpath("//i[contains(@class, 'confirmation__close')]")).click();
+		return editedStarConf.contentEquals("Your star to " + whoReceived + " was edited successfully");
+
+	}
+
+	public boolean starIsUpdated() {
+
+		String editedText = getText(getElement(By.xpath("//div[contains(@class,'feed-item__description-notes')]")));
+		return editedText.contains("edited");
+
+	}
+	
+	public boolean goLeaderboardAndFilter() {
+		
+		click(leaderboardBtn);
+		getElement(By.xpath("//button[contains (@class, 'feed-tabs-filter__button hide-from-mobile')]")).click();
+		getElement(By.xpath("//select[contains (@class, 'leaderboard__filter-select__option-selected')]")).click();
+		return true;
+		
+	}
+
 }
