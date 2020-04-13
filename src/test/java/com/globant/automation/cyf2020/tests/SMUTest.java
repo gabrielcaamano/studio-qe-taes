@@ -28,7 +28,6 @@ public class SMUTest {
         userB.setUsersJob("job_wogia");
         userB.setName("username68");
         userB.setLastName("feed68");
-        userB.setStars(1);
         StarMeUpLogin loginPage = new StarMeUpLogin(driver);
         String username = loginPage.usernameLogin(userB.getUsersEmail());
         SMUHome loggedIn = loginPage.passwordLoginComplete(userB.getPassword());
@@ -44,8 +43,7 @@ public class SMUTest {
         Assert.assertTrue(username.contains(userB.getUsersEmail()), "It's not their email");
         String starsBHas = loggedIn.howManyStars();
         loggedIn.logOut();
-        String stars = Integer.toString(userB.getStars());
-        Assert.assertEquals(numberOfStars, stars, "It's giving another value of stars");
+        Assert.assertEquals(8, numberOfStars, "It's giving another value of stars");
 
        /* SMUser user2= new SMUser();
         user2.setName("username68");
@@ -61,8 +59,8 @@ public class SMUTest {
     @Test(priority = 2)
     public void testingGiveStar() {
         SMUser userA = new SMUser();
-        userA.setUsersEmail(("user63@bootcampsqe.com"));
-        userA.setPassword("user63@bootcampsqe.com");
+        userA.setUsersEmail(("user64@bootcampsqe.com"));
+        userA.setPassword("user64@bootcampsqe.com");
         StarMeUpLogin loginPage = new StarMeUpLogin(driver);
         String usernameB = loginPage.usernameLogin(userA.getUsersEmail());
         SMUHome smuHomeB = loginPage.passwordLoginComplete(userA.getPassword());
@@ -88,9 +86,9 @@ public class SMUTest {
 
 
         SMUser userA = new SMUser();
-        userA.setUsersEmail(("user63@bootcampsqe.com"));
-        userA.setPassword("user63@bootcampsqe.com");
-        userA.setLastName("feed63");
+        userA.setUsersEmail(("user64@bootcampsqe.com"));
+        userA.setPassword("user64@bootcampsqe.com");
+        userA.setLastName("feed64");
 
         StarMeUpLogin loginPage = new StarMeUpLogin(driver);
         String username = loginPage.usernameLogin(userB.getUsersEmail());
@@ -132,8 +130,8 @@ public class SMUTest {
     @Test (priority = 4)
     public void commentOnSentStar() {
         SMUser userA = new SMUser();
-        userA.setUsersEmail(("user63@bootcampsqe.com"));
-        userA.setPassword("user63@bootcampsqe.com");
+        userA.setUsersEmail(("user64@bootcampsqe.com"));
+        userA.setPassword("user64@bootcampsqe.com");
         //User b checks their star comments
         SMUser userB = new SMUser();
         userB.setUsersEmail(("user68@bootcampsqe.com"));
@@ -146,14 +144,14 @@ public class SMUTest {
         MyProfile myProfileB = loggedInB.goToProfile();
         String comments = myProfileB.howManyCommentsOnTheLastStarReceived();
         int amountOfComments = Integer.parseInt(comments);
-        Assert.assertEquals("0", comments, "there's more than x comments");
+        Assert.assertEquals(0, amountOfComments, "there's more than x comments");
         myProfileB.logOut(); //UserB logout
 
         StarMeUpLogin loginPageA = new StarMeUpLogin(driver);
         String usernameA = loginPageA.usernameLogin(userA.getUsersEmail());
         SMUHome homePageA = loginPageA.passwordLoginComplete(userA.getPassword());
         SMUUserThatReceives searchUserB = homePageA.searchBar(userB.getName());
-        String sentComment = searchUserB.commentOnSentStar(" gr8");
+        String sentComment = searchUserB.commentOnSentStar(" you're very creative and think out of the box, this star is well deserved");
         String commentsNmbr = searchUserB.howManyCommentsOnTheLastStarReceived();
         int actualNumber = (amountOfComments + 1);
         int numberOfCom = Integer.parseInt(commentsNmbr);
@@ -182,19 +180,16 @@ public class SMUTest {
 
         String checkingHowManyComments = profileB.howManyCommentsOnTheLastStarReceived();
         int howManyComments = Integer.parseInt(checkingHowManyComments);
-        Assert.assertEquals(numberOfCom,howManyComments,"it's showing a different number");
-
-
         profileB.logOut(); //UserB logout
-
+        Assert.assertEquals(numberOfCom,howManyComments,"it's showing a different number");
 
     }
 
     @Test(priority = 5)
     public void likeSentStar(){
         SMUser userA = new SMUser();
-        userA.setUsersEmail(("user63@bootcampsqe.com"));
-        userA.setPassword("user63@bootcampsqe.com");
+        userA.setUsersEmail(("user64@bootcampsqe.com"));
+        userA.setPassword("user64@bootcampsqe.com");
         //User b checks their star comments
         SMUser userB = new SMUser();
         userB.setUsersEmail(("user68@bootcampsqe.com"));
@@ -207,7 +202,7 @@ public class SMUTest {
         MyProfile userBsProfile = loggedInAsB.goToProfile();
         String amountOfLikesOnStar = userBsProfile.howManyLikesOnTheLastStarReceived();
         int amountOfLikes = Integer.parseInt(amountOfLikesOnStar);
-        Assert.assertEquals("0", amountOfLikes, "there's more than x comments");
+        Assert.assertEquals(0, amountOfLikes, "there's more than x likes");
         userBsProfile.logOut(); //UserB logout
 
         StarMeUpLogin loggingInAsA = new StarMeUpLogin(driver);

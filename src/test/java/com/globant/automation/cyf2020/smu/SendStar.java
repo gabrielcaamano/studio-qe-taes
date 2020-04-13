@@ -10,7 +10,7 @@ public class SendStar extends BasePage {
         super(driver);
     }
 
-    @FindBy (xpath = "(//div[@class=\"value-icon\"])[1]")
+    @FindBy (xpath = "(//div[@class=\"value-icon\"])[3]")
     private WebElement star;
     @FindBy (xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
     private WebElement whyStar;

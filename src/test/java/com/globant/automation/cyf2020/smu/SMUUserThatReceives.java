@@ -13,7 +13,7 @@ public class SMUUserThatReceives extends BasePage {
     private WebElement sendStar;
     @FindBy (xpath = "(//div[@class=\"ui-navbar__logo-container\"]//a)")
     private WebElement goHome;
-    @FindBy (xpath = "//div[@class=\"curtain--navbar suite-discovery__curtain\"]")
+    @FindBy (xpath = "//span[contains(@class,'suite-discovery')]")
     private WebElement popUp1;
     @FindBy (xpath = "//span[contains(@class,'suite-discovery')]")
     private  WebElement popUp2;
@@ -44,12 +44,13 @@ public class SMUUserThatReceives extends BasePage {
         return getNextPage(SendStar.class);
 
     }
-
-    public String commentOnSentStar(String txt){
-       if (popUp1!=null) {
-           click(popUp1);}
-        if (popUp2!= null){
-            click(popUp2);}
+// I have to comment out the pop ups because when i run the whole test it doesn't work with them, but when i do the comment test i have to have them uncommented
+    // the same happens with the likes, but i don't understand why considering that i tell it to click on them only if they're present
+      public String commentOnSentStar(String txt){
+      // if (popUp1!=null) {
+          // click(popUp1);}
+        //if (popUp2!= null){
+          //  click(popUp2);}
         if (commentBtn !=null){
             click(commentBtn);
             type(commentTxt,txt);
@@ -63,7 +64,13 @@ public class SMUUserThatReceives extends BasePage {
     }
 
     public String likeTheLastStarSent(){
-        click(likeBtn);
+        //if (popUp1!=null) {
+          //  click(popUp1);}
+        //if (popUp2!= null){
+           // click(popUp2);}
+        if (commentBtn !=null) {
+            click(likeBtn);
+        }
         wait(DEFAULT_TIMEOUT);
         return getText(amountOfLikes);
     }
