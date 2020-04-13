@@ -43,7 +43,7 @@ public class SMUTest {
         Assert.assertTrue(username.contains(userB.getUsersEmail()), "It's not their email");
         String starsBHas = loggedIn.howManyStars();
         loggedIn.logOut();
-        Assert.assertEquals(8, numberOfStars, "It's giving another value of stars");
+        Assert.assertEquals(11, numberOfStars, "It's giving another value of stars");
 
        /* SMUser user2= new SMUser();
         user2.setName("username68");
@@ -57,7 +57,7 @@ public class SMUTest {
 
 
     @Test(priority = 2)
-    public void testingGiveStar() {
+    public void testingSendStar() {
         SMUser userA = new SMUser();
         userA.setUsersEmail(("user64@bootcampsqe.com"));
         userA.setPassword("user64@bootcampsqe.com");
@@ -246,6 +246,26 @@ public class SMUTest {
     }
 
 
+
+      @Test (priority = 6)
+      public void editStarSent(){
+          SMUser userA = new SMUser();
+          userA.setUsersEmail(("user64@bootcampsqe.com"));
+          userA.setPassword("user64@bootcampsqe.com");
+          StarMeUpLogin loginPageA = new StarMeUpLogin(driver);
+          String usernameA = loginPageA.usernameLogin(userA.getUsersEmail());
+          SMUHome loggedInA = loginPageA.passwordLoginComplete(userA.getPassword());
+          loggedInA.activityFeedStar();
+          loggedInA.popUps();
+          StarInfo starASent= loggedInA.goToStarInfo();
+          SendStar editTheStar= starASent.goToEditStar();
+         String updatedTxt=  editTheStar.editingStar(" [Hey!, I know it's only been like 3 minutes at most, but why haven't you said thank you?] (Edited)");
+          StarInfo goToPrevious= editTheStar.afterEditingTheStarCloseConfirmation();
+          String theUpdatedTextThatsShown= goToPrevious.updatedText();
+          Assert.assertTrue(theUpdatedTextThatsShown.contains(updatedTxt),"Different messages");
+
+
+      }
 
 
 

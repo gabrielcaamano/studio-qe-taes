@@ -41,6 +41,8 @@ public class SMUHome extends BasePage {
     @FindBy (xpath = "//div[@class=\"notifications\"]")
     private WebElement clickNotif;
     @FindBy (xpath = "(//div[@class=\"feed-item__content-wrapper\"]//span)[1]")
+    private WebElement activityFeedStarSentBy;
+    @FindBy (xpath = "//div[@class=\"feed-item__badge-wrapper\"]")
     private WebElement activityFeedStar;
     @FindBy (xpath = "(//li[@class=\"ui-navbar__menu-item\"])[3]")
     private WebElement goToProfile;
@@ -82,7 +84,12 @@ public class SMUHome extends BasePage {
 
 
     public String activityFeedStar(){
-        return getText(activityFeedStar);
+        return getText(activityFeedStarSentBy);
+    }
+
+    public StarInfo goToStarInfo(){
+        click(activityFeedStar);
+        return getNextPage(StarInfo.class);
     }
 
 
