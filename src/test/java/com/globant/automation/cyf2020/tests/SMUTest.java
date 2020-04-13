@@ -8,8 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class SMUTest {
     private WebDriver driver;
 
@@ -81,7 +79,7 @@ public class SMUTest {
     }
 
     @Test(priority = 3)
-    public void checkStars() {
+    public void checkIfStarWasReceived() {
         SMUser userB = new SMUser();
         userB.setUsersEmail(("user68@bootcampsqe.com"));
         userB.setPassword("user68@bootcampsqe.com");
@@ -132,7 +130,7 @@ public class SMUTest {
 
 
     @Test (priority = 4)
-    public void commentStar() {
+    public void commentOnSentStar() {
         SMUser userA = new SMUser();
         userA.setUsersEmail(("user63@bootcampsqe.com"));
         userA.setPassword("user63@bootcampsqe.com");
@@ -182,15 +180,76 @@ public class SMUTest {
         Assert.assertTrue(noNotification.toLowerCase().contains("don't"), "no");
         profileB.clickOnNotificationAgain();
 
-        String checkingHowManyComments = myProfileB.howManyCommentsOnTheLastStarReceived();
+        String checkingHowManyComments = profileB.howManyCommentsOnTheLastStarReceived();
         int howManyComments = Integer.parseInt(checkingHowManyComments);
         Assert.assertEquals(numberOfCom,howManyComments,"it's showing a different number");
 
 
-        myProfileB.logOut(); //UserB logout
+        profileB.logOut(); //UserB logout
 
 
     }
+
+    @Test(priority = 5)
+    public void likeSentStar(){
+        SMUser userA = new SMUser();
+        userA.setUsersEmail(("user63@bootcampsqe.com"));
+        userA.setPassword("user63@bootcampsqe.com");
+        //User b checks their star comments
+        SMUser userB = new SMUser();
+        userB.setUsersEmail(("user68@bootcampsqe.com"));
+        userB.setPassword("user68@bootcampsqe.com");
+        userB.setName("username68");
+        userB.setLastName("feed68");
+        StarMeUpLogin loggingInAsB = new StarMeUpLogin(driver);
+        String usernameB = loggingInAsB.usernameLogin(userB.getUsersEmail());
+        SMUHome loggedInAsB = loggingInAsB.passwordLoginComplete(userB.getPassword());
+        MyProfile userBsProfile = loggedInAsB.goToProfile();
+        String amountOfLikesOnStar = userBsProfile.howManyLikesOnTheLastStarReceived();
+        int amountOfLikes = Integer.parseInt(amountOfLikesOnStar);
+        Assert.assertEquals("0", amountOfLikes, "there's more than x comments");
+        userBsProfile.logOut(); //UserB logout
+
+        StarMeUpLogin loggingInAsA = new StarMeUpLogin(driver);
+        String usernameA = loggingInAsA.usernameLogin(userA.getUsersEmail());
+        SMUHome smUserAHome = loggingInAsA.passwordLoginComplete(userA.getPassword());
+        SMUUserThatReceives userAGoesToUserB = smUserAHome.searchBar(userB.getName());
+        String likesOnStar = userAGoesToUserB.likeTheLastStarSent();
+        int nmbrOfStars = (amountOfLikes + 1);
+        int likesOnStarAfterLiking = Integer.parseInt(likesOnStar);
+        Assert.assertEquals(nmbrOfStars,likesOnStarAfterLiking,"Different amount of likes");
+        SMUHome goBackToHome = userAGoesToUserB.goHome();
+        goBackToHome.logOut(); //UserA logout
+
+        //UserB logs back in
+        StarMeUpLogin bLoginPage = new StarMeUpLogin(driver);
+        String bUsername = bLoginPage.usernameLogin(userB.getUsersEmail());
+        SMUHome bHome = bLoginPage.passwordLoginComplete(userB.getPassword());
+        Notifications theresAnotification = bHome.aNotification();
+        //Here i check if the notification is for the comment
+        String likeNotification = theresAnotification.getsTheText();
+        Assert.assertTrue(likeNotification.toLowerCase().contains("like"));
+
+        NotificationInfo theNotification = theresAnotification.goToNotificationInfo();
+        SMUHome theHomePage = theNotification.goBackHome();
+        theHomePage.notification();
+        theHomePage.clickOnNotificationAgain();
+        MyProfile profileB=theHomePage.goToProfile();
+
+        String noNotification = profileB.notification();
+        Assert.assertTrue(noNotification.toLowerCase().contains("don't"), "no");
+        profileB.clickOnNotificationAgain();
+
+        String checkingHowManyLikes = userBsProfile.howManyLikesOnTheLastStarReceived();
+        int howManyLikes = Integer.parseInt(checkingHowManyLikes);
+        Assert.assertEquals(likesOnStarAfterLiking,howManyLikes,"it's showing a different number");
+
+
+        userBsProfile.logOut(); //UserB logout
+
+
+    }
+
 
 
 

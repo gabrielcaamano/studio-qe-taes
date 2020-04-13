@@ -12,7 +12,7 @@ public class MyProfile extends BasePage {
     private  WebElement starsUserHas;
     @FindBy (xpath = "//span[contains(@class,'suite-discovery__smu--open')]")
     private WebElement popUp1;
-    @FindBy (xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button button--color-\"]")
+    @FindBy (xpath = "//button[contains(@class,'notifications-button')]")
     private  WebElement notifBtn;
     @FindBy (xpath = "//p[@class=\"notifications-list__info\"]")
     private WebElement noNotifsTxt;
@@ -22,12 +22,14 @@ public class MyProfile extends BasePage {
     private  WebElement received;
     @FindBy (xpath = "(//span[contains(@class, 'counter__value')])[2]")
     private  WebElement amountOfComments;
-    @FindBy (xpath = "(//button[@class=\"button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-\"])[1]")
+    @FindBy (xpath = "//button[contains(@class, 'suite-user_menu__profile-image-icon')]")
     private  WebElement clickToLogOut;
     @FindBy (xpath = "(//button[@class=\"button button--color- button--size-small\"])[1]")
     private  WebElement logOutBtn;
     @FindBy (xpath = "//div[@class=\"notifications\"]")
     private WebElement clickNotif;
+    @FindBy (xpath = "(//span[contains(@class, 'counter__value')])[3]")
+    private WebElement amountOfLikes;
 
 
 
@@ -58,6 +60,10 @@ public class MyProfile extends BasePage {
         public String howManyCommentsOnTheLastStarReceived(){
         return getText(amountOfComments);
         }
+
+    public String howManyLikesOnTheLastStarReceived(){
+        return getText(amountOfLikes);
+    }
 
         public String starSentBy() {
             return getText(userWhoSentStar);

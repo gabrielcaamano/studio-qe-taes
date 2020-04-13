@@ -18,13 +18,17 @@ public class SMUUserThatReceives extends BasePage {
     @FindBy (xpath = "//span[contains(@class,'suite-discovery')]")
     private  WebElement popUp2;
     @FindBy (xpath = "//span[contains(@class, 'ui-components-icon_comment')]")
-    private  WebElement clickToComment;
+    private  WebElement commentBtn;
     @FindBy (xpath = "//div[contains(@class,'public-DraftEditor-content')]")
-    private  WebElement theComment;
+    private  WebElement commentTxt;
     @FindBy (xpath = "//span[contains(@class,'ui-components-icon_send-message')]")
    private WebElement sendCommentBtn;
     @FindBy (xpath = "//span[contains(@class, 'counter__value')]")
     private  WebElement amountOfComments;
+    @FindBy (xpath = "//span[contains(@class, 'ui-components-icon_like')]")
+    private  WebElement likeBtn;
+    @FindBy (xpath = "(//span[contains(@class, 'counter__value')])[3]")
+    private WebElement amountOfLikes;
 
 
 
@@ -46,9 +50,9 @@ public class SMUUserThatReceives extends BasePage {
            click(popUp1);}
         if (popUp2!= null){
             click(popUp2);}
-        if (clickToComment!=null){
-            click(clickToComment);
-            type(theComment,txt);
+        if (commentBtn !=null){
+            click(commentBtn);
+            type(commentTxt,txt);
             click(sendCommentBtn);}
         return txt;
     }
@@ -56,6 +60,12 @@ public class SMUUserThatReceives extends BasePage {
     public String howManyCommentsOnTheLastStarReceived(){
         wait(DEFAULT_TIMEOUT);
         return getText(amountOfComments);
+    }
+
+    public String likeTheLastStarSent(){
+        click(likeBtn);
+        wait(DEFAULT_TIMEOUT);
+        return getText(amountOfLikes);
     }
 
 
