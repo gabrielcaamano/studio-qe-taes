@@ -10,10 +10,8 @@ public class MyProfile extends BasePage {
     private WebElement userWhoSentStar;
     @FindBy (xpath = "(//div[@class=\"stat__content\"])[1]")
     private  WebElement starsUserHas;
-    @FindBy (xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--right suite-discovery__smu--open\"]")
-    private WebElement popUp2;
-  //  @FindBy (xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
-   // private  WebElement popUp1;
+    @FindBy (xpath = "//span[contains(@class,'suite-discovery__smu--open')]")
+    private WebElement popUp1;
     @FindBy (xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button button--color-\"]")
     private  WebElement notifBtn;
     @FindBy (xpath = "//p[@class=\"notifications-list__info\"]")
@@ -28,6 +26,9 @@ public class MyProfile extends BasePage {
     private  WebElement clickToLogOut;
     @FindBy (xpath = "(//button[@class=\"button button--color- button--size-small\"])[1]")
     private  WebElement logOutBtn;
+    @FindBy (xpath = "//div[@class=\"notifications\"]")
+    private WebElement clickNotif;
+
 
 
 
@@ -50,7 +51,7 @@ public class MyProfile extends BasePage {
 
 
     public String howManyStars() {
-        click(popUp2);
+        click(popUp1);
        // click(popUp1);
         return getText(starsUserHas);}
 
@@ -65,11 +66,20 @@ public class MyProfile extends BasePage {
         click(notifBtn);
         return getText(noNotifsTxt);
     }
+    public void clickOnNotificationAgain(){
+        click(clickNotif);
+    }
 
     public StarMeUpLogin logOut(){
         click(clickToLogOut);
         click(logOutBtn);
         return getNextPage(StarMeUpLogin.class);
+    }
+
+    public void clickOnPopUps(){
+        if (popUp1!=null){
+            click(popUp1);
+        }
     }
 
     }

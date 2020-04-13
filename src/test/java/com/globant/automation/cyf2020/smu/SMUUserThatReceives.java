@@ -29,6 +29,7 @@ public class SMUUserThatReceives extends BasePage {
 
 
 
+
     public SendStar sendStar(){
         if(popUp1!= null){
             click(popUp1);}
@@ -53,8 +54,10 @@ public class SMUUserThatReceives extends BasePage {
     }
 
     public String howManyCommentsOnTheLastStarReceived(){
+        wait(DEFAULT_TIMEOUT);
         return getText(amountOfComments);
     }
+
 
 
     public SMUHome goHome(){
