@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+
 <suite name="StarMeUp" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Sanity test" verbose="2">
+	<parameter name="userA" value= "83"></parameter>
+ 	<parameter name="userB" value="82"></parameter>
+  
+  <test name="Sanity test">
+  
     <classes>
-      <class name="com.globant.automation.cyf2020.tests.ejecutorTest"/>
+    
+      <class name="com.globant.automation.cyf2020.tests.ExecutorTest"/>
+      
     </classes>
+	    
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->

@@ -14,51 +14,48 @@ public class ProfileOfUser extends BasePage {
 	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]")
 	private WebElement sentTab;
 	//
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-item__avatar-name--cursor\"]")
+	@FindBy(xpath = "//span[@class=\"feed-item__avatar-name--cursor\"]")
 	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//strong[@class=\"feed-footer__full-name\"]")
+	@FindBy(xpath = "//strong[@class=\"feed-footer__full-name\"]")
 	private WebElement porQuienEsEnviadaLaEstrella;
 
 	// comentario
-	@FindBy(xpath = "//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//span[contains(@class, 'feed-footer__counters--smu')]//div[2]//span[@class=\"counter__value\"]")
 	private WebElement cantidadDecomentarios;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"][2]//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//div[@class=\"counter feed-footer__counter\"][2]//span[@class=\"counter__value\"]")
 	private WebElement amountOfLikes;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"][3]//span[@class=\"counter__value\"]")
+	@FindBy(xpath = "//div[@class=\"counter feed-footer__counter\"][3]//span[@class=\"counter__value\"]")
 	private WebElement amountOfLikesInNotifications;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"counter feed-footer__counter\"]")
+	@FindBy(xpath = "//span[contains(@class, 'ui-components-icon_comment')]")
 	private WebElement comentario1Bttn;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-footer__counters feed-footer__counters--smu\"]//div[@class=\"counter feed-footer__counter\"][2]//span")
+	@FindBy(xpath = "//div[@class=\"counter feed-footer__counter\"][2]//span")
 	private WebElement like1Bttn;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item\"]//span[@class=\"message-item__author-name\"]")
+	@FindBy(xpath = "//div[@class=\"message-item\"]//span[@class=\"message-item__author-name\"]")
 	private WebElement autorOfComments;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item\"]//small//span")
+	@FindBy(xpath = "//small//span[contains(@class, 'ui-components-icon_like-full')]")
 	private WebElement mentionsOfTheLike;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"message-item__text\"]")
+	@FindBy(xpath = "//div[contains(@class, 'feed-item suite-panel--nopadding')][1]//div[@class=\"message-item__text\"]")
 	private WebElement primerComentarioTxt;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//div[@class=\"notranslate public-DraftEditor-content\"]")
+	@FindBy(xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
 	private WebElement input1Comentario;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[contains(@class, 'messages__input-icon' )]")
+	@FindBy(xpath = "//span[contains(@class, 'messages__input-icon' )]")
 	private WebElement sendComentarioBttn;
 
-	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--right suite-discovery__smu--open\"]")
-	private WebElement popUpUserRight;
 
-	@FindBy(xpath = "//div[@class=\"curtain--navbar suite-discovery__curtain\"]")
-	private WebElement popUpUserGeneral;
-
-	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
-	private WebElement popUpMyProfile;
+	@FindBy(xpath = "//span[contains(@class, 'suite-discovery')]")
+	private WebElement popAll;
+	
+	
 
 	public ProfileOfUser(WebDriver driver) {
 		super(driver);
@@ -113,36 +110,38 @@ public class ProfileOfUser extends BasePage {
 	}
 
 	public String writeAComment(String comentario) {
-		clicktoOpenComments();
+		
 		type(input1Comentario, comentario);
 
 		return comentario;
 
 	}
 
-	public void clickPopUpRight() {
-		click(popUpUserRight);
-	}
+	
 
 	public void clickForSentTheComent() {
 		click(sendComentarioBttn);
 	}
 
-	public void clickPopUpGeneral() {
-		click(popUpUserGeneral, Duration.ofSeconds(5));
+	public void clickInPopUpAll() {
+		if(isElementPresent(popAll)) {
+			click(popAll);
+			
+		}
 	}
-
-	public void clicktoOpenComments() {
-		click(comentario1Bttn);
+	
+	public void clicktoOpenComments(){
+		
+			click(comentario1Bttn);
+		
+		
 	}
 
 	public void clickToSendLike() {
 		click(like1Bttn);
 	}
 
-	public void clickPopUpInMyProfile() {
-		click(popUpMyProfile);
-	}
+	
 
 	// get the amount of reactions
 	public int getAmountOfReactions() {

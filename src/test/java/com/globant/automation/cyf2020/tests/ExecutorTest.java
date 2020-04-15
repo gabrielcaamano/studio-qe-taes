@@ -3,106 +3,106 @@ package com.globant.automation.cyf2020.tests;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.globant.automation.cyf2020.tests.ProfileOfCoworker.ChooseARecognition;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ExecutorTest {
 
 	private WebDriver driver;
-
+    private ExcelReader readExcel;
+    
+    ChooseARecognition valueOfRecognition = ChooseARecognition.INNOVATION;
+    
+    
+   
+	
+    
+    
 	@BeforeClass
 	public void beforeClasss() {
 		System.out.println("Inicia el test");
 	}
 
 	@BeforeMethod
-	public void starWebPage() {
+	public void startWebPage() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
+		readExcel = new ExcelReader();
 		driver.manage().window().maximize();
 		driver.get(
 				"https://uat.starmeup.com/login.html?continue=aHR0cHM6Ly91YXQuc3Rhcm1ldXAuY29tLw%3D%3D&origin=SMU&logout=true");
 	}
 
-	// @AfterMethod
+	//@AfterMethod
 	public void closeDriver() {
 		driver.close();
 	}
+	
+	
+		
 
-	// @Test
-	public void LoginEjercicio1() {
-
-		UserStarMeUp usuario = new UserStarMeUp();
-		usuario.setEmail("user81@bootcampsqe.com");
-		usuario.setPassword("user81@bootcampsqe.com");
-		usuario.setJob("job_jurzv");
-		usuario.setNombre("username81");
-		usuario.setApellido("feed81");
-
-		Login login = new Login(driver);
-		ActivityFeedStarOS paginaPrincipal = login.navigateToActivityFeed(usuario.getEmail(), usuario.getPassword());
-
-		// Take the data and compare to see if they match
-		compararNombreApellidoYJob(usuario.getNombre(), usuario.getApellido(), paginaPrincipal.nombreYApellido(),
-				usuario.getJob(), paginaPrincipal.getTheJob());
-
+	
+	public String user(int usuario) throws IOException {
+        
+		String filepath = "C:\\Users\\paula.brites\\Desktop\\users.xlsx";
+		String correoYPassword = readExcel.getCellValue(filepath, "Worksheet", usuario, 18);
+		
+	    
+        
+		
+        return correoYPassword;
+		
+         
 	}
-
-	// @Test
-	public void SendStar1Y2() {
-
-		UserStarMeUp userB = new UserStarMeUp();
-		userB.setEmail("user85@bootcampsqe.com");
-		userB.setPassword("user85@bootcampsqe.com");
-
-		Login login = new Login(driver);
-		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
+	
+     @Parameters({"userA", "userB"})
+	 @Test(priority = 0)
+     
+	public void starAndThenSearchUser(int userA, int userB) throws IOException {
+    	
+    	String correoYpasswordUserB = user(userB);
+    	
+    	Login login = new Login(driver);
+ 		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
 		int captureNumberOfStarsReceivedUserB = 0;
+		
 		captureNumberOfStarsReceivedUserB = +principalPage.getStarRecibed();
 		NavBar navigationNavBar = principalPage.navigateToNavBar();
 		login = navigationNavBar.navigateTologOut();
 
 		// userA is created
-		UserStarMeUp userA = new UserStarMeUp();
-		userA.setEmail("user82@bootcampsqe.com");
-		userA.setPassword("user82@bootcampsqe.com");
+		String correoYpasswordUserA = user(userA);
 
 		// for the userA
-		principalPage = login.navigateToActivityFeed(userA.getEmail(), userA.getPassword());
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserA, correoYpasswordUserA);
 
 		int captureNumberOfStarsReceivedUserA = principalPage.getStarSent();
-
+      
 		navigationNavBar = principalPage.navigateToNavBar();
 
 		// driver at user profile
-		ProfileOfCoworker coworkerProfile = navigationNavBar.navigateToProfileOfCoworker(userB.getEmail());
+		ProfileOfCoworker coworkerProfile = navigationNavBar.navigateToProfileOfCoworker(correoYpasswordUserB);
 
-		/*
-		 * something about navigateToPrincipalPageFormPDCoworker, the number is the type of
-		 * acknowledgment that you want to send, is ordered like this: 
-		 * 1 = Integrity 
-		 * 2 = Excellence 
-		 * 3 = Team Work 
-		 * 4 = Innovation 
-		 * 5 = Learning 
-		 * 6 = Think Big
-		 * 
-		 * The next field is for comments to the coworker.
-		 * 
-		 */
-
-		principalPage = coworkerProfile.navigateToPrincipalPageFromPDCoworker(3, ":O");
+		
+		
+      
+		principalPage = coworkerProfile.navigateToPrincipalPageFromPDCoworker(valueOfRecognition, "TestAE");
 		// I return to the Activity feed
 
 		// captured the data in the variable
 
-		principalPage.reLoadTheActivity();
+		
 		String nameAndSenderActivityFeed = principalPage.captureNameAndSenderActivityFeed();
 
 		// check if the stars sent increased by one
@@ -122,7 +122,7 @@ public class ExecutorTest {
 		// go to the userB
 
 		navigationNavBar.navigateTologOut();
-		principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
 
 		navigationNavBar.clickInBell();
 		navigationNavBar.clickOnTheNotification();
@@ -143,45 +143,43 @@ public class ExecutorTest {
 		//I go to the user's personal profile
 		personalProfile = navigationNavBar.navigateToProfileOfUser();
 
-		
+		principalPage.clickInRecentTab();
 		//I compare if the data collected is the same
 		assertEquals(personalProfile.senderName(), senderActivityFeedUserB);
-
+  
 	}
-
-	// @Test
-	public void SendStar3() {
-
-		UserStarMeUp userB = new UserStarMeUp();
-		userB.setEmail("user85@bootcampsqe.com");
-		userB.setPassword("user85@bootcampsqe.com");
+     @Parameters({"userA", "userB"})
+     @Test(priority = 1)
+	public void commentOnStarWithText(int userA, int userB) throws IOException {
+    	 
+    	String correoYpasswordUserB = user(userB);
 
 		Login login = new Login(driver);
-		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
+		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
 		NavBar navigationBar = principalPage.navigateToNavBar();
 
 		ProfileOfUser personalProfileUser = navigationBar.navigateToProfileOfUser();
 		int numberOfComments1 = 0;
 		numberOfComments1 = +personalProfileUser.amountOfComments();
 		System.out.println(numberOfComments1);
-
+		personalProfileUser.clickInPopUpAll();
 		personalProfileUser.clicktoOpenComments();
 		System.out.println(personalProfileUser.firstCommentExists());
-
+		personalProfileUser.clickInPopUpAll();
 		navigationBar.navigateTologOut();
 
-		UserStarMeUp userA = new UserStarMeUp();
-		userA.setEmail("user82@bootcampsqe.com");
-		userA.setPassword("user82@bootcampsqe.com");
+		String correoYpasswordUserA = user(userA);
 
-		principalPage = login.navigateToActivityFeed(userA.getEmail(), userA.getPassword());
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserA, correoYpasswordUserA);
 
 		personalProfileUser.clickSentTab();
-
-		String sendCommentAndSave = personalProfileUser.writeAComment(" Holas");
-		personalProfileUser.clickPopUpRight();
+		
+		personalProfileUser.clickInPopUpAll();
+		personalProfileUser.clicktoOpenComments();
+		String sendCommentAndSave = personalProfileUser.writeAComment(" Jelou");
+		
 		personalProfileUser.clickForSentTheComent();
-		personalProfileUser.clickPopUpInMyProfile();
+		
 
 		
 		String getCommentType = personalProfileUser.firstCommentExists();
@@ -189,8 +187,8 @@ public class ExecutorTest {
 		navigationBar.navigateTologOut();
 
 		// start session the userB again
-		principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
-		personalProfileUser.clickPopUpInMyProfile(); // close a pop up that blocks an action
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
+		
 		navigationBar.clickInBell();
 		navigationBar.clickOnTheNotification();
 
@@ -206,18 +204,16 @@ public class ExecutorTest {
 
 		assertEquals(numberOfComments2, numberOfComments1 + 1);
 	}
-
-	// @Test
-	public void sanityLikeAStar() {
-
-		UserStarMeUp userB = new UserStarMeUp();
-		userB.setEmail("user82@bootcampsqe.com");
-		userB.setPassword("user82@bootcampsqe.com");
+    @Parameters({"userA", "userB"})
+    @Test(priority = 2)
+    
+	public void sanityLikeAStar(int userA, int userB) throws IOException {
+    	System.out.println("test3");  	String correoYpasswordUserB = user(userB);
 
 		Login login = new Login(driver);
-		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
+		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
 		NavBar navigationBar = principalPage.navigateToNavBar();
-
+		
 		ProfileOfUser usersPersonalProfile = navigationBar.navigateToProfileOfUser();
 
 		// amount of reactions in the first star
@@ -228,25 +224,24 @@ public class ExecutorTest {
 		// log out of the user B
 		navigationBar.navigateTologOut();
 
-		UserStarMeUp userA = new UserStarMeUp();
-		userA.setEmail("user81@bootcampsqe.com");
-		userA.setPassword("user81@bootcampsqe.com");
+		String correoYpasswordUserA = user(userA);
 
-		principalPage = login.navigateToActivityFeed(userA.getEmail(), userA.getPassword());
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserA, correoYpasswordUserA);
 
 		usersPersonalProfile.clickSentTab();
 
 		// send a like in a star of the user B
+		usersPersonalProfile.clickInPopUpAll();
 		usersPersonalProfile.clickToSendLike();
-		usersPersonalProfile.clickPopUpRight();
-		usersPersonalProfile.clickPopUpInMyProfile();
+		
+		usersPersonalProfile.clickInPopUpAll();
 
 		// close the session of user A
 		navigationBar.navigateTologOut();
 
 		// start session the userB again
-		principalPage = login.navigateToActivityFeed(userB.getEmail(), userB.getPassword());
-		usersPersonalProfile.clickPopUpInMyProfile(); // close a pop up that blocks an action
+		principalPage = login.navigateToActivityFeed(correoYpasswordUserB, correoYpasswordUserB);
+		usersPersonalProfile.clickInPopUpAll(); // close a pop up that blocks an action
 		navigationBar.clickInBell();
 		navigationBar.clickOnTheNotification();
 
@@ -259,31 +254,40 @@ public class ExecutorTest {
 		assertEquals(usersPersonalProfile.firstLikeIsPresentOrNot(), true);
 
 	}
-
-	@Test
-	public void editStar() {
-
-		UserStarMeUp userA = new UserStarMeUp();
-		userA.setEmail("user81@bootcampsqe.com");
-		userA.setPassword("user81@bootcampsqe.com");
+     
+    @Parameters({"userA"})
+    @Test(priority = 3)
+	public void editStar(int userA) throws IOException {
+    	
+    	String correoYpasswordUserA = user(userA);
 
 		Login login = new Login(driver);
-		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(userA.getEmail(), userA.getPassword());
+		ActivityFeedStarOS principalPage = login.navigateToActivityFeed(correoYpasswordUserA, correoYpasswordUserA);
 		NavBar barraDeNavegacion = principalPage.navigateToNavBar();
 
 		principalPage.clickInStartSendForUserA();
 		principalPage.clickInEditStar();
 		
 		String contentBeforeBeingModified = principalPage.contentOfThStarMessage();
-		principalPage.modifyTheContentFromWhy("-Edited-");
+		principalPage.modifyTheContentFromWhy("-Edited -");
 		principalPage.clickEnPopUp();
 		principalPage.editStarBtnConfirmAndCloseConfirm();
 		
 		String contentAfterBeingModified = principalPage.contentOfThStarMessage();
 		
-		assertNotEquals(contentAfterBeingModified, contentBeforeBeingModified, "los cambios en el mensaje no fueron aplicados");
+		assertNotEquals(contentAfterBeingModified, contentBeforeBeingModified, "the changes in the message were not applied");
 		
 		}
+
+    
+	
+	
+	
+	
+	
+	
+
+	
 
 	public void compararNombreApellidoYJob(String nombreSetteado, String appellidoSetteado,
 			String nombreYapellidoEnLaPagina, String trabajoSetteado, String trabajoEnLaPagina) {

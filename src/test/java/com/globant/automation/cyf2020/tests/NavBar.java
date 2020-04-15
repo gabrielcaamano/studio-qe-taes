@@ -15,11 +15,11 @@ public class NavBar extends BasePage {
 
 	@FindBy(xpath = "//div[@class=\"ui-navbar__logo-container\"]//a")
 	private WebElement volverAlaPaginaDeInicio;
-
-	@FindBy(xpath = "//button[@class=\"button button--icon button--nomargin suite-search-box__input-button suite-search-box__input-button--secondary-gray button--color-\"]")
-	private WebElement buttonSearchNavbar;
-
-	@FindBy(xpath = "//button[@class=\"button button--basic button--icon button--nomargin button--nopadding button--transparent suite-user_menu__profile-image-icon button--color-\"]")
+	
+	@FindBy(xpath = "//li[@class=\"ui-navbar__menu-item\"][2]//a")
+	private WebElement leaderBoardBtn;
+	
+	@FindBy(xpath = "//button[contains(@class, 'button--transparent suite-user_menu__profile-image-icon')]")
 	private WebElement buttonSettingsOrLogOUT;
 
 	@FindBy(xpath = "//button[@class=\"button button--color- button--size-small\"]")
@@ -28,17 +28,20 @@ public class NavBar extends BasePage {
 	@FindBy(xpath = "//button[contains(@class, 'button--icon button--nopadding')]")
 	private WebElement campanaNotificationBtn;
 
-	@FindBy(xpath = "//button[@class=\"button button--icon button--nopadding button--transparent notifications-button notifications-button--active button--color-\"]")
+	@FindBy(xpath = "//button[contains(@class, 'notifications-button notifications-button--active button--color-')]")
 	private WebElement campanaNotificationActivaBtn;
 
 	@FindBy(xpath = "//div[@class=\"ui-navbar__menu-item menu-item--featureDiscovery\"]//a")
 	private WebElement myProfile;
 
-	@FindBy(xpath = "//li[@class=\"notifications-item notifications-item--active\"][1]")
-	private WebElement primeraNotificacionDeEstrella;
+	@FindBy(xpath = "//li[@class=\"notifications-item notifications-item--active\"]")
+	private WebElement primeraNotificacion;
 
 	@FindBy(xpath = "//li[@tabindex=\"0\"]")
 	private WebElement usuarioBuscado;
+	
+	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
+	private WebElement popUpMyProfile;
 
 	public NavBar(WebDriver driver) {
 
@@ -65,7 +68,7 @@ public class NavBar extends BasePage {
 	}
 
 	public void clickOnTheNotification() {
-		click(primeraNotificacionDeEstrella);
+		click(primeraNotificacion);
 
 	}
 
@@ -90,10 +93,18 @@ public class NavBar extends BasePage {
 	}
 
 	public Login navigateTologOut() {
+		
 		click(buttonSettingsOrLogOUT);
 		click(LogOutBttn);
 
 		return getNextPage(Login.class);
+	}
+	
+	public Leaderboard navigateToLeaderBoard() {
+		click(leaderBoardBtn);
+		
+
+		return getNextPage(Leaderboard.class);
 	}
 
 }

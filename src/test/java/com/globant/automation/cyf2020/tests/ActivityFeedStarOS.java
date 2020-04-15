@@ -16,13 +16,13 @@ public class ActivityFeedStarOS extends BasePage {
 	@FindBy(xpath = "//p[@class=\"user-info__job\"]")
 	private WebElement jobOfTheUser;
 
-	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"]//div[@class=\"stat__content\"]")
+	@FindBy(xpath = "//div[@class=\"stat__content\"]")
 	private WebElement starRecibed;
 
-	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"][2]//div[@class=\"stat__content\"]")
+	@FindBy(xpath = "//div[contains(@class, 'profile-stats')][2]//div[@class=\"stat__content\"]")
 	private WebElement starSent;
 
-	@FindBy(xpath = "//div[@class=\"profile-stats\"]//div[@class=\"ui-components suite-segment profile-stats__container\"][3]//div[@class=\"stat__content\"]")
+	@FindBy(xpath = "//div[contains(@class, 'profile-stats')][3]//div[@class=\"stat__content\"]")
 	private WebElement starParaEnviar;
 
 	@FindBy(xpath = "//div[@class=\"feed-item__content-wrapper\"]")
@@ -47,22 +47,19 @@ public class ActivityFeedStarOS extends BasePage {
 	@FindBy(xpath = "//i[@class=\"close large icon confirmation__close\"]")
 	private WebElement cerrarConfirmacionDeEnvioDeEstrella;	
 	
-	@FindBy(xpath = "//div[@class=\"tab-panel__item\"]")
-	private WebElement recentTabInactive;
+	@FindBy(xpath = "//div[contains(@class, 'tab-panel__item')]")
+	private WebElement recentTab;
 
-	@FindBy(xpath = "//div[@class=\"tab-panel__item tab-panel__item--active\"]")
-	private WebElement recentTabActive;
-
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//span[@class=\"feed-item__avatar-name--cursor\"]")
+	@FindBy(xpath = "//span[@class=\"feed-item__avatar-name--cursor\"]")
 	private WebElement nombreDelCoworkerAlQueLeEnvieLaEstrella;
 
-	@FindBy(xpath = "//div[contains(@class, 'suite-panel--nopadding')]//strong[@class=\"feed-footer__full-name\"]")
+	@FindBy(xpath = "//strong[@class=\"feed-footer__full-name\"]")
 	private WebElement porQuienEsEnviadaLaEstrella;
 
 	@FindBy(xpath = "//p[@class=\"notifications-list__info\"]//span")
 	private WebElement youDontHaveNotifications;
 
-	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
+	@FindBy(xpath = "//span[contains(@class, 'suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open')]")
 	private WebElement popUpUpInTheNav;  
 	
 	
@@ -118,16 +115,20 @@ public class ActivityFeedStarOS extends BasePage {
 		click(popUpUpInTheNav);
 
 	}
+	
+	public void clickInRecentTab() {
 
-	public void reLoadTheActivity() {
-		click(recentTabActive);
+		click(recentTab);
+
 	}
+
+	
 
 	public String modifyTheContentFromWhy(String textToAdd) {
 
-		String message = getText(conctentOfTheWhy);
+		
 
-		type(whyMessageInput, message + " " + textToAdd);
+		type(whyMessageInput, " " + textToAdd);
 		
 		return textToAdd;
 
