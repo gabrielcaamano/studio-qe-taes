@@ -33,11 +33,10 @@ public class ActivityFeedStarOS extends BasePage {
 
 	@FindBy(xpath = "//div[contains(@class, 'public-DraftStyleDefault-ltr')]//span[@data-text=\"true\"]")
 	private WebElement conctentOfTheWhy;
-	
+
 	@FindBy(xpath = "//div[@class=\"feed-item__description-notes\"]")
 	private WebElement textMessageOfStartSent;
 
-	
 	@FindBy(xpath = "//div[@class=\"notranslate public-DraftEditor-content\"]")
 	private WebElement whyMessageInput;
 
@@ -45,8 +44,8 @@ public class ActivityFeedStarOS extends BasePage {
 	private WebElement editStarBtnConfirm;
 
 	@FindBy(xpath = "//i[@class=\"close large icon confirmation__close\"]")
-	private WebElement cerrarConfirmacionDeEnvioDeEstrella;	
-	
+	private WebElement cerrarConfirmacionDeEnvioDeEstrella;
+
 	@FindBy(xpath = "//div[contains(@class, 'tab-panel__item')]")
 	private WebElement recentTab;
 
@@ -60,9 +59,7 @@ public class ActivityFeedStarOS extends BasePage {
 	private WebElement youDontHaveNotifications;
 
 	@FindBy(xpath = "//span[contains(@class, 'suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open')]")
-	private WebElement popUpUpInTheNav;  
-	
-	
+	private WebElement popUpUpInTheNav;
 
 	public ActivityFeedStarOS(WebDriver driver) {
 		super(driver);
@@ -115,25 +112,21 @@ public class ActivityFeedStarOS extends BasePage {
 		click(popUpUpInTheNav);
 
 	}
-	
+
 	public void clickInRecentTab() {
 
 		click(recentTab);
 
 	}
 
-	
-
 	public String modifyTheContentFromWhy(String textToAdd) {
 
-		
-
 		type(whyMessageInput, " " + textToAdd);
-		
+
 		return textToAdd;
 
 	}
-	
+
 	public String contentOfThStarMessage() {
 
 		String messageModified = getText(textMessageOfStartSent);
@@ -141,16 +134,14 @@ public class ActivityFeedStarOS extends BasePage {
 		return messageModified;
 
 	}
-	
 
 	public void editStarBtnConfirmAndCloseConfirm() {
 
 		click(editStarBtnConfirm);
-		
+
 		click(cerrarConfirmacionDeEnvioDeEstrella);
 
 	}
-	
 
 	public String captureNameAndSenderActivityFeed() {
 

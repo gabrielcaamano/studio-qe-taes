@@ -15,10 +15,10 @@ public class NavBar extends BasePage {
 
 	@FindBy(xpath = "//div[@class=\"ui-navbar__logo-container\"]//a")
 	private WebElement volverAlaPaginaDeInicio;
-	
+
 	@FindBy(xpath = "//li[@class=\"ui-navbar__menu-item\"][2]//a")
 	private WebElement leaderBoardBtn;
-	
+
 	@FindBy(xpath = "//button[contains(@class, 'button--transparent suite-user_menu__profile-image-icon')]")
 	private WebElement buttonSettingsOrLogOUT;
 
@@ -39,7 +39,7 @@ public class NavBar extends BasePage {
 
 	@FindBy(xpath = "//li[@tabindex=\"0\"]")
 	private WebElement usuarioBuscado;
-	
+
 	@FindBy(xpath = "//span[@class=\"suite-discovery suite-discovery__smu suite-discovery__smu--bottom suite-discovery__smu--open\"]")
 	private WebElement popUpMyProfile;
 
@@ -93,16 +93,15 @@ public class NavBar extends BasePage {
 	}
 
 	public Login navigateTologOut() {
-		
+
 		click(buttonSettingsOrLogOUT);
 		click(LogOutBttn);
 
 		return getNextPage(Login.class);
 	}
-	
+
 	public Leaderboard navigateToLeaderBoard() {
 		click(leaderBoardBtn);
-		
 
 		return getNextPage(Leaderboard.class);
 	}

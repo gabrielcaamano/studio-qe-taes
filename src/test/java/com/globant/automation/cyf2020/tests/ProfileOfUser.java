@@ -51,11 +51,8 @@ public class ProfileOfUser extends BasePage {
 	@FindBy(xpath = "//span[contains(@class, 'messages__input-icon' )]")
 	private WebElement sendComentarioBttn;
 
-
 	@FindBy(xpath = "//span[contains(@class, 'suite-discovery')]")
 	private WebElement popAll;
-	
-	
 
 	public ProfileOfUser(WebDriver driver) {
 		super(driver);
@@ -110,38 +107,33 @@ public class ProfileOfUser extends BasePage {
 	}
 
 	public String writeAComment(String comentario) {
-		
+
 		type(input1Comentario, comentario);
 
 		return comentario;
 
 	}
 
-	
-
 	public void clickForSentTheComent() {
 		click(sendComentarioBttn);
 	}
 
 	public void clickInPopUpAll() {
-		if(isElementPresent(popAll)) {
+		if (isElementPresent(popAll)) {
 			click(popAll);
-			
+
 		}
 	}
-	
-	public void clicktoOpenComments(){
-		
-			click(comentario1Bttn);
-		
-		
+
+	public void clicktoOpenComments() {
+
+		click(comentario1Bttn);
+
 	}
 
 	public void clickToSendLike() {
 		click(like1Bttn);
 	}
-
-	
 
 	// get the amount of reactions
 	public int getAmountOfReactions() {
