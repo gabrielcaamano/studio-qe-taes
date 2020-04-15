@@ -46,7 +46,9 @@ public class sendStar extends BasePage{
 		return message;
 	}
 	
-	
+	public void clickSendStar() {
+		click(clickSendStar);
+	}
 
 	 
 	

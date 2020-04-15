@@ -40,7 +40,7 @@ public class TestStarMU {
     	sendStar star= resultPage5.clickStar();
     	star.teamWorkStar();
     	String message=star.write(" Gracias por ayudarme en mi proyecto, fue de mucha ayuda");
-    	
+    	star.clickSendStar();
   }
     
 }    
