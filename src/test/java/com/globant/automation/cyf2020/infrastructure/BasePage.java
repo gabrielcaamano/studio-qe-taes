@@ -32,11 +32,6 @@ public abstract class BasePage {
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-
-		getWait(EXTENDED_TIMEOUT).until(webDriver -> {
-			JavascriptExecutor jsDriver = (JavascriptExecutor) webDriver;
-			return jsDriver.executeScript("return document.readyState").equals("complete");
-		});
 	}
 	
 	protected <T extends BasePage> T getNextPage(Class<T> tClass) {

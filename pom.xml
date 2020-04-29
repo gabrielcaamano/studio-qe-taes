@@ -67,9 +67,15 @@
 			<artifactId>json</artifactId>
 			<version>20190722</version>
 		</dependency>
+        <dependency>
+            <groupId>com.globant.aimate</groupId>
+            <artifactId>aimate-java</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
 
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
