@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -16,9 +15,10 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.globant.aimate.annotation.AIFieldDecorator;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -31,7 +31,7 @@ public abstract class BasePage {
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+		PageFactory.initElements(new AIFieldDecorator(driver), this);
 	}
 	
 	protected <T extends BasePage> T getNextPage(Class<T> tClass) {
