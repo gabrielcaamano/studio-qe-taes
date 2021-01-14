@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIMate test site</title>
+  </head>
+  <body>
+    <p id="nonChangingElementId">Non-changing element</p>
+    <!-- <p id="firstExampleId" class="firstExampleClass">First test: from ID to CLASS</p> -->
+    <p class="firstExampleClass">First test: from ID to CLASS</p>
+    <p id="secondExampleId">Second test: from Text to ID (loading example)</p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('secondExampleId').innerHTML = `Second test: from Text to ID (random new text: ${new Date().toLocaleDateString()})`;
+      });
+    </script>
+  </body>
+</html>

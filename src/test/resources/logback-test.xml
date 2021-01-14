@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration> 
+
+    <turboFilter 
+      class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+           <AllowedRepetitions>0</AllowedRepetitions>  	  
+    </turboFilter>
+  
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">    
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">   
+            <Pattern>   
+                %d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+            </Pattern>  
+                 
+        </encoder>   
+    </appender> 
+    <logger name="com.globant.aimate.annotation" level="info" additivity="false">    
+        <appender-ref ref="STDOUT" />   
+    </logger>   
+    <logger name="com.globant.aimate.generator" level="info">    
+        <appender-ref ref="STDOUT" />   
+    </logger> 
+    <logger name="com.globant.aimate.storage" level="info">    
+        <appender-ref ref="STDOUT" />   
+    </logger>
+
+
+ 	<root level="OFF">
+ 	</root>  
+    
+</configuration>
