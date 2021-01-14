@@ -1,1 +1,2 @@
-Selenium Web Automation Framework
+# AIMate
+Artificial Intelligence Automation Mate
