@@ -9,7 +9,7 @@ Artificial Intelligence Automation Mate is a library tha helps reduce maintenanc
 Clone this project and import it as a Maven project.
 
 ## Contributing
-You can contribute to the project by creating tests having locators that use the `@AIMate` annotation. 
+You can contribute to the project by creating tests having locators that use the `@AIFindBy` annotation. 
 
 ### Guidelines
 - Contributions should be developed by using the framework provided on this repository (Java/TestNG/Selenium+Appium).
