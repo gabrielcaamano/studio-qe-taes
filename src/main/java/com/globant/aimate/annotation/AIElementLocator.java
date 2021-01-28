@@ -68,7 +68,7 @@ public class AIElementLocator implements CacheableLocator {
 		if (iframe != null) {
 			driver.switchTo().frame(iframe);
 		}
-
+		int countFoundLocators = 0;
 		for (LocatorModel locator : locators) {
 			try {
 				long startTime = System.currentTimeMillis();
@@ -89,7 +89,7 @@ public class AIElementLocator implements CacheableLocator {
 				}
 
 				logger.info("Element " + identifier + " found with locator " + locator.getBy());
-
+				countFoundLocators++;
 				//return result;
 
 			} catch (NoSuchElementException e) {
@@ -100,7 +100,7 @@ public class AIElementLocator implements CacheableLocator {
 			}
 		}
 
-		if (locators.size() > 0) {
+		if (locators.size() > 0 && countFoundLocators==0) {
 			countUnsuccessfulIntervention = countUnsuccessfulIntervention + 1;
 			countUnsuccessfulInterventionList.add(countUnsuccessfulIntervention);
 			updateDBBysOfLocators();
