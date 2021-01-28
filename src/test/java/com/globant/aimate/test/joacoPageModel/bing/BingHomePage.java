@@ -20,7 +20,7 @@ public class BingHomePage extends BasePage {
     @AIFindBy(id = "sb_form")
     private WebElement inputText;
 
-    @AIFindBy(xpath = "//labelasdasda")
+    @AIFindBy(xpath = "//label")
     private WebElement btnSearch;
 
     public void imBing() {
