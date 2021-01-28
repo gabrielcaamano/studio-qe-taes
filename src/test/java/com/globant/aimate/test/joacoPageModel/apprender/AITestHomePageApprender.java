@@ -1,6 +1,7 @@
-package com.globant.aimate.test.joacoPageModel;
+package com.globant.aimate.test.joacoPageModel.apprender;
 
 import com.globant.aimate.annotation.AIFindBy;
+import com.globant.aimate.test.joacoPageModel.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
