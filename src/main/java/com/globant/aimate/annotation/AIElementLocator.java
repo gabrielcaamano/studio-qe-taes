@@ -27,7 +27,6 @@ public class AIElementLocator implements CacheableLocator {
 	private List<LocatorModel> iframeLocators;
 	private final String identifier;
 	private WebElement cachedElement;
-	private static WebElement result2;
 	private List<WebElement> cachedElementList;
 	private int countUnsuccessfulIntervention;
 	private List<Integer> countUnsuccessfulInterventionList = new ArrayList<Integer>();
@@ -68,12 +67,12 @@ public class AIElementLocator implements CacheableLocator {
 		if (iframe != null) {
 			driver.switchTo().frame(iframe);
 		}
-		int countFoundLocators = 0;
+
 		for (LocatorModel locator : locators) {
 			try {
 				long startTime = System.currentTimeMillis();
 				logger.debug("Execution timestamp: " + startTime);
-				result2 = context.findElement(locator.getBy());
+				WebElement result = context.findElement(locator.getBy());
 				long endTime = System.currentTimeMillis();
 
 				locator.setResponseTime(endTime - startTime);
@@ -85,12 +84,12 @@ public class AIElementLocator implements CacheableLocator {
 				updateDBBysOfLocators();
 
 				if (shouldCache) {
-					cachedElement = result2;
+					cachedElement = result;
 				}
 
 				logger.info("Element " + identifier + " found with locator " + locator.getBy());
-				countFoundLocators++;
-				//return result;
+
+				return result;
 
 			} catch (NoSuchElementException e) {
 				if (locator.getBy() != locator.getOriginalBy()) {
@@ -100,14 +99,13 @@ public class AIElementLocator implements CacheableLocator {
 			}
 		}
 
-		if (locators.size() > 0 && countFoundLocators==0) {
+		if (locators.size() > 0) {
 			countUnsuccessfulIntervention = countUnsuccessfulIntervention + 1;
 			countUnsuccessfulInterventionList.add(countUnsuccessfulIntervention);
 			updateDBBysOfLocators();
 		}
 
-		return result2;
-		//throw new NoSuchElementException("Could not find element " + identifier);
+		throw new NoSuchElementException("Could not find element " + identifier);
 	}
 
 	@Override
